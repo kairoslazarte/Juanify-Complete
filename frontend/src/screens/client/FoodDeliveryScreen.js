@@ -26,7 +26,10 @@ const FoodDeliveryScreen = ({ match }) => {
   return (
     <>
       <Meta />
-      <h1>Restaurants near you:</h1>
+      <div className='user-location-input'>
+        <h1>Restaurants near <span className='user-location-input__location'>{sessionStorage.getItem('user_location')}</span></h1>
+        <a href='/input-location'>Change location</a>
+      </div>
       {loading ? (
         <Loader />
       ) : error ? (

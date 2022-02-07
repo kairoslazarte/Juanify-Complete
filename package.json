@@ -1,7 +1,7 @@
 {
-  "name": "proshop",
+  "name": "juanify",
   "version": "1.0.0",
-  "description": "MERN shopping cart app",
+  "description": "Juanify Food Delivery Web Application",
   "main": "server.js",
   "type": "module",
   "scripts": {
@@ -12,8 +12,7 @@
     "data:import": "node backend/seeder",
     "data:destroy": "node backend/seeder -d"
   },
-  "author": "Brad Traversy",
-  "license": "MIT",
+  "author": "Fillip Kairos Lazarte",
   "dependencies": {
     "autoprefixer": "^9.8.6",
     "bcryptjs": "^2.4.3",

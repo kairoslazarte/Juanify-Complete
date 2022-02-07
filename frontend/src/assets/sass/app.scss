@@ -7,3 +7,16 @@
 // Screens
 @use "screens/client/location";
 @use "screens/client/home";
+
+// Generic Styles
+.user-location-input {
+    @apply flex flex-row gap-x-6 items-center;
+
+    .user-location-input__location{
+        @apply text-red-500;
+    }
+
+    a {
+        @apply bg-yellow-400 text-white py-3 px-4 rounded-md duration-200 transition hover:opacity-70 no-underline;
+    }
+}

@@ -38,9 +38,6 @@ const HomeScreen = ({ match }) => {
           Go Back
         </Link>
       )}
-      <section id="home-location" className="home-location">
-        <LocationBox />
-      </section>
       {loading ? (
         <Loader />
       ) : error ? (
@@ -48,7 +45,10 @@ const HomeScreen = ({ match }) => {
       ) : (
         <>
           <section id="home-restaurants" className="home-restaurants">
-            <h1>Suggested Restaurants for you:</h1>
+            <div className='user-location-input'>
+              <h1>Restaurants near <span className='user-location-input__location'>{sessionStorage.getItem('user_location')}</span></h1>
+              <a href='/input-location'>Change location</a>
+            </div>
             <div className="home-restaurants__container">
               {products.map((product) => (
                 <RestaurantCard product={product} key={product._id} />

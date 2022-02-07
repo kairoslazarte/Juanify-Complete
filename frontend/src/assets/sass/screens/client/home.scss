@@ -24,11 +24,7 @@
 .home-restaurants {
     @apply py-10;
 
-    h1 {
-        @apply pb-3;
-    }
-
     .home-restaurants__container {
-        @apply grid grid-cols-4 gap-8;
+        @apply grid grid-cols-4 gap-8 pt-8;
     }
 }
