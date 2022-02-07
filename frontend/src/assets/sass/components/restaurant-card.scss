@@ -1,0 +1,27 @@
+.restaurant-card {
+    @apply flex flex-col flex-1 justify-between shadow-lg p-4 rounded-lg hover:no-underline;
+
+    .restaurant-card__img {
+        img {
+            @apply object-cover w-full;
+        }
+    }
+
+    .restaurant-card__name {
+        @apply pt-4;
+
+        h3 {
+            @apply text-base font-bold;
+        }
+    }
+
+    .restaurant-card__rating {
+        @apply pb-3;
+    }
+
+    .restaurant-card__price {
+        h4 {
+            @apply text-base font-semibold;
+        }
+    }
+}

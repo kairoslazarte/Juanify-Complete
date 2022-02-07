@@ -1,0 +1,22 @@
+.location-box {
+    @apply flex items-center justify-center py-5 w-full;
+
+    .location-box__container {
+        @apply flex flex-col md:w-3/5;
+
+        h1 {
+            @apply text-center;
+        }
+
+        form {
+            @apply shadow-md rounded-lg p-4 w-full flex flex-row;
+            input {
+                @apply p-2 border border-transparent outline-none w-full;
+            }
+
+            button {
+                @apply rounded-md md:w-4/12;
+            }
+        }
+    }
+}

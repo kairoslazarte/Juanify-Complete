@@ -1,0 +1,9 @@
+// Components
+@use "components/header";
+@use "components/location-box";
+@use "components/footer";
+@use "components/restaurant-card";
+
+// Screens
+@use "screens/client/location";
+@use "screens/client/home";

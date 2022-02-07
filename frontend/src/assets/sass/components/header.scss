@@ -1,0 +1,36 @@
+.header {
+    z-index: 99;
+    @apply bg-white;
+
+    .header__nav { 
+        .header__nav--container {
+            .header__nav--container-mobile {
+                @apply md:hidden grid;
+            }
+            .header__nav--container-desktop {
+                @apply hidden md:grid grid-cols-2 place-items-center;
+
+                .header__nav--logo {
+                    img {
+                        @apply w-40;
+                    }
+                }
+
+                .header__nav--lists {
+                    ul {
+                        @apply flex flex-row list-none gap-x-8;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.header-shadow {
+    @apply lg:shadow-md;
+}
+
+.header-sticky {
+    z-index: 99;
+    @apply bg-white sticky top-0;
+}
