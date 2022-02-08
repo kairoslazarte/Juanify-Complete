@@ -1,0 +1,11 @@
+.product-screen {
+    @apply bg-white;
+
+    .product-screen__main {
+        @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+
+        .product-screen__main-container {
+            @apply relative z-10 flex items-baseline justify-between pt-24 pb-6 border-b border-gray-200;
+        }
+    }
+}

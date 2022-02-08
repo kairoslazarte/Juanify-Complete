@@ -11,7 +11,7 @@ const LocationScreen = () => {
 
     return (
         <>
-             <div className="location-screen">
+            <div className="location-screen">
                 <div className="location-screen__container">
                     <div className="location-screen__banner">
                         <div className="location-screen__banner-bg">
@@ -74,7 +74,7 @@ const LocationScreen = () => {
                         </div>
                     </div>
                 </div>
-                </div>
+            </div>
         </>
     )
 }
