@@ -19,6 +19,7 @@ import OrderScreen from './screens/client/OrderScreen'
 import OrderListScreen from './screens/client/OrderListScreen'
 import FoodDeliveryScreen from './screens/client/FoodDeliveryScreen'
 import PartnerScreen from './screens/client/PartnerScreen'
+import AboutScreen from './screens/client/AboutScreen'
 
 // ADMIN
 import UserListScreen from './screens/UserListScreen'
@@ -49,6 +50,7 @@ const App = () => {
               <Route path='/login' component={LoginScreen} />
               <Route path='/register' component={RegisterScreen} />
               <Route path='/partner' component={PartnerScreen} />
+              <Route path='/about-us' component={AboutScreen} />
               <Route path='/profile' component={ProfileScreen} />
               <Route path='/product/:id' component={ProductScreen} />
               <Route path='/food' component={FoodDeliveryScreen} />
