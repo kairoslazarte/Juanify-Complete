@@ -1,3 +1,31 @@
-.footer {
-    @apply border-t-4 border-black;
+.footer-main {
+    @apply bg-blue-400;
+
+    .footer-position {
+        @apply max-w-7xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8;
+    }
+    .footer-nav {
+        @apply -mx-5 -my-2 flex flex-wrap justify-center;
+    }
+    .footer-nav-name {
+        @apply px-5 py-2;
+    }
+    .footer-nav-links {
+        @apply text-base text-white hover:text-gray-900;
+    }
+    .footer-nav-contents {
+        @apply mt-8 flex justify-center space-x-6;
+    }
+    .footer-nav-anchor {
+        @apply text-white hover:text-gray-500;
+    }
+    .footer-nav-span {
+        @apply sr-only;
+    }
+    .footer-nav-ItemIcon {
+        @apply h-6 w-6;
+    }
+    .footer-nav-p {
+        @apply mt-8 text-center text-base text-white;
+    }
 }

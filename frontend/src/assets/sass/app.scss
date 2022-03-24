@@ -10,18 +10,30 @@
 @use "screens/client/product-screen";
 @use "screens/client/partner-screen";
 @use "screens/client/about";
-
-
+@use "screens/client/login";
+@use "screens/client/register";
+@use "screens/client/forgot-password";
 
 // Generic Styles
 .user-location-input {
-    @apply flex flex-row gap-x-6 items-center;
+    @apply flex flex-col lg:flex-row lg:space-x-4 lg:space-y-0 space-y-3 items-center;
 
-    .user-location-input__location{
-        @apply text-red-500;
+    h1 {
+        @apply text-2xl sm:text-3xl lg:w-[80%] sm:text-left text-center;
+        .user-location-input__location{
+            @apply text-red-500;
+        }
     }
 
     a {
-        @apply bg-yellow-400 text-white py-3 px-4 rounded-md duration-200 transition hover:opacity-70 no-underline;
+        @apply bg-yellow-400 text-white py-3 px-4 rounded-md duration-200 transition hover:opacity-70 no-underline lg:w-[20%] text-center;
     }
+}
+
+.main-layout {
+    @apply pb-5 pt-[8rem];
+}
+
+label {
+    margin-bottom: 0 !important;
 }

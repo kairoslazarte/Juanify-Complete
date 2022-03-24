@@ -1,36 +1,69 @@
 .header {
     z-index: 99;
-    @apply bg-white;
+    @apply bg-blue-400 fixed top-0 w-full;
+    
+    .header__nav{
+        @apply ml-auto;
+    }
 
-    .header__nav { 
-        .header__nav--container {
-            .header__nav--container-mobile {
-                @apply md:hidden grid;
-            }
-            .header__nav--container-desktop {
-                @apply hidden md:grid grid-cols-2 place-items-center;
+    .nav-item {
+        margin-right: 0 !important;
+    }
 
-                .header__nav--logo {
-                    img {
-                        @apply w-40;
-                    }
-                }
+    .navbar {
+        padding: 1rem 1rem !important;
+    }
+    
+    .header-nav__links, .nav-link {
+        color: rgba(255, 255, 255, 0.52) !important;
 
-                .header__nav--lists {
-                    ul {
-                        @apply flex flex-row list-none gap-x-8;
-                    }
-                }
-            }
+        &:hover {
+            color: #fff !important;
         }
+    }
+
+    .active {
+        color: #fff !important;
+    }
+
+    .header__search-box {
+        @apply flex flex-row;
     }
 }
 
-.header-shadow {
-    @apply lg:shadow-md;
-}
+// .header {
+//     z-index: 99;
+//     @apply bg-white;
 
-.header-sticky {
-    z-index: 99;
-    @apply bg-white sticky top-0;
-}
+//     .header__nav { 
+//         .header__nav--container {
+//             .header__nav--container-mobile {
+//                 @apply md:hidden grid;
+//             }
+//             .header__nav--container-desktop {
+//                 @apply hidden md:grid grid-cols-2 place-items-center;
+
+//                 .header__nav--logo {
+//                     img {
+//                         @apply w-40;
+//                     }
+//                 }
+
+//                 .header__nav--lists {
+//                     ul {
+//                         @apply flex flex-row list-none gap-x-8;
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }
+
+// .header-shadow {
+//     @apply lg:shadow-md;
+// }
+
+// .header-sticky {
+//     z-index: 99;
+//     @apply bg-white sticky top-0;
+// }

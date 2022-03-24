@@ -7,6 +7,7 @@ import SearchBox from './SearchBox'
 import { logout } from '../actions/userActions'
 import juan_icon from '../assets/img/icons/juan-nav.png'
 
+
 const Header = () => {
   const dispatch = useDispatch()
 
@@ -18,9 +19,9 @@ const Header = () => {
   }
 
   return (
-    <header>
-      <Navbar bg='light' variant='light' expand='lg' collapseOnSelect>
-        <Container>
+    <header className='header'>
+      <Navbar className='header__nav' expand='lg' collapseOnSelect>
+        <Container className='.header__nav--container-desktop '>
           <LinkContainer to='/'>
             <Navbar.Brand>
               <Image src={juan_icon} height="40" />
@@ -31,17 +32,17 @@ const Header = () => {
             <Route render={({ history }) => <SearchBox history={history} />} />
             <Nav className='ml-auto'>
               <LinkContainer to='/food'>
-                <Nav.Link>
-                  <i className='fas fa-utensils'></i> Order Food
+                <Nav.Link className='header-nav__links'>
+                  <i className='fas fa-utensils'></i> Browse
                 </Nav.Link>
               </LinkContainer>
               <LinkContainer to='/partner'>
-                <Nav.Link>
+                <Nav.Link className='header-nav__links'>
                   <i className='fas fa-hands-helping'></i> Partner with Us
                 </Nav.Link>
               </LinkContainer>
               <LinkContainer to='/cart'>
-                <Nav.Link>
+                <Nav.Link className='header-nav__links'>
                   <i className='fas fa-shopping-cart'></i> Cart
                 </Nav.Link>
               </LinkContainer>
@@ -56,7 +57,7 @@ const Header = () => {
                 </NavDropdown>
               ) : (
                 <LinkContainer to='/login'>
-                  <Nav.Link>
+                  <Nav.Link className='header-nav__links'>
                     <i className='fas fa-user'></i> Sign In
                   </Nav.Link>
                 </LinkContainer>
@@ -67,7 +68,7 @@ const Header = () => {
                     <NavDropdown.Item>Users</NavDropdown.Item>
                   </LinkContainer>
                   <LinkContainer to='/admin/productlist'>
-                    <NavDropdown.Item>Restaurants</NavDropdown.Item>
+                    <NavDropdown.Item>Products</NavDropdown.Item>
                   </LinkContainer>
                   <LinkContainer to='/admin/orderlist'>
                     <NavDropdown.Item>Orders</NavDropdown.Item>

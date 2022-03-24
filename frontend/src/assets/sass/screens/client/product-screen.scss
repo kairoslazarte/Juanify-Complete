@@ -1,11 +1,259 @@
-.product-screen {
-    @apply bg-white;
 
-    .product-screen__main {
-        @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+        .product-screen_main{
+            @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
 
-        .product-screen__main-container {
-            @apply relative z-10 flex items-baseline justify-between pt-24 pb-6 border-b border-gray-200;
+            .product-screen_main-style{
+                @apply relative z-10 flex items-baseline justify-between pt-24 pb-6 border-b border-gray-200;
+            }
+            .product-screen_h1-style{
+                @apply text-4xl font-extrabold tracking-tight text-gray-900;
+            }
+    
+            .product-screen_menu-flex{
+                @apply flex items-center;
+            }
+            .product-screen_menu-relative{
+                @apply relative inline-block text-left;
+            }
+            // "group" must include fix soon
+            .product-screen_menu{
+                @apply inline-flex justify-center text-sm font-medium text-gray-700 hover:text-gray-900;
+            }
+            .product-screen_Chevron-Down{
+                @apply flex-shrink-0 -mr-1 ml-1 h-5 w-5 text-gray-400 group-hover:text-gray-500;
+            }
+            .product-screen_Menu-Items{
+                @apply origin-top-right absolute right-0 mt-2 w-40 rounded-md shadow-2xl bg-white ring-1 ring-black ring-opacity-5 focus:outline-none;
+            }
+            .product-screen_Menu-Items-Padding{
+                @apply py-1;
+            }
+            .product-screen_button{
+                @apply p-2 -m-2 ml-5 sm:ml-7 text-gray-400 hover:text-gray-500;
+            }
+            .product-screen_span{
+                @apply sr-only;
+            }
+            .product-screen_Grid-FilterIcon{
+                @apply w-5 h-5;
+            }
+            .product-screen_section{
+                @apply pt-6 pb-24;
+            }
+            .product-screen_button-filter{
+                @apply p-2 -m-2 ml-4 sm:ml-6 text-gray-400 hover:text-gray-500;
+            }
+            .product-screen_filter-styles{
+                @apply grid grid-cols-1 lg:grid-cols-4 gap-x-8 gap-y-10;
+            }
+            .product-screen_form{
+                @apply hidden lg:block;
+            }
+            .product-screen_form-ul{
+                @apply text-sm font-medium text-gray-900 space-y-4 pb-6 border-b border-gray-200;
+            }
+            .product-screen_disclosure{
+                @apply border-b border-gray-200 py-6;
+            }
+            .product-screen_disclosure-h3{
+                @apply -my-3 flow-root;
+            }
+            .product-screen_disclosure-button{
+                @apply py-3 bg-white w-full flex items-center justify-between text-sm text-gray-400 hover:text-gray-500;
+            }
+            .product-screen_disclosure-span-style{
+                @apply font-medium text-gray-900;
+            }
+            .product-screen_disclosure-span-position{
+                @apply ml-6 flex items-center;
+            }
+            .product-screen_disclosure-Icon{
+                @apply h-5 w-5;
+            }
+            .product-screen_disclosure-Panel{
+                @apply pt-6;
+            }
+            .product-screen_disclosure-Panel-space{
+                @apply space-y-4;
+            }
+            .product-screen_disclosure-Panel-flex{
+                @apply flex items-center;
+            }
+            .product-screen_disclosure-Panel-styles{
+                @apply h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500;
+            }
+            .product-screen_disclosure-Panel-label{
+                @apply ml-3 text-sm text-gray-600;
+            }
         }
-    }
-}
+
+       
+        .product-screen_grid{
+                @apply lg:col-span-3;
+            
+                .product-screen_h2{
+                    @apply text-2xl font-extrabold tracking-tight text-gray-900;
+                }    
+                .product-screen_position{
+                    @apply mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8;
+                }
+                // must include "group"
+                .product-screen_group{
+                    @apply relative;
+                }  
+                // Error in this in Line dunno what da fuck is the error
+                // .product-screen_styles{
+                //     @apply w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden  lg:h-80 lg:aspect-none;
+                // }
+                .product-screen_image-styles{
+                    @apply w-full h-full object-center object-cover lg:w-full lg:h-full;
+                }  
+                .product-screen_content{
+                    @apply mt-4 flex justify-between;
+                }   
+                .product-screen_content-h3{
+                    @apply text-sm text-gray-700;
+                }  
+                .product-screen_content-span{
+                    @apply absolute inset-0;
+                } 
+                .product-screen_content-p{
+                    @apply mt-1 text-sm text-gray-500;
+                }      
+                .product-screen_content-p-style{
+                    @apply text-sm font-medium text-gray-900;
+                }             
+        }
+            // no styles
+        .product-screen_footer{
+
+            .product-screen_footer-wrapper{
+                @apply max-w-screen-xl mx-auto px-4;
+            } 
+            .product-screen_footer-ul{
+                @apply max-w-screen-md mx-auto text-lg font-light flex flex-wrap justify-between;
+            }
+            .product-screen_footer-li{
+                @apply my-2;
+            }
+            .product-screen_footer-a-styles{
+                @apply text-gray-400 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white transition-colors duration-200;
+            } 
+            .product-screen_footer-position{
+                @apply pt-8 flex max-w-xs mx-auto items-center justify-between;
+            }
+            .product-screen_footer-a-links-styles{
+                @apply text-gray-400 hover:text-gray-800 dark:hover:text-white transition-colors duration-200;
+            }
+            .product-screen_footer-svg-links-styles{
+                @apply text-xl hover:text-gray-800 dark:hover:text-white transition-colors duration-200;
+            }
+            .product-screen_footer-form-container{
+                @apply text-center pt-10 sm:pt-12 font-light flex items-center justify-center;
+            }
+            .product-screen_footer-form-styles{
+                @apply text-xl hover:text-gray-800 dark:hover:text-white transition-colors duration-200;
+            }
+            .product-screen_footer-form-relative{
+                @apply relative;
+            }
+            .product-screen_footer-form-input-styles{
+                @apply  rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent;
+            }
+            .product-screen_footer-form-button-styles{
+                @apply  flex-shrink-0 px-4 py-2 text-base font-semibold text-white bg-purple-600 rounded-lg shadow-md hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-purple-200;
+            }
+            .product-screen_footer-form-text-styles{
+                @apply  text-center text-gray-500 dark:text-gray-200 pt-10 sm:pt-12 font-light flex items-center justify-center;
+            }
+            
+        }
+
+        .review-screen_main{
+            @apply bg-gray-200;
+            .review-screen_container{
+              @apply max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8;
+             }
+            .review-screen_h2-style{
+                @apply text-lg font-medium text-gray-900;
+             }
+              .review-screen_review-map{
+                @apply mt-6 pb-10 border-t border-b border-gray-200 divide-y divide-gray-200 space-y-10;
+             }
+             .review-screen_review-id{
+                @apply pt-10 lg:grid lg:grid-cols-12 lg:gap-x-8;
+             }
+             .review-screen_review--grid{
+                @apply lg:col-start-5 lg:col-span-8 xl:col-start-4 xl:col-span-9 xl:grid xl:grid-cols-3 xl:gap-x-8 xl:items-start;
+             }
+             .review-screen_flex--center-xl{
+                @apply flex items-center xl:col-span-1;
+             }
+             .review-screen_flex--center{
+                @apply flex items-center;
+             }
+             .review-screen_rating-color{
+                @apply text-yellow-400;
+             }
+             .review-screen_text-size-color{
+                @apply text-gray-200;
+             }
+             .review-screen_rating-size{
+                @apply h-5 w-5 flex-shrink-0;
+             }
+             .review-screen_rating-p{
+                @apply ml-3 text-sm text-gray-700;
+             }
+             .review-screen_span{
+                @apply sr-only;
+             }
+             .review-screen_review-title{
+                @apply mt-4 lg:mt-6 xl:mt-0 xl:col-span-2;
+             }
+             .review-screen_review-title-style{
+                @apply text-sm font-medium text-gray-900;
+             }
+             .review-screen_review-content{
+                @apply mt-3 space-y-6 text-sm text-gray-500;
+             }
+             .review-screen_review-author{
+                @apply mt-6 flex items-center text-sm lg:mt-0 lg:col-start-1 lg:col-span-4 lg:row-start-1 lg:flex-col lg:items-start xl:col-span-3;
+             }
+             .review-screen_review-author-style{
+                @apply font-medium text-gray-900;
+             }
+             .review-screen_review-datetime{
+                @apply ml-4 border-l border-gray-200 pl-4 text-gray-500 lg:ml-0 lg:mt-2 lg:border-0 lg:pl-0;
+             }
+        }
+    
+        .faq-screen_main{
+            @apply bg-white;
+            .faq-screen-container{
+               @apply max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:py-20 lg:px-8;
+            }
+             .faq-screen-grid{
+                @apply lg:grid lg:grid-cols-3 lg:gap-8;
+             }
+             .faq-screen-h2{
+                @apply max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:py-20 lg:px-8;
+             }
+             .faq-screen-p{
+                @apply mt-4 text-lg text-gray-500;
+             }
+             .faq-screen-href{
+                @apply font-medium text-indigo-600 hover:text-indigo-500;
+             }
+             .faq-screen-margin{
+                @apply mt-12 lg:mt-0 lg:col-span-2;
+             }
+             .faq-screen-space{
+                @apply space-y-12;
+             }
+             .faq-screen-question{
+                @apply text-lg leading-6 font-medium text-gray-900;
+             }
+             .faq-screen-answer{
+                @apply mt-2 text-base text-gray-500;
+             }
+        }
