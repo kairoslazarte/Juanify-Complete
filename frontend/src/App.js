@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useEffect, useState, useCallback } from 'react'
+import { useDispatch } from 'react-redux'
+import alanBtn from "@alan-ai/alan-sdk-web"
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { Container } from 'react-bootstrap'
 import Header from './components/Header'
 import Footer from './components/Footer'
+import { logout } from './actions/userActions'
 
 // CLIENT
 import LocationScreen from './screens/client/LocationScreen'
@@ -28,7 +31,73 @@ import ProductListScreen from './screens/ProductListScreen'
 import ProductEditScreen from './screens/ProductEditScreen'
 import ForgotPassword from './screens/client/ForgotPassword'
 
+var today = new Date()
+var currDate = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate()
+var currTime = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+
+console.log(currTime)
+
+const COMMANDS = {
+  DATE: 'date',
+  TIME: 'time'
+}
+
 const App = () => {
+  const [alanInstance, setAlanInstance] = useState()
+  const dispatch = useDispatch()
+
+  const logoutHandler = () => {
+    dispatch(logout())
+  }
+
+  const date_today = useCallback(() => {
+    alanInstance.playText(`The date today is ${currDate}`)
+  }, [alanInstance])
+  
+  const curr_time = useCallback(() => {
+    alanInstance.playText(`The time is ${currTime}`)
+  }, [alanInstance])
+
+  useEffect(() => {
+    window.addEventListener(COMMANDS.DATE, date_today)
+    window.addEventListener(COMMANDS.TIME, curr_time)
+
+    return () => {
+      window.removeEventListener(COMMANDS.DATE, date_today)
+      window.removeEventListener(COMMANDS.TIME, curr_time)
+    }
+  }, [date_today, curr_time])
+
+  useEffect(() => {
+    if (alanInstance != null) return
+
+    setAlanInstance(
+      alanBtn({
+        key: '316a441b5efc8e273c1ba1616d61a3c22e956eca572e1d8b807a3e2338fdd0dc/stage',
+        onCommand: (commandData) => {
+          window.dispatchEvent(new CustomEvent(commandData.command))
+          if (commandData.command === "navigation") {
+            if (commandData.route == "home") {
+              window.location = "/"
+            }
+            else if (commandData.route == "cart") {
+              window.location = "/cart"
+            }
+            else if (commandData.route == "browse") {
+              window.location = "/food"
+            }
+          }
+          else if (commandData.command === "order") {
+            window.location = `/search/${commandData.data}`
+          }
+          else if (commandData.command === "logout") {
+            logoutHandler()
+          }
+        }
+      })
+    )
+  })
+
   return (
     <>
       {sessionStorage.getItem('user_location') === null
