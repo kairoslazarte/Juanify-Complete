@@ -15,6 +15,8 @@
   "author": "Fillip Kairos Lazarte",
   "dependencies": {
     "autoprefixer": "^9.8.6",
+    "babel-eslint": "^10.1.0",
+    "babel-loader": "^8.2.4",
     "bcryptjs": "^2.4.3",
     "colors": "^1.4.0",
     "dotenv": "^8.2.0",
@@ -27,7 +29,11 @@
     "multer": "^1.4.2",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
-    "react-scripts": "^4.0.0"
+    "react-scripts": "^5.0.1",
+    "require-at": "^1.0.6",
+    "toidentifier": "^1.0.1",
+    "undefsafe": "^2.0.5",
+    "update-notifier": "^5.1.0"
   },
   "devDependencies": {
     "concurrently": "^5.3.0",

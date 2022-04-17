@@ -106,4 +106,6 @@ const PartnerScreen = () => {
     )
 }
 
+
 export default PartnerScreen
+
