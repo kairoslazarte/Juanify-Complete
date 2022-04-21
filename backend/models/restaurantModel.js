@@ -1,4 +1,4 @@
-import mongoose, { mongo } from 'mongoose'
+import mongoose from 'mongoose'
 
 const reviewSchema = mongoose.Schema(
   {
@@ -46,7 +46,41 @@ const productSchema = mongoose.Schema(
   }
 )
 
-const restaurantScheme = mongoose.Schema(
+
+const locationSchema = mongoose.Schema(
+  {
+    city: {
+      type: String,
+      required: true,
+    },
+    long: {
+      type: Number,
+      required: true,
+    },
+    lat: {
+      type: Number,
+      required: true,
+    },
+    street: {
+      type: String,
+      required: true,
+    },
+    barangay: {
+      type: String,
+      required: true,
+    },
+    zipCode: {
+      type: Number,
+      required: true
+    }
+  },
+  {
+    timestamps: true,
+  }
+)
+
+
+const restaurantSchema = mongoose.Schema(
     {
         user: {
             type: mongoose.Schema.Types.ObjectId,
@@ -57,15 +91,7 @@ const restaurantScheme = mongoose.Schema(
             type: String,
             required: true,
         },
-        location: {
-            type: String,
-            required: true,
-        },
         image: {
-            type: String,
-            required: true,
-        },
-        category: {
             type: String,
             required: true,
         },
@@ -75,6 +101,7 @@ const restaurantScheme = mongoose.Schema(
         },
         reviews: [reviewSchema],
         products: [productSchema],
+        location: locationSchema,
         rating: {
             type: Number,
             required: true,
@@ -91,6 +118,6 @@ const restaurantScheme = mongoose.Schema(
     }
 )
 
-const Restaurant = mongoose.model('Restaurant', restaurantScheme)
+const Restaurant = mongoose.model('Restaurant', restaurantSchema)
 
 export default Restaurant
