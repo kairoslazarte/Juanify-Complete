@@ -7,16 +7,16 @@ import foodDeliveryImg from '../assets/img/food-delivery.png'
 import hassleFreeImg from '../assets/img/hassle-free.png'
 import Loader from './Loader'
 import Message from './Message'
-import { listTopProducts } from '../actions/productActions'
+import { listTopRestaurants } from '../actions/restaurantActions'
 
 const ProductCarousel = () => {
   const dispatch = useDispatch()
 
-  const productTopRated = useSelector((state) => state.productTopRated)
-  const { loading, error, products } = productTopRated
+  const restaurantTopRated = useSelector((state) => state.restaurantTopRated)
+  const { loading, error, restaurants } = restaurantTopRated
 
   useEffect(() => {
-    dispatch(listTopProducts())
+    dispatch(listTopRestaurants())
   }, [dispatch])
 
   return loading ? (

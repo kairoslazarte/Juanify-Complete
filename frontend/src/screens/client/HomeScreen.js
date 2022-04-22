@@ -2,7 +2,6 @@ import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { Row, Col } from 'react-bootstrap'
-import Product from '../../components/Product'
 import RestaurantCard from '../../components/RestaurantCard'
 import Message from '../../components/Message'
 import Loader from '../../components/Loader'
@@ -10,7 +9,7 @@ import LocationBox from '../../components/LocationBox'
 import Paginate from '../../components/Paginate'
 import ProductCarousel from '../../components/ProductCarousel'
 import Meta from '../../components/Meta'
-import { listProducts } from '../../actions/productActions'
+import { listRestaurants } from '../../actions/restaurantActions'
 
 const HomeScreen = ({ match }) => {
   const keyword = match.params.keyword
@@ -19,11 +18,11 @@ const HomeScreen = ({ match }) => {
 
   const dispatch = useDispatch()
 
-  const productList = useSelector((state) => state.productList)
-  const { loading, error, products, page, pages } = productList
+  const restaurantList = useSelector((state) => state.restaurantList)
+  const { loading, error, restaurants, page, pages } = restaurantList
 
   useEffect(() => {
-    dispatch(listProducts(keyword, pageNumber))
+    dispatch(listRestaurants(keyword, pageNumber))
   }, [dispatch, keyword, pageNumber])
 
   const policies = [
@@ -101,8 +100,8 @@ const HomeScreen = ({ match }) => {
               <a href='/input-location'>Change location</a>
             </div>
             <div className="home-restaurants__container">
-              {products.map((product) => (
-                <RestaurantCard product={product} key={product._id} />
+              {restaurants.map((restaurant) => (
+                <RestaurantCard restaurant={restaurant} key={restaurant._id} />
               ))}
             </div>
           </section>

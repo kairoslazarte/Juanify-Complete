@@ -20,10 +20,10 @@ const importData = async () => {
 
     const createdUsers = await User.insertMany(users)
 
-    const adminUser = createdUsers[0]._id
+    const lyndonUser = createdUsers[1]._id
 
     const sampleRestaurants = restaurants.map((restaurant) => {
-      return { ...restaurant, user: adminUser }
+      return { ...restaurant, user: lyndonUser }
     })
 
     await Restaurant.insertMany(sampleRestaurants)

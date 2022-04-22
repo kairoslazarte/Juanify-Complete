@@ -11,6 +11,7 @@ import { logout } from './actions/userActions'
 import LocationScreen from './screens/client/LocationScreen'
 import HomeScreen from './screens/client/HomeScreen'
 import ProductScreen from './screens/client/ProductScreen'
+import RestaurantScreen from './screens/client/RestaurantScreen'
 import CartScreen from './screens/client/CartScreen'
 import LoginScreen from './screens/client/LoginScreen'
 import RegisterScreen from './screens/client/RegisterScreen'
@@ -123,7 +124,7 @@ const App = () => {
                   <Route path='/partner' component={PartnerScreen} />
                   <Route path='/about-us' component={AboutScreen} />
                   <Route path='/profile' component={ProfileScreen} />
-                  <Route path='/product/:id' component={ProductScreen} />
+                  <Route path='/restaurant/:id' component={RestaurantScreen} />
                   <Route path='/product-screen' component={ProductScreen} />
                   <Route path='/food' component={FoodDeliveryScreen} />
                   <Route path='/cart/:id?' component={CartScreen} />

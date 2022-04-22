@@ -3,19 +3,19 @@ import { Link } from 'react-router-dom'
 import { Card } from 'react-bootstrap'
 import Rating from './Rating'
 
-const RestaurantCard = ({ product }) => {
+const RestaurantCard = ({ restaurant }) => {
   return (
-    <a href={`/product/${product._id}`} className="restaurant-card">
+    <a href={`/restaurant/${restaurant._id}`} className="restaurant-card">
       <div className="restaurant-card__img">
-        <img src={product.image} />
+        <img src={restaurant.image} />
       </div>
       <div className="restaurant-card__name">
-          <h3>{product.name}</h3>
+          <h3>{restaurant.name}</h3>
       </div>
       <div className="restaurant-card__rating">
         <Rating
-          value={product.rating}
-          text={`${product.numReviews} reviews`}
+          value={restaurant.rating}
+          text={`${restaurant.numReviews} reviews`}
         />
       </div>
     </a>

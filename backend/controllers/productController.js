@@ -1,5 +1,6 @@
 import asyncHandler from 'express-async-handler'
 import Product from '../models/productModel.js'
+import Restaurant from '../models/restaurantModel.js'
 
 // @desc    Fetch all products
 // @route   GET /api/products
@@ -17,12 +18,16 @@ const getProducts = asyncHandler(async (req, res) => {
       }
     : {}
 
-  const count = await Product.countDocuments({ ...keyword })
-  const products = await Product.find({ ...keyword })
+  const count = await Restaurant.countDocuments({ ...keyword })
+  const restaurants = await Restaurant.find({ ...keyword })
     .limit(pageSize)
     .skip(pageSize * (page - 1))
-
-  res.json({ products, page, pages: Math.ceil(count / pageSize) })
+  // restaurants.map((restaurant) => {
+  //   restaurant.products.map((product) => {
+  //     console.log(product.name)
+  //   })
+  // })
+  res.json({ restaurants, page, pages: Math.ceil(count / pageSize) })
 })
 
 // @desc    Fetch single product
