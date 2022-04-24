@@ -4,21 +4,21 @@ const productsData = [
     image: '/images/lyndons-chicken.jpg',
     category: 'Ulam',
     price: 150,
-    counInStock: 10
+    countInStock: 10
   },
   {
     name: 'Sisig Special',
     image: '/images/lyndons-chicken-2.jpg',
     category: 'Ulam',
     price: 120,
-    counInStock: 12
+    countInStock: 12
   },
   {
     name: 'Burger Shawarma Special',
     image: '/images/lyndons-pata.jpg',
     category: 'Burgers',
     price: 100,
-    counInStock: 20
+    countInStock: 20
   },
 ]
 

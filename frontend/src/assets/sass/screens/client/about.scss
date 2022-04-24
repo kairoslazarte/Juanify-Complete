@@ -7,13 +7,13 @@
         @apply lg:absolute lg:inset-0; 
     }
     .about-screen-set-img{
-        @apply lg:absolute lg:inset-y-0 lg:left-0 lg:w-1/2"; 
+        @apply lg:absolute lg:inset-y-0 lg:left-0 lg:w-1/2; 
     }
     .about-screen-col-two{
         @apply relative pt-12 pb-16 px-4 sm:pt-16 sm:px-6 lg:px-8 lg:max-w-7xl lg:mx-auto lg:grid lg:grid-cols-2; 
     }
     .about-screen-set-col-two{
-        @apply lg:col-start-2 lg:pl-8"; 
+        @apply lg:col-start-2 lg:pl-8; 
     }
     .about-screen-set-text{
         @apply text-base max-w-prose mx-auto lg:max-w-lg lg:ml-auto lg:mr-0; 
@@ -28,6 +28,6 @@
         @apply mt-8 text-lg text-gray-500; 
     }
     .about-screen-info{
-        @apply mt-5 prose prose-indigo text-gray-500; 
+        @apply mt-5 text-gray-500; 
     }
 }

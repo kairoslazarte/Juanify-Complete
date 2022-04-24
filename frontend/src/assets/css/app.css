@@ -125,7 +125,7 @@
 }
 .footer-main .footer-nav-links:hover {
   --tw-text-opacity: 1;
-  color: rgb(17 24 39 / var(--tw-text-opacity));
+  color: rgb(248 113 113 / var(--tw-text-opacity));
 }
 .footer-main .footer-nav-contents {
   margin-top: 2rem;
@@ -210,6 +210,35 @@
   line-height: 1.5rem;
   font-weight: 600;
 }
+.restaurant-card .restaurant-card__add-to-cart--btn {
+  border-radius: 0.375rem;
+  border-width: 1px;
+  --tw-border-opacity: 1;
+  border-color: rgb(220 38 38 / var(--tw-border-opacity));
+  --tw-bg-opacity: 1;
+  background-color: rgb(220 38 38 / var(--tw-bg-opacity));
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  text-align: center;
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+  text-decoration-line: none;
+  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
+  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+}
+.restaurant-card .restaurant-card__add-to-cart--btn:hover {
+  background-color: transparent;
+  --tw-text-opacity: 1;
+  color: rgb(220 38 38 / var(--tw-text-opacity));
+}
+.restaurant-card .restaurant-card__add-to-cart--btn:focus {
+  border-width: 0px;
+}
 
 .location-screen {
   height: 100%;
@@ -244,8 +273,6 @@
 @media (min-width: 640px) {
   .location-screen .location-screen__container .location-screen__banner {
     max-width: 48rem;
-  }
-  .location-screen .location-screen__container .location-screen__banner {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
   }
@@ -253,8 +280,6 @@
 @media (min-width: 1024px) {
   .location-screen .location-screen__container .location-screen__banner {
     max-width: 80rem;
-  }
-  .location-screen .location-screen__container .location-screen__banner {
     padding-left: 2rem;
     padding-right: 2rem;
   }
@@ -277,8 +302,6 @@
   .location-screen .location-screen__container .location-screen__banner .location-screen__banner-bg {
     padding-left: 3rem;
     padding-right: 3rem;
-  }
-  .location-screen .location-screen__container .location-screen__banner .location-screen__banner-bg {
     padding-top: 5rem;
     padding-bottom: 5rem;
   }
@@ -386,11 +409,7 @@
   .location-screen .location-screen__container .location-screen__banner .location-screen__banner-bg .location-screen__input .location-screen__input-form {
     margin-left: auto;
     margin-right: auto;
-  }
-  .location-screen .location-screen__container .location-screen__banner .location-screen__banner-bg .location-screen__input .location-screen__input-form {
     display: flex;
-  }
-  .location-screen .location-screen__container .location-screen__banner .location-screen__banner-bg .location-screen__input .location-screen__input-form {
     max-width: 32rem;
   }
 }
@@ -440,8 +459,6 @@
 @media (min-width: 640px) {
   .location-screen .location-screen__container .location-screen__banner .location-screen__banner-bg .location-screen__input .location-screen__input-form .location-screen__input-btn--submit-container {
     margin-top: 0px;
-  }
-  .location-screen .location-screen__container .location-screen__banner .location-screen__banner-bg .location-screen__input .location-screen__input-form .location-screen__input-btn--submit-container {
     margin-left: 0.75rem;
   }
 }
@@ -565,8 +582,6 @@
   .policies_screen-section .policies_screen-container {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
-  }
-  .policies_screen-section .policies_screen-container {
     padding-top: 8rem;
     padding-bottom: 8rem;
   }
@@ -590,11 +605,7 @@
 @media (min-width: 1024px) {
   .policies_screen-section .policies_screen-grid {
     grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
-  .policies_screen-section .policies_screen-grid {
     column-gap: 2rem;
-  }
-  .policies_screen-section .policies_screen-grid {
     row-gap: 0px;
   }
 }
@@ -604,19 +615,13 @@
 @media (min-width: 768px) {
   .policies_screen-section .policies_screen-name {
     display: flex;
-  }
-  .policies_screen-section .policies_screen-name {
     align-items: flex-start;
-  }
-  .policies_screen-section .policies_screen-name {
     text-align: left;
   }
 }
 @media (min-width: 1024px) {
   .policies_screen-section .policies_screen-name {
     display: block;
-  }
-  .policies_screen-section .policies_screen-name {
     text-align: center;
   }
 }
@@ -642,16 +647,12 @@
 @media (min-width: 768px) {
   .policies_screen-section .policies_screen-name-container {
     margin-top: 0px;
-  }
-  .policies_screen-section .policies_screen-name-container {
     margin-left: 1rem;
   }
 }
 @media (min-width: 1024px) {
   .policies_screen-section .policies_screen-name-container {
     margin-top: 1.5rem;
-  }
-  .policies_screen-section .policies_screen-name-container {
     margin-left: 0px;
   }
 }
@@ -984,8 +985,6 @@
 @media (min-width: 1024px) {
   .product-screen_grid .product-screen_image-styles {
     height: 100%;
-  }
-  .product-screen_grid .product-screen_image-styles {
     width: 100%;
   }
 }
@@ -1144,8 +1143,7 @@
 .product-screen_footer .product-screen_footer-form-input-styles {
   width: 100%;
   flex: 1 1 0%;
-  -webkit-appearance: none;
-          appearance: none;
+  appearance: none;
   border-radius: 0.5rem;
   border-width: 1px;
   border-color: transparent;
@@ -1253,8 +1251,6 @@
   .review-screen_main .review-screen_container {
     padding-top: 6rem;
     padding-bottom: 6rem;
-  }
-  .review-screen_main .review-screen_container {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
   }
@@ -1262,8 +1258,6 @@
 @media (min-width: 1024px) {
   .review-screen_main .review-screen_container {
     max-width: 80rem;
-  }
-  .review-screen_main .review-screen_container {
     padding-left: 2rem;
     padding-right: 2rem;
   }
@@ -1301,37 +1295,21 @@
 @media (min-width: 1024px) {
   .review-screen_main .review-screen_review-id {
     display: grid;
-  }
-  .review-screen_main .review-screen_review-id {
     grid-template-columns: repeat(12, minmax(0, 1fr));
-  }
-  .review-screen_main .review-screen_review-id {
     column-gap: 2rem;
   }
   .review-screen_main .review-screen_review--grid {
     grid-column: span 8 / span 8;
-  }
-  .review-screen_main .review-screen_review--grid {
     grid-column-start: 5;
   }
 }
 @media (min-width: 1280px) {
   .review-screen_main .review-screen_review--grid {
     grid-column: span 9 / span 9;
-  }
-  .review-screen_main .review-screen_review--grid {
     grid-column-start: 4;
-  }
-  .review-screen_main .review-screen_review--grid {
     display: grid;
-  }
-  .review-screen_main .review-screen_review--grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-  .review-screen_main .review-screen_review--grid {
     align-items: flex-start;
-  }
-  .review-screen_main .review-screen_review--grid {
     column-gap: 2rem;
   }
 }
@@ -1390,8 +1368,6 @@
 @media (min-width: 1280px) {
   .review-screen_main .review-screen_review-title {
     grid-column: span 2 / span 2;
-  }
-  .review-screen_main .review-screen_review-title {
     margin-top: 0px;
   }
 }
@@ -1426,20 +1402,10 @@
 @media (min-width: 1024px) {
   .review-screen_main .review-screen_review-author {
     grid-column: span 4 / span 4;
-  }
-  .review-screen_main .review-screen_review-author {
     grid-column-start: 1;
-  }
-  .review-screen_main .review-screen_review-author {
     grid-row-start: 1;
-  }
-  .review-screen_main .review-screen_review-author {
     margin-top: 0px;
-  }
-  .review-screen_main .review-screen_review-author {
     flex-direction: column;
-  }
-  .review-screen_main .review-screen_review-author {
     align-items: flex-start;
   }
 }
@@ -1465,14 +1431,8 @@
 @media (min-width: 1024px) {
   .review-screen_main .review-screen_review-datetime {
     margin-left: 0px;
-  }
-  .review-screen_main .review-screen_review-datetime {
     margin-top: 0.5rem;
-  }
-  .review-screen_main .review-screen_review-datetime {
     border-width: 0px;
-  }
-  .review-screen_main .review-screen_review-datetime {
     padding-left: 0px;
   }
 }
@@ -1500,18 +1460,12 @@
   .faq-screen_main .faq-screen-container {
     padding-top: 5rem;
     padding-bottom: 5rem;
-  }
-  .faq-screen_main .faq-screen-container {
     padding-left: 2rem;
     padding-right: 2rem;
   }
   .faq-screen_main .faq-screen-grid {
     display: grid;
-  }
-  .faq-screen_main .faq-screen-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-  .faq-screen_main .faq-screen-grid {
     gap: 2rem;
   }
 }
@@ -1534,8 +1488,6 @@
   .faq-screen_main .faq-screen-h2 {
     padding-top: 5rem;
     padding-bottom: 5rem;
-  }
-  .faq-screen_main .faq-screen-h2 {
     padding-left: 2rem;
     padding-right: 2rem;
   }
@@ -1562,8 +1514,6 @@
 @media (min-width: 1024px) {
   .faq-screen_main .faq-screen-margin {
     grid-column: span 2 / span 2;
-  }
-  .faq-screen_main .faq-screen-margin {
     margin-top: 0px;
   }
 }
@@ -1585,6 +1535,26 @@
   line-height: 1.5rem;
   --tw-text-opacity: 1;
   color: rgb(107 114 128 / var(--tw-text-opacity));
+}
+
+.restaurant .restaurant-heading__container .restaurant-heading__head {
+  padding-bottom: 2.5rem;
+}
+.restaurant .restaurant-container {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 2rem;
+  padding-top: 5rem;
+}
+@media (min-width: 640px) {
+  .restaurant .restaurant-container {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (min-width: 1280px) {
+  .restaurant .restaurant-container {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
 }
 
 .partner-screen {
@@ -1619,8 +1589,6 @@
 @media (min-width: 1024px) {
   .partner-screen .partner-screen-grid-one {
     display: grid;
-  }
-  .partner-screen .partner-screen-grid-one {
     grid-template-columns: repeat(5, minmax(0, 1fr));
   }
 }
@@ -1641,12 +1609,8 @@
 @media (min-width: 1024px) {
   .partner-screen .partner-screen-col-one-b {
     grid-column: span 2 / span 2;
-  }
-  .partner-screen .partner-screen-col-one-b {
     padding-left: 2rem;
     padding-right: 2rem;
-  }
-  .partner-screen .partner-screen-col-one-b {
     padding-top: 6rem;
     padding-bottom: 6rem;
   }
@@ -1736,12 +1700,8 @@
 @media (min-width: 1024px) {
   .partner-screen .partner-screen-col-two-bg {
     grid-column: span 3 / span 3;
-  }
-  .partner-screen .partner-screen-col-two-bg {
     padding-top: 6rem;
     padding-bottom: 6rem;
-  }
-  .partner-screen .partner-screen-col-two-bg {
     padding-left: 2rem;
     padding-right: 2rem;
   }
@@ -1847,6 +1807,106 @@
   --tw-ring-offset-width: 2px;
 }
 
+.about-screen .about-screen-bg {
+  position: relative;
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+@media (min-width: 1024px) {
+  .about-screen .about-screen-set {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+  }
+  .about-screen .about-screen-set-img {
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    width: 50%;
+  }
+}
+.about-screen .about-screen-col-two {
+  position: relative;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 3rem;
+  padding-bottom: 4rem;
+}
+@media (min-width: 640px) {
+  .about-screen .about-screen-col-two {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    padding-top: 4rem;
+  }
+}
+@media (min-width: 1024px) {
+  .about-screen .about-screen-col-two {
+    margin-left: auto;
+    margin-right: auto;
+    display: grid;
+    max-width: 80rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+  .about-screen .about-screen-set-col-two {
+    grid-column-start: 2;
+    padding-left: 2rem;
+  }
+}
+.about-screen .about-screen-set-text {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 65ch;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+@media (min-width: 1024px) {
+  .about-screen .about-screen-set-text {
+    margin-left: auto;
+    margin-right: 0px;
+    max-width: 32rem;
+  }
+}
+.about-screen h2 {
+  font-weight: 600;
+  text-transform: uppercase;
+  line-height: 1.5rem;
+  letter-spacing: 0.025em;
+  --tw-text-opacity: 1;
+  color: rgb(79 70 229 / var(--tw-text-opacity));
+}
+.about-screen .about-screen-this-h {
+  margin-top: 0.5rem;
+  font-size: 1.875rem;
+  font-weight: 800;
+  line-height: 2rem;
+  letter-spacing: -0.025em;
+  --tw-text-opacity: 1;
+  color: rgb(17 24 39 / var(--tw-text-opacity));
+}
+@media (min-width: 640px) {
+  .about-screen .about-screen-this-h {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+}
+.about-screen .about-screen-this-p {
+  margin-top: 2rem;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  --tw-text-opacity: 1;
+  color: rgb(107 114 128 / var(--tw-text-opacity));
+}
+.about-screen .about-screen-info {
+  margin-top: 1.25rem;
+  --tw-text-opacity: 1;
+  color: rgb(107 114 128 / var(--tw-text-opacity));
+}
+
 .login-screen_container {
   display: flex;
   min-height: 100%;
@@ -1872,11 +1932,7 @@
   .login-screen_container .login-screen_small-screen-grid {
     margin-left: auto;
     margin-right: auto;
-  }
-  .login-screen_container .login-screen_small-screen-grid {
     width: 100%;
-  }
-  .login-screen_container .login-screen_small-screen-grid {
     max-width: 28rem;
   }
 }
@@ -1921,11 +1977,7 @@
   .login-screen_container .login-screen_form-container {
     margin-left: auto;
     margin-right: auto;
-  }
-  .login-screen_container .login-screen_form-container {
     width: 100%;
-  }
-  .login-screen_container .login-screen_form-container {
     max-width: 28rem;
   }
 }
@@ -1943,8 +1995,6 @@
 @media (min-width: 640px) {
   .login-screen_container .login-screen_form-container-styles {
     border-radius: 0.5rem;
-  }
-  .login-screen_container .login-screen_form-container-styles {
     padding-left: 2.5rem;
     padding-right: 2.5rem;
   }
@@ -1968,8 +2018,7 @@
 .login-screen_container .login-screen_input-styles {
   display: block;
   width: 100%;
-  -webkit-appearance: none;
-          appearance: none;
+  appearance: none;
   border-radius: 0.375rem;
   border-width: 1px;
   --tw-border-opacity: 1;
@@ -2197,11 +2246,7 @@
   .register-screen_container .register-screen_small-screen-grid {
     margin-left: auto;
     margin-right: auto;
-  }
-  .register-screen_container .register-screen_small-screen-grid {
     width: 100%;
-  }
-  .register-screen_container .register-screen_small-screen-grid {
     max-width: 28rem;
   }
 }
@@ -2246,11 +2291,7 @@
   .register-screen_container .register-screen_form-container {
     margin-left: auto;
     margin-right: auto;
-  }
-  .register-screen_container .register-screen_form-container {
     width: 100%;
-  }
-  .register-screen_container .register-screen_form-container {
     max-width: 28rem;
   }
 }
@@ -2268,8 +2309,6 @@
 @media (min-width: 640px) {
   .register-screen_container .register-screen_form-container-styles {
     border-radius: 0.5rem;
-  }
-  .register-screen_container .register-screen_form-container-styles {
     padding-left: 2.5rem;
     padding-right: 2.5rem;
   }
@@ -2293,8 +2332,7 @@
 .register-screen_container .register-screen_input-styles {
   display: block;
   width: 100%;
-  -webkit-appearance: none;
-          appearance: none;
+  appearance: none;
   border-radius: 0.375rem;
   border-width: 1px;
   --tw-border-opacity: 1;
@@ -2604,8 +2642,7 @@
   margin-top: 0.5rem;
   display: block;
   width: 100%;
-  -webkit-appearance: none;
-          appearance: none;
+  appearance: none;
   border-radius: 0.375rem;
   border-width: 1px;
   --tw-border-opacity: 1;
@@ -2700,8 +2737,6 @@
     --tw-space-x-reverse: 0;
     margin-right: calc(1rem * var(--tw-space-x-reverse));
     margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
-  }
-  .user-location-input > :not([hidden]) ~ :not([hidden]) {
     --tw-space-y-reverse: 0;
     margin-top: calc(0px * calc(1 - var(--tw-space-y-reverse)));
     margin-bottom: calc(0px * var(--tw-space-y-reverse));
@@ -2715,8 +2750,6 @@
 @media (min-width: 640px) {
   .user-location-input h1 {
     text-align: left;
-  }
-  .user-location-input h1 {
     font-size: 1.875rem;
     line-height: 2.25rem;
   }

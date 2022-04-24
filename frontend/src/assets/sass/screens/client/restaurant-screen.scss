@@ -1,0 +1,12 @@
+.restaurant {
+    .restaurant-heading__container {
+        .restaurant-heading__head {
+            @apply pb-10;
+        }
+    }
+   
+
+    .restaurant-container {
+        @apply grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-8 pt-20;
+    }
+}
