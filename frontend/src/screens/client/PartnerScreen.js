@@ -1,7 +1,44 @@
 import React, { useState, useEffect } from 'react'
 import { MailIcon, PhoneIcon } from '@heroicons/react/outline'
+import { Form, Button, Row, Col } from 'react-bootstrap'
+import { useDispatch, useSelector } from 'react-redux'
+import Message from '../../components/Message'
+import Loader from '../../components/Loader'
+import FormContainer from '../../components/FormContainer'
+import JuanifyIcon from '../../assets/img/icons/juanify.png'
+import { register } from '../../actions/userActions'
 
-const PartnerScreen = () => {
+const PartnerScreen = ({ location, history }) => {
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [phone, setPhone] = useState('')
+  const [restaurantName, setRestaurantName] = useState('')
+  const [password, setPassword] = useState('')
+  const [confirmPassword, setConfirmPassword] = useState('')
+  const [message, setMessage] = useState(null)
+
+  const dispatch = useDispatch()
+
+  const userRegister = useSelector((state) => state.userRegister)
+  const { loading, error, userInfo } = userRegister
+
+  const redirect = location.search ? location.search.split('=')[1] : '/'
+
+  useEffect(() => {
+    if (userInfo) {
+      history.push(redirect)
+    }
+  }, [history, userInfo, redirect])
+
+  const submitHandler = (e) => {
+    e.preventDefault()
+    if (password !== confirmPassword) {
+      setMessage('Passwords do not match')
+    } else {
+      dispatch(register(name, email, phone, password))
+    }
+  }
+
     return (
     <div className='partner-screen'>
         <div className='partner-screen-bg'>
@@ -39,65 +76,76 @@ const PartnerScreen = () => {
             </dl>
           </div>
         </div>
-        <div className='partner-screen-col-two-bg'>
-          <div className='partner-screen-col-two-size'> 
-            <form action="#" method="POST">
-              <div>
-                <label htmlFor="full-name" className="sr-only">
-                  Full name
-                </label>
-                <input
-                  type="text"
-                  name="full-name"
-                  id="full-name"
-                  autoComplete="name"
-                  placeholder="Full name"
-                />
-              </div>
-              <div>
-                <label htmlFor="email" className="sr-only">
-                  Email
-                </label>
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  autoComplete="email"
-                  placeholder="Email"
-                />
-              </div>
-              <div>
-                <label htmlFor="phone" className="sr-only">
-                  Phone
-                </label>
-                <input
-                  type="text"
-                  name="phone"
-                  id="phone"
-                  autoComplete="tel"
-                  placeholder="Phone"
-                />
-              </div>
-              <div>
-                <label htmlFor="message" className="sr-only">
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows={4}
-                  placeholder="Message"
-                  defaultValue={''}
-                />
-              </div>
-              <div>
+        <div className="partner-screen-col-two-bg">
+            <div className="rartner-screen-col-two-size">
+            <Form onSubmit={submitHandler}>
+                <Form.Group controlId='name'>
+                  <Form.Label>Name</Form.Label>
+                  <Form.Control
+                    type='name'
+                    placeholder='Enter name'
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                  ></Form.Control>
+                </Form.Group>
+
+                <Form.Group controlId='email'>
+                  <Form.Label>Email Address</Form.Label>
+                  <Form.Control
+                    type='email'
+                    placeholder='Enter email'
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  ></Form.Control>
+                </Form.Group>
+
+                <Form.Group controlId='phone'>
+                  <Form.Label>Phone number</Form.Label>
+                  <Form.Control
+                    type='number'
+                    placeholder='Enter phone'
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                  ></Form.Control>
+                </Form.Group>
+
+                <Form.Group controlId='restaurant'>
+                  <Form.Label>Restaurant name</Form.Label>
+                  <Form.Control
+                    type='text'
+                    placeholder='Enter restaurant name'
+                    value={restaurantName}
+                    onChange={(e) => setRestaurantName(e.target.value)}
+                  ></Form.Control>
+                </Form.Group>
+
+                <Form.Group controlId='password'>
+                  <Form.Label>Password</Form.Label>
+                  <Form.Control
+                    type='password'
+                    placeholder='Enter password'
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                  ></Form.Control>
+                </Form.Group>
+
+                <Form.Group controlId='confirmPassword'>
+                  <Form.Label>Confirm Password</Form.Label>
+                  <Form.Control
+                    type='password'
+                    placeholder='Confirm password'
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                  ></Form.Control>
+                </Form.Group>
+
                 <button
-                  type="submit"
+                    type="submit"
+                    className="register-screen_sign-button"
                 >
-                  Submit
+                  Apply now!
                 </button>
-              </div>
-            </form>
+            </Form>
           </div>
         </div>
       </div>

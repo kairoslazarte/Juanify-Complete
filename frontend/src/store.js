@@ -4,7 +4,8 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 import {
   restaurantListReducer,
   restaurantTopRatedReducer,
-  restaurantDetailsReducer
+  restaurantDetailsReducer,
+  restaurantReviewCreateReducer
 } from './reducers/restaurantReducers'
 import { cartReducer } from './reducers/cartReducers'
 import {
@@ -29,6 +30,7 @@ const reducer = combineReducers({
   restaurantList: restaurantListReducer,
   restaurantDetails: restaurantDetailsReducer,
   restaurantTopRated: restaurantTopRatedReducer,
+  restaurantReviewCreate: restaurantReviewCreateReducer,
   cart: cartReducer,
   userLogin: userLoginReducer,
   userRegister: userRegisterReducer,

@@ -99,6 +99,48 @@ const getTopRestaurants = asyncHandler(async (req, res) => {
   
     res.json(restaurants)
 })
+
+
+// @desc    Create new review
+// @route   POST /api/products/:id/reviews
+// @access  Private
+const createRestaurantReview = asyncHandler(async (req, res) => {
+  const { rating, comment } = req.body
+
+  const restaurant = await Restaurant.findById(req.params.id)
+
+  if (restaurant) {
+    const alreadyReviewed = restaurant.reviews.find(
+      (r) => r.user.toString() === req.user._id.toString()
+    )
+
+    if (alreadyReviewed) {
+      res.status(400)
+      throw new Error('Restaurant already reviewed')
+    }
+
+    const review = {
+      name: req.user.name,
+      rating: Number(rating),
+      comment,
+      user: req.user._id,
+    }
+
+    restaurant.reviews.push(review)
+
+    restaurant.numReviews = restaurant.reviews.length
+
+    restaurant.rating =
+      restaurant.reviews.reduce((acc, item) => item.rating + acc, 0) /
+      restaurant.reviews.length
+
+    await restaurant.save()
+    res.status(201).json({ message: 'Review added' })
+  } else {
+    res.status(404)
+    throw new Error('Restaurant not found')
+  }
+})
   
 
 
@@ -106,5 +148,6 @@ export {
   getRestaurants,
   createRestaurant,
   getTopRestaurants,
-  getRestaurantById
+  getRestaurantById,
+  createRestaurantReview
 }

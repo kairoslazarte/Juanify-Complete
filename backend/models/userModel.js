@@ -12,6 +12,11 @@ const userSchema = mongoose.Schema(
       required: true,
       unique: true,
     },
+    phone: {
+      type: Number,
+      required: true,
+      unique: true
+    },
     password: {
       type: String,
       required: true,
@@ -25,7 +30,16 @@ const userSchema = mongoose.Schema(
       type: Boolean,
       required: true,
       default: false
-    }
+    },
+    applyingForSeller: {
+      type: Boolean,
+      required: true,
+      default: false
+    },
+    restaurant: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Restaurant',
+    },
   },
   {
     timestamps: true,

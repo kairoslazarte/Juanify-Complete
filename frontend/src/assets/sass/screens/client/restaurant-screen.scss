@@ -1,12 +1,65 @@
 .restaurant {
-    .restaurant-heading__container {
-        .restaurant-heading__head {
-            @apply pb-10;
+
+    .restaurant-heading {
+        @apply pb-7;
+        .restaurant-heading__container {
+            .restaurant-heading__head {
+                @apply pb-10;
+            }
+    
+            .restaurant-categories {
+                @apply pt-8;
+                
+                .restaurant-categories__container {
+                    @apply flex flex-row space-x-4 items-center;
+    
+                    .restaurant-category {
+                        @apply bg-gray-100 rounded-md px-5 py-2 border-0 hover:bg-blue-100 transition duration-200 cursor-pointer;
+                    }
+    
+                    .restaurant-category__active {
+                        @apply bg-blue-100 rounded-md px-5 py-2 border-0;
+                    }
+                }
+            }
         }
     }
    
 
-    .restaurant-container {
-        @apply grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-8 pt-20;
-    }
+    .restaurant-product__container {
+        @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 xl:gap-8 py-10;
+
+        .restaurant-product {
+            @apply flex flex-col flex-1 justify-between shadow-lg rounded-lg hover:no-underline;
+        
+            .restaurant-product__img {
+                img {
+                    @apply object-cover w-full h-40;
+                }
+            }
+        
+            .restaurant-product__name {
+                @apply pt-4 px-4;
+        
+                h3 {
+                    @apply text-lg sm:text-base font-bold;
+                }
+            }
+        
+            .restaurant-product__rating {
+                @apply pb-3 px-4;
+            }
+        
+            .restaurant-product__price {
+                @apply px-4;
+                h4 {
+                    @apply text-base font-semibold;
+                }
+            }
+        
+            .restaurant-product__add-to-cart--btn {
+                @apply mx-4 mb-4 bg-red-600 text-white py-3 px-4 rounded-md duration-200 transition hover:text-red-600 hover:bg-transparent no-underline text-center border border-red-600 focus:border-0;
+            }
+        }
+    }   
 }

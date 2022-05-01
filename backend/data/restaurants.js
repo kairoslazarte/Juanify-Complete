@@ -2,28 +2,28 @@ const productsData = [
   {
       name: 'Fried Chicken From Mars',
       image: '/images/lyndons-fried-chicken-from-mars.jpg',
-      category: 'Ulam',
+      category: 'Rice',
       price: 380,
       countInStock: 10
   },
   {
       name: 'Tadyang Ni Ruby',
       image: '/images/lyndons-tadyang-ni-ruby.jpg',
-      category: 'Ulam',
+      category: 'Rice',
       price: 250,
       countInStock: 12
   },
   {
       name: 'Sauteed wild scallops',
       image: '/images/lyndons-pata.jpg',
-      category: 'Ulam',
+      category: 'Rice',
       price: 250,
       countInStock: 20
   },
   {
       name: 'Crispy Pata',
       image: '/images/lyndons-crispy-pata.jpg',
-      category: 'Ulam',
+      category: 'Rice',
       price: 470,
       countInStock: 20
   },
@@ -58,21 +58,21 @@ const productsData = [
   {
       name: "Layla's awful chicken ",
       image: '/images/lyndons-worlds-worst-ribs.jpg',
-      category: 'Ulam',
+      category: 'Burger',
       price: 140,
       countInStock: 20
   },
   {
       name: "Lyndon's Hot and Spicy Bagaybay",
       image: '/images/lyndons-hot-n-spicy-bagaybay.jpg',
-      category: 'Ulam',
+      category: 'Burger',
       price: 280,
       countInStock: 20
   },
   {
       name: 'Baked Scallops ',
       image: '/images/lyndons-baked-scallops.jpg',
-      category: 'Ulam',
+      category: 'Burger',
       price: 280,
       countInStock: 20
   },

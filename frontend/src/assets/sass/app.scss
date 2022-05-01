@@ -20,7 +20,7 @@
     @apply flex flex-col lg:flex-row lg:space-x-4 lg:space-y-0 space-y-3 items-center;
 
     h1 {
-        @apply text-2xl sm:text-3xl lg:w-[80%] sm:text-left text-center;
+        @apply text-xl sm:text-3xl lg:w-[80%] sm:text-left text-center;
         .user-location-input__location{
             @apply text-red-500;
         }

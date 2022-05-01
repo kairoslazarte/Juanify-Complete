@@ -71,4 +71,19 @@ import {
         return state
     }
   }
+
+  export const restaurantReviewCreateReducer = (state = {}, action) => {
+    switch (action.type) {
+      case RESTAURANT_CREATE_REVIEW_REQUEST:
+        return { loading: true }
+      case RESTAURANT_CREATE_REVIEW_SUCCESS:
+        return { loading: false, success: true }
+      case RESTAURANT_CREATE_REVIEW_FAIL:
+        return { loading: false, error: action.payload }
+      case RESTAURANT_CREATE_REVIEW_RESET:
+        return {}
+      default:
+        return state
+    }
+  }
   
