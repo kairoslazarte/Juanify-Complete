@@ -7,7 +7,7 @@ import Loader from '../../components/Loader'
 import Paginate from '../../components/Paginate'
 import RestaurantCard from '../../components/RestaurantCard'
 import Meta from '../../components/Meta'
-import { listProducts } from '../../actions/productActions'
+import { listRestaurants } from '../../actions/restaurantActions'
 
 const FoodDeliveryScreen = ({ match }) => {
   const keyword = match.params.keyword
@@ -16,11 +16,11 @@ const FoodDeliveryScreen = ({ match }) => {
 
   const dispatch = useDispatch()
 
-  const productList = useSelector((state) => state.productList)
-  const { loading, error, products, page, pages } = productList
+  const restaurantList = useSelector((state) => state.restaurantList)
+  const { loading, error, restaurants, page, pages } = restaurantList
 
   useEffect(() => {
-    dispatch(listProducts(keyword, pageNumber))
+    dispatch(listRestaurants(keyword, pageNumber))
   }, [dispatch, keyword, pageNumber])
 
   return (
@@ -38,8 +38,8 @@ const FoodDeliveryScreen = ({ match }) => {
         <>
            <section id="home-restaurants" className="home-restaurants">
             <div className="home-restaurants__container">
-              {products.map((product) => (
-                <RestaurantCard product={product} key={product._id} />
+              {restaurants.map((restaurant) => (
+                <RestaurantCard restaurant={restaurant} key={restaurant._id} />
               ))}
             </div>
           </section>
