@@ -75,7 +75,7 @@ const RestaurantScreen = ({ history, match }) => {
     }
 
     const addToCartHandler = (name, price, image, id) => {
-        console.log(localStorage.getItem('cartItems'))
+       
         cartItems.push(
             {
                 restaurant: restaurant.name,

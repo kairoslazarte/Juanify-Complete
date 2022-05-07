@@ -12,6 +12,7 @@ const RegisterScreen = ({ location, history }) => {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [phone, setPhone] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
   const [message, setMessage] = useState(null)
 
@@ -33,7 +34,7 @@ const RegisterScreen = ({ location, history }) => {
     if (password !== confirmPassword) {
       setMessage('Passwords do not match')
     } else {
-      dispatch(register(name, email, password))
+      dispatch(register(name, email, phone, password))
     }
   }
 
@@ -62,6 +63,16 @@ const RegisterScreen = ({ location, history }) => {
                   placeholder='Enter name'
                   value={name}
                   onChange={(e) => setName(e.target.value)}
+                ></Form.Control>
+              </Form.Group>
+
+              <Form.Group controlId='phone'>
+                <Form.Label>Phone number</Form.Label>
+                <Form.Control
+                  type='number'
+                  placeholder='Enter phone'
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
                 ></Form.Control>
               </Form.Group>
 
