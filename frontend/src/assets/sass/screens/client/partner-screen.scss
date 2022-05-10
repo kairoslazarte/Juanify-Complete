@@ -8,34 +8,34 @@
         @apply absolute inset-0;
     }
     .partner-screen-col-one-a{
-        @apply absolute inset-y-0 left-0 w-1/2 bg-blue-100;
+        @apply absolute inset-y-0 left-0 w-1/2;
     }
     .partner-screen-grid-one{
-        @apply relative max-w-7xl mx-auto lg:grid lg:grid-cols-5;
+        @apply relative max-w-7xl mx-auto;
     }
     .partner-screen-col-one-b{
-        @apply bg-yellow-50 py-16 px-4 sm:px-6 lg:col-span-2 lg:px-8 lg:py-24 xl:pr-12;
+        @apply bg-yellow-50 py-10 px-4 sm:px-6;
     }
     .partner-screen-col-one-size{
-        @apply max-w-lg mx-auto; 
+        @apply max-w-3xl mx-auto; 
     }
     h2{
-        @apply text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl; 
+        @apply text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl text-center; 
     }
     .partner-screen-desc{
-        @apply mt-3 text-lg leading-6 text-gray-500; 
+        @apply mt-3 text-lg leading-6 text-gray-500 text-center; 
     }
     dl{
-        @apply mt-8 text-base text-gray-500;
+        @apply mt-8 text-base text-gray-500 text-center;
     }
     dt{
         @apply sr-only;
     }
     .partner-screen-phone-num{
-        @apply mt-6;
+        @apply mt-6 text-ellipsis;
     }
     .partner-screen-icons{
-        @apply flex;
+        @apply flex justify-center;
     }
     .partner-screen-set-icons{
         @apply flex-shrink-0 h-6 w-6 text-gray-400; 
@@ -46,16 +46,24 @@
     .partner-screen-email{
         @apply mt-3;
     }
-
-
     .partner-screen-col-two-bg{
-        @apply bg-white py-16 px-4 sm:px-6 lg:col-span-3 lg:py-24 lg:px-8 xl:pl-12; 
-    }
-    .partner-screen-col-two-size{
-        @apply max-w-lg mx-auto lg:max-w-none; 
-    }
+        @apply bg-white py-10; 
+    }   
     form{
-        @apply grid grid-cols-1 gap-y-6; 
+        @apply gap-y-6; 
+    }
+    .form-group {
+        @apply w-full;
+    }
+    .partner-screen-form__name-email-phone {
+        @apply flex flex-row items-center space-x-4 w-full;
+    }
+    .partner-screen-form__address {
+        @apply py-2;
+
+        .partner-screen-from__address_city-street-barangay, .partner-screen-form__address_lat-lon {
+            @apply flex flex-row items-center space-x-4 w-full;
+        }
     }
     input{
         @apply block w-full shadow-sm py-3 px-4 focus:border-indigo-500 border-gray-300 rounded-md;

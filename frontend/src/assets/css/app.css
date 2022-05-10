@@ -1710,8 +1710,6 @@
   bottom: 0px;
   left: 0px;
   width: 50%;
-  --tw-bg-opacity: 1;
-  background-color: rgb(219 234 254 / var(--tw-bg-opacity));
 }
 .partner-screen .partner-screen-grid-one {
   position: relative;
@@ -1719,17 +1717,11 @@
   margin-right: auto;
   max-width: 80rem;
 }
-@media (min-width: 1024px) {
-  .partner-screen .partner-screen-grid-one {
-    display: grid;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
-  }
-}
 .partner-screen .partner-screen-col-one-b {
   --tw-bg-opacity: 1;
   background-color: rgb(255 251 235 / var(--tw-bg-opacity));
-  padding-top: 4rem;
-  padding-bottom: 4rem;
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
   padding-left: 1rem;
   padding-right: 1rem;
 }
@@ -1739,26 +1731,13 @@
     padding-right: 1.5rem;
   }
 }
-@media (min-width: 1024px) {
-  .partner-screen .partner-screen-col-one-b {
-    grid-column: span 2 / span 2;
-    padding-left: 2rem;
-    padding-right: 2rem;
-    padding-top: 6rem;
-    padding-bottom: 6rem;
-  }
-}
-@media (min-width: 1280px) {
-  .partner-screen .partner-screen-col-one-b {
-    padding-right: 3rem;
-  }
-}
 .partner-screen .partner-screen-col-one-size {
   margin-left: auto;
   margin-right: auto;
-  max-width: 32rem;
+  max-width: 48rem;
 }
 .partner-screen h2 {
+  text-align: center;
   font-size: 1.5rem;
   line-height: 2rem;
   font-weight: 800;
@@ -1774,6 +1753,7 @@
 }
 .partner-screen .partner-screen-desc {
   margin-top: 0.75rem;
+  text-align: center;
   font-size: 1.125rem;
   line-height: 1.5rem;
   --tw-text-opacity: 1;
@@ -1781,6 +1761,7 @@
 }
 .partner-screen dl {
   margin-top: 2rem;
+  text-align: center;
   font-size: 1rem;
   line-height: 1.5rem;
   --tw-text-opacity: 1;
@@ -1799,9 +1780,11 @@
 }
 .partner-screen .partner-screen-phone-num {
   margin-top: 1.5rem;
+  text-overflow: ellipsis;
 }
 .partner-screen .partner-screen-icons {
   display: flex;
+  justify-content: center;
 }
 .partner-screen .partner-screen-set-icons {
   height: 1.5rem;
@@ -1819,45 +1802,40 @@
 .partner-screen .partner-screen-col-two-bg {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-  padding-top: 4rem;
-  padding-bottom: 4rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
-@media (min-width: 640px) {
-  .partner-screen .partner-screen-col-two-bg {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-  }
-}
-@media (min-width: 1024px) {
-  .partner-screen .partner-screen-col-two-bg {
-    grid-column: span 3 / span 3;
-    padding-top: 6rem;
-    padding-bottom: 6rem;
-    padding-left: 2rem;
-    padding-right: 2rem;
-  }
-}
-@media (min-width: 1280px) {
-  .partner-screen .partner-screen-col-two-bg {
-    padding-left: 3rem;
-  }
-}
-.partner-screen .partner-screen-col-two-size {
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 32rem;
-}
-@media (min-width: 1024px) {
-  .partner-screen .partner-screen-col-two-size {
-    max-width: none;
-  }
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
 }
 .partner-screen form {
-  display: grid;
-  grid-template-columns: repeat(1, minmax(0, 1fr));
   row-gap: 1.5rem;
+}
+.partner-screen .form-group {
+  width: 100%;
+}
+.partner-screen .partner-screen-form__name-email-phone {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  align-items: center;
+}
+.partner-screen .partner-screen-form__name-email-phone > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(1rem * var(--tw-space-x-reverse));
+  margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
+}
+.partner-screen .partner-screen-form__address {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+.partner-screen .partner-screen-form__address .partner-screen-from__address_city-street-barangay, .partner-screen .partner-screen-form__address .partner-screen-form__address_lat-lon {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  align-items: center;
+}
+.partner-screen .partner-screen-form__address .partner-screen-from__address_city-street-barangay > :not([hidden]) ~ :not([hidden]), .partner-screen .partner-screen-form__address .partner-screen-form__address_lat-lon > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(1rem * var(--tw-space-x-reverse));
+  margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
 }
 .partner-screen input {
   display: block;
@@ -2877,11 +2855,13 @@
 }
 .user-location-input h1 {
   text-align: center;
+  font-size: 1.25rem;
   line-height: 1.75rem;
 }
 @media (min-width: 640px) {
   .user-location-input h1 {
     text-align: left;
+    font-size: 1.875rem;
     line-height: 2.25rem;
   }
 }

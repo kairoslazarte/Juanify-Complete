@@ -13,7 +13,7 @@ import { RESTAURANT_CREATE_REVIEW_RESET } from '../../constants/restaurantConsta
 
 const RestaurantScreen = ({ history, match }) => {
     const dispatch = useDispatch()
-    const [filterProducts, setFilterProducts] = useState('All')
+    const [filterProducts, setFilterProducts] = useState('')
     const [qty, setQty] = useState(0)
     const [rating, setRating] = useState(0)
     const [comment, setComment] = useState('')
@@ -74,23 +74,48 @@ const RestaurantScreen = ({ history, match }) => {
         }
     }
 
-    const addToCartHandler = (name, price, image, id) => {
-       
-        cartItems.push(
-            {
-                restaurant: restaurant.name,
-                restaurant_id: restaurant._id,
-                id: id,
-                name: name,
-                price: price,
-                image: image,
+    console.log(product_category)
+
+    const addToCartHandler = (name, price, image, prod_id) => {
+        console.log(prod_id)
+        if (cartItems.length === 0) {
+            cartItems.push(
+                {
+                    restaurant: restaurant.name,
+                    restaurant_id: restaurant._id,
+                    id: prod_id,
+                    name: name,
+                    price: price,
+                    qty: 1,
+                    image: image,
+                }
+            )
+        }
+        else {
+            const cartItem = cartItems.findIndex((cart_item => cart_item.id == prod_id))
+            console.log(cartItem)
+            if (cartItem >= 0) {
+                cartItems[cartItem].price += price
+                cartItems[cartItem].qty += 1
             }
-        )
+            else {
+                cartItems.push(
+                    {
+                        restaurant: restaurant.name,
+                        restaurant_id: restaurant._id,
+                        id: prod_id,
+                        name: name,
+                        price: price,
+                        qty: 1,
+                        image: image,
+                    }
+                ) 
+            }
+        }
         localStorage.setItem('cartItems', JSON.stringify(cartItems))
+        console.log(cartItems)
         alert('Added to cart!')
     }
-
-    console.log(filterProducts)
 
     return (
         <section className="restaurant">
@@ -104,21 +129,17 @@ const RestaurantScreen = ({ history, match }) => {
                                     <h1>Delivering to <span className='user-location-input__location'>{sessionStorage.getItem('user_location')}</span></h1>
                                     <a href='/input-location'>Change location</a>
                                 </div>
-                                <div className='restaurant-categories'>
+                                {/* <div className='restaurant-categories'>
                                     <div className='restaurant-categories__container'>
-                                        <button className={filterProducts == 'All' ? 'restaurant-category__active' : 'restaurant-category'} onClick={() => setFilterProducts('All')}>All</button>
                                         {product_category.map((prod_cat) => (
                                             <button className={filterProducts == prod_cat ? 'restaurant-category__active' : 'restaurant-category'} onClick={() => setFilterProducts(prod_cat)}>{prod_cat}</button>
                                         ))}
                                     </div>
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                         <div className="restaurant-product__container">
                             {products.map((product) => (
-                                <>
-                                {filterProducts == 'All' 
-                                ? 
                                 <div className="restaurant-product">
                                     <div className="restaurant-product__img">
                                         <img src={product.image} />
@@ -138,31 +159,6 @@ const RestaurantScreen = ({ history, match }) => {
                                         Add To Cart
                                     </button>
                                 </div>
-                                :
-                                product.category == filterProducts && (
-                                    <div className="restaurant-product">
-                                        <div className="restaurant-product__img">
-                                            <img src={product.image} />
-                                        </div>
-                                        <div className="restaurant-product__name">
-                                            <h3>{product.name}</h3>
-                                        </div>
-                                        <div className="restaurant-product__rating">
-                                            <p>{product.price} php</p>
-                                        </div>
-                                        <button
-                                        onClick={() => addToCartHandler(product.name, product.price, product.image, product._id)}
-                                        className='restaurant-product__add-to-cart--btn'
-                                        type='button'
-                                        disabled={product.countInStock === 0}
-                                        >
-                                            Add To Cart
-                                        </button>
-                                    </div>
-                                )
-                                }
-                                </>
-                                
                             ))}
                         </div>
                         <div className='restaurant-reviews'>

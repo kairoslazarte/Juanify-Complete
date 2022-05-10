@@ -6,6 +6,7 @@ import Message from '../../components/Message'
 import Loader from '../../components/Loader'
 import FormContainer from '../../components/FormContainer'
 import JuanifyIcon from '../../assets/img/icons/juanify.png'
+import { getUserDetails } from '../../actions/userActions'
 import { register } from '../../actions/userActions'
 
 const PartnerScreen = ({ location, history }) => {
@@ -13,6 +14,12 @@ const PartnerScreen = ({ location, history }) => {
   const [email, setEmail] = useState('')
   const [phone, setPhone] = useState('')
   const [restaurantName, setRestaurantName] = useState('')
+  const [city, setCity] = useState('')
+  const [lon, setLon] = useState('')
+  const [lat, setLat] = useState('')
+  const [street, setStreet] = useState('')
+  const [barangay, setBarangay] = useState('')
+  const [zipCode, setZipCode] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
   const [message, setMessage] = useState(null)
@@ -21,6 +28,8 @@ const PartnerScreen = ({ location, history }) => {
 
   const userRegister = useSelector((state) => state.userRegister)
   const { loading, error, userInfo } = userRegister
+
+  console.log(userInfo)
 
   const redirect = location.search ? location.search.split('=')[1] : '/'
 
@@ -77,29 +86,30 @@ const PartnerScreen = ({ location, history }) => {
           </div>
         </div>
         <div className="partner-screen-col-two-bg">
-            <div className="rartner-screen-col-two-size">
+            <div className="partner-screen-col-two-size">
             <Form onSubmit={submitHandler}>
-                <Form.Group controlId='name'>
-                  <Form.Label>Name</Form.Label>
-                  <Form.Control
-                    type='name'
-                    placeholder='Enter name'
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                  ></Form.Control>
-                </Form.Group>
+                <div className='partner-screen-form__name-email-phone'>
+                  <Form.Group controlId='name'>
+                    <Form.Label>Name</Form.Label>
+                    <Form.Control
+                      type='name'
+                      placeholder='Enter name'
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                    ></Form.Control>
+                  </Form.Group>
 
-                <Form.Group controlId='email'>
-                  <Form.Label>Email Address</Form.Label>
-                  <Form.Control
-                    type='email'
-                    placeholder='Enter email'
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                  ></Form.Control>
-                </Form.Group>
+                  <Form.Group controlId='email'>
+                    <Form.Label>Email Address</Form.Label>
+                    <Form.Control
+                      type='email'
+                      placeholder='Enter email'
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                    ></Form.Control>
+                  </Form.Group>
 
-                <Form.Group controlId='phone'>
+                  <Form.Group controlId='phone'>
                   <Form.Label>Phone number</Form.Label>
                   <Form.Control
                     type='number'
@@ -108,6 +118,7 @@ const PartnerScreen = ({ location, history }) => {
                     onChange={(e) => setPhone(e.target.value)}
                   ></Form.Control>
                 </Form.Group>
+                </div>
 
                 <Form.Group controlId='restaurant'>
                   <Form.Label>Restaurant name</Form.Label>
@@ -118,6 +129,72 @@ const PartnerScreen = ({ location, history }) => {
                     onChange={(e) => setRestaurantName(e.target.value)}
                   ></Form.Control>
                 </Form.Group>
+
+                <div className='partner-screen-form__address'>
+                  <div className='partner-screen-from__address_city-street-barangay'>
+                    <Form.Group controlId='city'>
+                      <Form.Label>City</Form.Label>
+                      <Form.Control
+                        type='text'
+                        placeholder='Enter restaurant city'
+                        value={city}
+                        onChange={(e) => setCity(e.target.value)}
+                      ></Form.Control>
+                    </Form.Group>
+
+                    <Form.Group controlId='street'>
+                      <Form.Label>Street</Form.Label>
+                      <Form.Control
+                        type='text'
+                        placeholder='Enter restaurant street'
+                        value={street}
+                        onChange={(e) => setStreet(e.target.value)}
+                      ></Form.Control>
+                    </Form.Group>
+
+                    <Form.Group controlId='barangay'>
+                      <Form.Label>Barangay</Form.Label>
+                      <Form.Control
+                        type='text'
+                        placeholder='Enter restaurant barangay'
+                        value={barangay}
+                        onChange={(e) => setBarangay(e.target.value)}
+                      ></Form.Control>
+                    </Form.Group>
+
+                    <Form.Group controlId='zipCode'>
+                      <Form.Label>ZIP/Postal code</Form.Label>
+                      <Form.Control
+                        type='text'
+                        placeholder='Enter restaurant zip/postal code'
+                        value={zipCode}
+                        onChange={(e) => setZipCode(e.target.value)}
+                      ></Form.Control>
+                    </Form.Group> 
+                  </div>
+                  
+                  <div className='partner-screen-form__address_lat-lon'>
+                    <Form.Group controlId='lon'>
+                      <Form.Label>Longtitude (from google maps)</Form.Label>
+                      <Form.Control
+                        type='text'
+                        placeholder='Enter restaurant longtitude'
+                        value={lon}
+                        onChange={(e) => setLon(e.target.value)}
+                      ></Form.Control>
+                    </Form.Group>
+
+                    <Form.Group controlId='lat'>
+                      <Form.Label>Latitude (from google maps)</Form.Label>
+                      <Form.Control
+                        type='text'
+                        placeholder='Enter restaurant latitude'
+                        value={lat}
+                        onChange={(e) => setLat(e.target.value)}
+                      ></Form.Control>
+                    </Form.Group>
+                  </div>
+                </div>
 
                 <Form.Group controlId='password'>
                   <Form.Label>Password</Form.Label>

@@ -36,9 +36,8 @@ const userSchema = mongoose.Schema(
       required: true,
       default: false
     },
-    restaurant: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Restaurant',
+    restaurant_name: {
+        type: String
     },
   },
   {
