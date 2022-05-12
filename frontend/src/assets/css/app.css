@@ -1694,6 +1694,23 @@
   display: grid;
   grid-template-columns: repeat(1, minmax(0, 1fr));
 }
+.partner-screen .partner-screen__login-msg {
+  padding-top: 2.5rem;
+  text-align: center;
+}
+.partner-screen .partner-screen__login-msg a {
+  --tw-text-opacity: 1;
+  color: rgb(29 78 216 / var(--tw-text-opacity));
+  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
+  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+}
+.partner-screen .partner-screen__login-msg a:hover {
+  --tw-text-opacity: 1;
+  color: rgb(185 28 28 / var(--tw-text-opacity));
+}
 .partner-screen .partner-screen-bg {
   position: relative;
 }

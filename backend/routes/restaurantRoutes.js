@@ -15,7 +15,7 @@ import {
 } from '../controllers/restaurantController.js'
 import { protect, admin } from '../middleware/authMiddleware.js'
 
-router.route('/').get(getRestaurants).post(protect, admin, createRestaurant)
+router.route('/').get(getRestaurants).post(createRestaurant)
 router.route('/:id/reviews').post(protect, createRestaurantReview)
 router.get('/top', getTopRestaurants)
 router

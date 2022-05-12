@@ -1,77 +1,85 @@
 .partner-screen {
     @apply grid grid-cols-1 ;
 
-    .partner-screen-bg{
+    .partner-screen__login-msg {
+        @apply pt-10 text-center;
+
+        a {
+            @apply text-blue-700 hover:text-red-700 transition duration-200;
+        }
+    }
+
+    .partner-screen-bg {
         @apply relative ;
     }
-    .partner-screen-col-one{
+    .partner-screen-col-one {
         @apply absolute inset-0;
     }
-    .partner-screen-col-one-a{
+    .partner-screen-col-one-a {
         @apply absolute inset-y-0 left-0 w-1/2;
     }
-    .partner-screen-grid-one{
+    .partner-screen-grid-one {
         @apply relative max-w-7xl mx-auto;
     }
-    .partner-screen-col-one-b{
+    .partner-screen-col-one-b {
         @apply bg-yellow-50 py-10 px-4 sm:px-6;
     }
-    .partner-screen-col-one-size{
+    .partner-screen-col-one-size {
         @apply max-w-3xl mx-auto; 
     }
-    h2{
+    h2 {
         @apply text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl text-center; 
     }
-    .partner-screen-desc{
+    .partner-screen-desc {
         @apply mt-3 text-lg leading-6 text-gray-500 text-center; 
     }
-    dl{
+    dl {
         @apply mt-8 text-base text-gray-500 text-center;
     }
-    dt{
+    dt {
         @apply sr-only;
     }
-    .partner-screen-phone-num{
+    .partner-screen-phone-num {
         @apply mt-6 text-ellipsis;
     }
-    .partner-screen-icons{
+    .partner-screen-icons {
         @apply flex justify-center;
     }
-    .partner-screen-set-icons{
+    .partner-screen-set-icons {
         @apply flex-shrink-0 h-6 w-6 text-gray-400; 
     }
-    .partner-screen-icons-spans{
+    .partner-screen-icons-spans {
         @apply ml-3; 
     }
-    .partner-screen-email{
+    .partner-screen-email {
         @apply mt-3;
     }
-    .partner-screen-col-two-bg{
+    .partner-screen-col-two-bg {
         @apply bg-white py-10; 
     }   
-    form{
+    form {
         @apply gap-y-6; 
     }
-    .form-group {
+    .form-group  {
         @apply w-full;
     }
-    .partner-screen-form__name-email-phone {
+    .partner-screen-form__name-email-phone  {
         @apply flex flex-row items-center space-x-4 w-full;
     }
-    .partner-screen-form__address {
+    .partner-screen-form__address  {
         @apply py-2;
 
-        .partner-screen-from__address_city-street-barangay, .partner-screen-form__address_lat-lon {
+        .partner-screen-from__address_city-street-barangay, .partner-screen-form__address_lat-lon  {
             @apply flex flex-row items-center space-x-4 w-full;
         }
     }
-    input{
+    input {
         @apply block w-full shadow-sm py-3 px-4 focus:border-indigo-500 border-gray-300 rounded-md;
     }
-    textarea{
+    textarea {
         @apply block w-full shadow-sm py-3 px-4 placeholder-gray-500 focus:ring-indigo-500 focus:border-indigo-500 border border-gray-300 rounded-md;
     }
-    button{
+    button {
         @apply inline-flex justify-center py-3 px-6 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-blue-400 hover:bg-red-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500;
     }
 }

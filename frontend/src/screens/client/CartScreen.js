@@ -57,6 +57,7 @@ const CartScreen = ({ history }) => {
                       <Link to={`/restaurant/${item.restaurant_id}`}>{item.name}</Link>
                     </Col>
                     <Col md={2}>php {item.price}</Col>
+                    <Col md={2}>x {item.qty}</Col>
                     <Col md={2}>
                       <Button
                         type='button'

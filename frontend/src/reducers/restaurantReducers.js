@@ -87,3 +87,18 @@ import {
     }
   }
   
+  export const restaurantCreateReducer = (state = {}, action) => {
+    switch (action.type) {
+      case RESTAURANT_CREATE_REQUEST:
+        return { loading: true }
+      case RESTAURANT_CREATE_SUCCESS:
+        return { loading: false, success: true, restaurant: action.payload }
+      case RESTAURANT_CREATE_FAIL:
+        return { loading: false, error: action.payload }
+      case RESTAURANT_CREATE_RESET:
+        return {}
+      default:
+        return state
+    }
+  }
+  

@@ -133,3 +133,28 @@ export const createRestaurantReview = (restaurantId, review) => async (
     })
   }
 }
+
+export const createRestaurant = () => async (dispatch, getState) => {
+    try {
+        dispatch({
+            type: RESTAURANT_CREATE_REQUEST,
+        })
+
+        const { data } = await axios.post(`/api/restaurants`, {})
+
+        dispatch({
+            type: RESTAURANT_CREATE_SUCCESS,
+            payload: data,
+        })
+      } 
+    catch (error) {
+        const message =
+            error.response && error.response.data.message
+              ? error.response.data.message
+              : error.message
+        dispatch({
+            type: RESTAURANT_CREATE_FAIL,
+            payload: message,
+        })
+    }
+}
