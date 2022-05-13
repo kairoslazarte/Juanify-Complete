@@ -87,7 +87,7 @@ import {
     }
   }
   
-  export const restaurantCreateReducer = (state = {}, action) => {
+  export const restaurantCreateReducer = (state = { restaurant: {} }, action) => {
     switch (action.type) {
       case RESTAURANT_CREATE_REQUEST:
         return { loading: true }
@@ -96,7 +96,7 @@ import {
       case RESTAURANT_CREATE_FAIL:
         return { loading: false, error: action.payload }
       case RESTAURANT_CREATE_RESET:
-        return {}
+        return { restaurant: {} }
       default:
         return state
     }

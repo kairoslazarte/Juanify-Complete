@@ -1,5 +1,6 @@
 import asyncHandler from 'express-async-handler'
 import Restaurant from '../models/restaurantModel.js'
+import User from '../models/userModel.js'
 
 // @desc    Fetch all restaurants
 // @route   GET /api/restaurants
@@ -47,42 +48,38 @@ const getRestaurantById = asyncHandler(async (req, res) => {
 // @route   POST /api/restaurants
 // @access  Private/Admin
 const createRestaurant = asyncHandler(async (req, res) => {
+    const {
+      userID,
+      restaurantName,
+      city,
+      street,
+      barangay,
+      zipCode,
+      lon,
+      lat
+    } = req.body
+
+    const user = await User.findById(userID)
+
+    if (user) {
+      user.applyingForSeller = true 
+  
+      await user.save()
+    } else {
+      res.status(404)
+      throw new Error('User not found')
+    }
+
     const restaurant = new Restaurant({
-      name: 'Another restaurant',
-      user: req.user._id,
-      image: '/images/sample.jpg',
-      numReviews: 0,
-      description: 'This is another sample restaurant',
-      products: [
-        {
-            name: 'Sample chicken Special',
-            image: '/images/lyndons-chicken.jpg',
-            category: 'Ulam',
-            price: 150,
-            counInStock: 10
-        },
-        {
-            name: 'Sample Sisig Special',
-            image: '/images/lyndons-chicken-2.jpg',
-            category: 'Ulam',
-            price: 120,
-            counInStock: 12
-        },
-        {
-            name: 'Sample Burger Shawarma Special',
-            image: '/images/lyndons-pata.jpg',
-            category: 'Burgers',
-            price: 100,
-            counInStock: 20
-        },
-      ],
+      name: restaurantName,
+      user: userID,
       location: {
-        city: 'Davao City Sample',
-        long: 7.2536838,
-        lat: 125.3109879,
-        street: 'Windy Avenue',
-        barangay: 'Nagkaisang Nayon',
-        zipCode: 1125
+        city: city,
+        long: lon,
+        lat: lat,
+        street: street,
+        barangay: barangay,
+        zipCode: zipCode
       }
     })
   

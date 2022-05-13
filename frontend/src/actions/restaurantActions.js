@@ -134,13 +134,13 @@ export const createRestaurantReview = (restaurantId, review) => async (
   }
 }
 
-export const createRestaurant = () => async (dispatch, getState) => {
+export const createRestaurant = (restaurant) => async (dispatch, getState) => {
     try {
         dispatch({
             type: RESTAURANT_CREATE_REQUEST,
         })
 
-        const { data } = await axios.post(`/api/restaurants`, {})
+        const { data } = await axios.post(`/api/restaurants`, restaurant)
 
         dispatch({
             type: RESTAURANT_CREATE_SUCCESS,

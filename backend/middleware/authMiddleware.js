@@ -39,4 +39,4 @@ const admin = (req, res, next) => {
   }
 }
 
-export { protect, admin }
+export { protect, admin}

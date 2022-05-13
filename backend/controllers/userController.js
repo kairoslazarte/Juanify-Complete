@@ -76,6 +76,8 @@ const getUserProfile = asyncHandler(async (req, res) => {
       phone: user.phone,
       email: user.email,
       isAdmin: user.isAdmin,
+      isSeller: user.isSeller,
+      applyingForSeller: user.applyingForSeller,
     })
   } else {
     res.status(404)
