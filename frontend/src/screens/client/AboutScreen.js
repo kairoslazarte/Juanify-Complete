@@ -6,7 +6,7 @@ const AboutScreen = () => {
             <div className='about-screen-set'>
                 <div className='about-screen-set-img'>
                 <img
-                    className="h-56 w-full object-cover lg:absolute lg:h-full"
+                    className="object-cover w-full h-56 lg:absolute lg:h-full"
                     src="https://unsplash.com/photos/vbxyFxlgpjM"
                     alt=""
                 />
@@ -17,11 +17,11 @@ const AboutScreen = () => {
                 <div className='about-screen-set-text'>
                     <h2>Work with us</h2>
                     <h3 className='about-screen-this-h'>
-                    Our Process
+                        Our Process
                     </h3>
                     <p className='about-screen-this-p'>
-                    Sagittis scelerisque nulla cursus in enim consectetur quam. Dictum urna sed consectetur neque tristique
-                    pellentesque. Blandit amet, sed aenean erat arcu morbi.
+                        Sagittis scelerisque nulla cursus in enim consectetur quam. Dictum urna sed consectetur neque tristique
+                        pellentesque. Blandit amet, sed aenean erat arcu morbi.
                     </p>
                     <div className='about-screen-info'>
                     <p>

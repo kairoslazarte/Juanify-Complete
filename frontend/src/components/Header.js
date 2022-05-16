@@ -5,6 +5,7 @@ import { LinkContainer } from 'react-router-bootstrap'
 import { Navbar, Nav, Container, NavDropdown, Image } from 'react-bootstrap'
 import SearchBox from './SearchBox'
 import { logout } from '../actions/userActions'
+import { listRestaurantDetails } from '../actions/restaurantActions'
 import juan_icon from '../assets/img/icons/juan-nav.png'
 
 
@@ -13,6 +14,11 @@ const Header = () => {
 
   const userLogin = useSelector((state) => state.userLogin)
   const { userInfo } = userLogin
+
+  const restaurantDetails = useSelector((state) => state.restaurantDetails)
+  const { loading, error, restaurant } = restaurantDetails
+
+  console.log(restaurant.name)
 
   const logoutHandler = () => {
     dispatch(logout())
@@ -71,6 +77,19 @@ const Header = () => {
                     <NavDropdown.Item>Products</NavDropdown.Item>
                   </LinkContainer>
                   <LinkContainer to='/admin/orderlist'>
+                    <NavDropdown.Item>Orders</NavDropdown.Item>
+                  </LinkContainer>
+                </NavDropdown>
+              )}
+              {userInfo && userInfo.isSeller && (
+                <NavDropdown title='Seller' id='sellermenu'>
+                  <LinkContainer to='/restaurant/details'>
+                    <NavDropdown.Item>Details</NavDropdown.Item>
+                  </LinkContainer>
+                  <LinkContainer to='/restaurant/products'>
+                    <NavDropdown.Item>Products</NavDropdown.Item>
+                  </LinkContainer>
+                  <LinkContainer to='/restaurant/orderlist'>
                     <NavDropdown.Item>Orders</NavDropdown.Item>
                   </LinkContainer>
                 </NavDropdown>

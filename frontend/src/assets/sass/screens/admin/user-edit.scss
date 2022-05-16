@@ -1,0 +1,19 @@
+.user-edit__seller {
+    @apply py-5;
+
+    h2 {
+        @apply pb-3;
+    }
+
+    .user-edit__seller-btns {
+        @apply flex flex-row space-x-4;
+
+        .user-edit__seller-btn--yes {
+            @apply bg-blue-700 text-white py-2 px-5 rounded-md hover:opacity-60 transition duration-200 border-0;
+        }
+
+        .user-edit__seller-btn--no {
+            @apply bg-red-700 text-white py-2 px-5 rounded-md hover:opacity-60 transition duration-200 border-0;
+        }
+    }
+}

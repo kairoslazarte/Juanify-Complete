@@ -4,7 +4,7 @@
 @use "components/footer";
 @use "components/restaurant-card";
 
-// Screens
+// Client - Screens
 @use "screens/client/location";
 @use "screens/client/home";
 @use "screens/client/product-screen";
@@ -14,6 +14,9 @@
 @use "screens/client/login";
 @use "screens/client/register";
 @use "screens/client/forgot-password";
+
+// Admin - Screens
+@use "screens/admin/user-edit";
 
 // Generic Styles
 .user-location-input {

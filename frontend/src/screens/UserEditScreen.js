@@ -14,6 +14,8 @@ const UserEditScreen = ({ match, history }) => {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [isAdmin, setIsAdmin] = useState(false)
+  const [isSeller, setIsSeller] = useState(false)
+  const [applyingSeller, setApplyingSeller] = useState(false)
 
   const dispatch = useDispatch()
 
@@ -38,18 +40,20 @@ const UserEditScreen = ({ match, history }) => {
         setName(user.name)
         setEmail(user.email)
         setIsAdmin(user.isAdmin)
+        setIsSeller(user.isSeller)
+        setApplyingSeller(user.applyingForSeller)
       }
     }
   }, [dispatch, history, userId, user, successUpdate])
 
   const submitHandler = (e) => {
     e.preventDefault()
-    dispatch(updateUser({ _id: userId, name, email, isAdmin }))
+    dispatch(updateUser({ _id: userId, name, email, isAdmin, isSeller }))
   }
 
   return (
     <>
-      <Link to='/admin/userlist' className='btn btn-light my-3'>
+      <Link to='/admin/userlist' className='my-3 btn btn-light'>
         Go Back
       </Link>
       <FormContainer>
@@ -62,6 +66,17 @@ const UserEditScreen = ({ match, history }) => {
           <Message variant='danger'>{error}</Message>
         ) : (
           <Form onSubmit={submitHandler}>
+            {applyingSeller == true && (
+              <div className='user-edit__seller'>
+                <h4>Accept this user to be a Seller for Juanify?</h4>
+
+                <div className='user-edit__seller-btns'>
+                  <button className='user-edit__seller-btn--yes' onClick={() => setIsSeller(true)}>Accept</button>
+                  <button className='user-edit__seller-btn--no' onClick={() => setIsSeller(false)}>Decline</button>
+                </div>
+              </div>
+            )}
+
             <Form.Group controlId='name'>
               <Form.Label>Name</Form.Label>
               <Form.Control
@@ -90,6 +105,7 @@ const UserEditScreen = ({ match, history }) => {
                 onChange={(e) => setIsAdmin(e.target.checked)}
               ></Form.Check>
             </Form.Group>
+           
 
             <Button type='submit' variant='primary'>
               Update

@@ -1,6 +1,7 @@
 import asyncHandler from 'express-async-handler'
 import generateToken from '../utils/generateToken.js'
 import User from '../models/userModel.js'
+import Restaurant from '../models/restaurantModel.js'
 
 // @desc    Auth user & get token
 // @route   POST /api/users/login
@@ -158,11 +159,25 @@ const getUserById = asyncHandler(async (req, res) => {
 const updateUser = asyncHandler(async (req, res) => {
   const user = await User.findById(req.params.id)
 
+  const restaurant = await Restaurant.findOne({ 'user': req.params.id })
+
+  console.log(restaurant)
+  console.log(req.params.id)
+
   if (user) {
+    let applyingSeller
+    if (user.isSeller == true) {
+      applyingSeller = false
+    } else {
+      applyingSeller = false
+      await restaurant.remove()
+    }
     user.name = req.body.name || user.name
     user.email = req.body.email || user.email
     user.phone = req.body.phone || user.phone
     user.isAdmin = req.body.isAdmin
+    user.isSeller = req.body.isSeller
+    user.applyingForSeller = applyingSeller
 
     const updatedUser = await user.save()
 
@@ -172,6 +187,8 @@ const updateUser = asyncHandler(async (req, res) => {
       phone: updatedUser.phone,
       email: updatedUser.email,
       isAdmin: updatedUser.isAdmin,
+      isSeller: updatedUser.isSeller,
+      applyingForSeller: updatedUser.applyingForSeller,
     })
   } else {
     res.status(404)
