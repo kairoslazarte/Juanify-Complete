@@ -166,7 +166,7 @@ const updateUser = asyncHandler(async (req, res) => {
 
   if (user) {
     let applyingSeller
-    if (user.isSeller == true) {
+    if (req.body.isSeller == true) {
       applyingSeller = false
     } else {
       applyingSeller = false
