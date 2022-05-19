@@ -158,11 +158,7 @@ const getUserById = asyncHandler(async (req, res) => {
 // @access  Private/Admin
 const updateUser = asyncHandler(async (req, res) => {
   const user = await User.findById(req.params.id)
-
   const restaurant = await Restaurant.findOne({ 'user': req.params.id })
-
-  console.log(restaurant)
-  console.log(req.params.id)
 
   if (user) {
     let applyingSeller
@@ -196,6 +192,69 @@ const updateUser = asyncHandler(async (req, res) => {
   }
 })
 
+// @desc    Get restaurant profile
+// @route   GET /api/restaurant/profile
+// @access  Private
+const getRestaurantProfile = asyncHandler(async (req, res) => {
+  const restaurant = await Restaurant.findOne({ 'user': req.user._id })
+
+  if (restaurant) {
+    res.json({
+      _id: restaurant._id,
+      name: restaurant.name,
+      description: restaurant.description,
+      image: restaurant.image,
+      products: restaurant.products,
+      location: {
+        city: restaurant.location.city,
+        long: restaurant.location.long,
+        lat: restaurant.location.lat,
+        street: restaurant.location.street,
+        barangay: restaurant.location.barangay,
+        zipCode: restaurant.location.zipCode
+      }
+    })
+  } else {
+    res.status(404)
+    throw new Error('Restaurant not found')
+  }
+})
+
+const updateRestaurantProfile = asyncHandler(async (req, res) => {
+  const restaurant = await Restaurant.findOne({ 'user': req.user._id })
+
+  if (restaurant) {
+    restaurant.name = req.body.restaurantName || restaurant.name
+    restaurant.location.city = req.body.city || restaurant.location.city
+    restaurant.location.street = req.body.street || restaurant.location.street
+    restaurant.location.barangay = req.body.barangay || restaurant.location.barangay
+    restaurant.location.zipCode = req.body.zipCode || restaurant.location.zipCode
+    restaurant.location.long = req.body.lon || restaurant.location.long
+    restaurant.location.lat = req.body.lat || restaurant.location.lat
+    restaurant.description = req.body.description || restaurant.description
+    restaurant.image = req.body.image || restaurant.image
+    const updatedRestaurant = await restaurant.save()
+
+    res.json({
+      name: updatedRestaurant.name,
+      location: {
+        city: updatedRestaurant.city,
+        street: updatedRestaurant.steet,
+        barangay: updatedRestaurant.barangay,
+        zipCode: updatedRestaurant.zipCode,
+        long: updatedRestaurant.lon,
+        lat: updatedRestaurant.lat
+      },
+      description: updatedRestaurant.description,
+      image: updatedRestaurant.image
+    })
+  } else {
+    res.status(404)
+    throw new Error('Restaurant not found')
+  }
+})
+
+
 export {
   authUser,
   registerUser,
@@ -205,4 +264,6 @@ export {
   deleteUser,
   getUserById,
   updateUser,
+  getRestaurantProfile,
+  updateRestaurantProfile
 }

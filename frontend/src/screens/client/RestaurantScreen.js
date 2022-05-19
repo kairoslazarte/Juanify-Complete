@@ -55,7 +55,7 @@ const RestaurantScreen = ({ history, match }) => {
     }
     
     const { products } = restaurant
-
+    
     const cartItems = []
 
     const categories = []

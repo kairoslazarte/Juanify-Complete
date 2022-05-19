@@ -6,7 +6,9 @@ import {
   restaurantTopRatedReducer,
   restaurantDetailsReducer,
   restaurantReviewCreateReducer,
-  restaurantCreateReducer
+  restaurantCreateReducer,
+  productDeleteReducer,
+  productCreateReducer
 } from './reducers/restaurantReducers'
 import { cartReducer } from './reducers/cartReducers'
 import {
@@ -17,6 +19,8 @@ import {
   userListReducer,
   userDeleteReducer,
   userUpdateReducer,
+  restaurantProfileReducer,
+  restaurantUpdateProfileReducer
 } from './reducers/userReducers'
 import {
   orderCreateReducer,
@@ -33,10 +37,14 @@ const reducer = combineReducers({
   restaurantTopRated: restaurantTopRatedReducer,
   restaurantReviewCreate: restaurantReviewCreateReducer,
   restaurantCreate: restaurantCreateReducer,
+  productCreate: productCreateReducer,
+  productDelete: productDeleteReducer,
   cart: cartReducer,
   userLogin: userLoginReducer,
   userRegister: userRegisterReducer,
   userDetails: userDetailsReducer,
+  restaurantProfile: restaurantProfileReducer,
+  restaurantUpdateProfile: restaurantUpdateProfileReducer,
   userUpdateProfile: userUpdateProfileReducer,
   userList: userListReducer,
   userDelete: userDeleteReducer,

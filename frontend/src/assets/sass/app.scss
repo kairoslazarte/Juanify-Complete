@@ -15,6 +15,9 @@
 @use "screens/client/register";
 @use "screens/client/forgot-password";
 
+// Seller - Screens
+@use "screens/seller/profile";
+
 // Admin - Screens
 @use "screens/admin/user-edit";
 

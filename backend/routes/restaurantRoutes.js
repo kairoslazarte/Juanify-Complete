@@ -5,13 +5,10 @@ import {
   createRestaurant,
   getRestaurantById,
   getTopRestaurants,
-  createRestaurantReview
-//   getProductById,
-//   deleteProduct,
-//   createProduct,
-//   updateProduct,
-//   createProductReview,
-//   getTopProducts,
+  createRestaurantReview, 
+  deleteProduct,
+  updateProduct,
+  createProduct
 } from '../controllers/restaurantController.js'
 import { protect, admin } from '../middleware/authMiddleware.js'
 
@@ -21,7 +18,10 @@ router.get('/top', getTopRestaurants)
 router
   .route('/:id')
     .get(getRestaurantById)
-//   .delete(protect, admin, deleteProduct)
-//   .put(protect, admin, updateProduct)
+router.route('/product').post(protect, createProduct)
+router
+  .route('/product/:id')
+    .delete(protect, deleteProduct)
+    .put(protect, updateProduct)
 
 export default router

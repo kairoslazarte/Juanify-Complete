@@ -24,10 +24,12 @@ if (process.env.NODE_ENV === 'development') {
 
 app.use(express.json())
 
+// Client
 app.use('/api/restaurants', restaurantRoutes)
 app.use('/api/users', userRoutes)
 app.use('/api/orders', orderRoutes)
 app.use('/api/upload', uploadRoutes)
+
 
 app.get('/api/config/paypal', (req, res) =>
   res.send(process.env.PAYPAL_CLIENT_ID)

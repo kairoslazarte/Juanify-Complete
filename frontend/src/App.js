@@ -20,17 +20,22 @@ import ShippingScreen from './screens/client/ShippingScreen'
 import PaymentScreen from './screens/client/PaymentScreen'
 import PlaceOrderScreen from './screens/client/PlaceOrderScreen'
 import OrderScreen from './screens/client/OrderScreen'
-import OrderListScreen from './screens/client/OrderListScreen'
 import FoodDeliveryScreen from './screens/client/FoodDeliveryScreen'
 import PartnerScreen from './screens/client/PartnerScreen'
 import AboutScreen from './screens/client/AboutScreen'
 
+// SELLER
+import SellerProfileScreen from './screens/seller/SellerProfileScreen'
+import SellerProductsScreen from './screens/seller/SellerProductsScreen'
+import SellerProductEditScreen from './screens/seller/SellerProductEditScreen'
+import SellerCreateProductScreen from './screens/seller/SellerCreateProductScreen'
+import SellerOrderlistScreen from './screens/seller/SellerOrderlistScreen'
+
 // ADMIN
 import UserListScreen from './screens/UserListScreen'
 import UserEditScreen from './screens/UserEditScreen'
-import ProductListScreen from './screens/ProductListScreen'
-import ProductEditScreen from './screens/ProductEditScreen'
 import ForgotPassword from './screens/client/ForgotPassword'
+import OrderListScreen from './screens/client/OrderListScreen'
 
 var today = new Date()
 var currDate = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate()
@@ -121,7 +126,7 @@ const App = () => {
                   <Route path='/placeorder' component={PlaceOrderScreen} />
                   <Route path='/login' component={LoginScreen} />
                   <Route path='/register' component={RegisterScreen} />
-                  <Route path='/partner' component={PartnerScreen} />
+                  <Route path='/partner-with-us' component={PartnerScreen} />
                   <Route path='/about-us' component={AboutScreen} />
                   <Route path='/profile' component={ProfileScreen} />
                   <Route path='/restaurant/:id' component={RestaurantScreen} />
@@ -131,18 +136,11 @@ const App = () => {
                   <Route path='/admin/userlist' component={UserListScreen} />
                   <Route path='/admin/user/:id/edit' component={UserEditScreen} />
                   <Route path='/forgot-password' component={ForgotPassword} />
-                  <Route
-                    path='/admin/productlist'
-                    component={ProductListScreen}
-                    exact
-                  />
-                  <Route
-                    path='/admin/productlist/:pageNumber'
-                    component={ProductListScreen}
-                    exact
-                  />
-                  <Route path='/admin/product/:id/edit' component={ProductEditScreen} />
-                  <Route path='/admin/orderlist' component={OrderListScreen} />
+                  <Route path='/partner/profile' component={SellerProfileScreen} />
+                  <Route path='/partner/products' component={SellerProductsScreen} />
+                  <Route path='/partner/create-product' component={SellerCreateProductScreen} />
+                  <Route path='/partner/product/:id/edit' component={SellerProductEditScreen} />
+                  <Route path='/partner/orderlist' component={SellerOrderlistScreen} />
                   <Route path='/search/:keyword' component={HomeScreen} exact />
                   <Route path='/page/:pageNumber' component={HomeScreen} exact />
                   <Route

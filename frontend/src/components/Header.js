@@ -1,24 +1,31 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Route } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { LinkContainer } from 'react-router-bootstrap'
 import { Navbar, Nav, Container, NavDropdown, Image } from 'react-bootstrap'
 import SearchBox from './SearchBox'
 import { logout } from '../actions/userActions'
-import { listRestaurantDetails } from '../actions/restaurantActions'
+import { getRestaurantProfile } from '../actions/userActions'
 import juan_icon from '../assets/img/icons/juan-nav.png'
 
 
-const Header = () => {
+const Header = ({ history }) => {
+  const [restaurantName, setRestaurantName] = useState('')
   const dispatch = useDispatch()
 
   const userLogin = useSelector((state) => state.userLogin)
   const { userInfo } = userLogin
 
-  const restaurantDetails = useSelector((state) => state.restaurantDetails)
-  const { loading, error, restaurant } = restaurantDetails
+  const restaurantProfile = useSelector((state) => state.restaurantProfile)
+  const { loading, error, restaurant } = restaurantProfile
 
-  console.log(restaurant.name)
+  useEffect(() => {
+    if (!restaurant || !restaurant.name) {
+        dispatch(getRestaurantProfile('restaurant/profile'))
+    } else {
+        setRestaurantName(restaurant.name)
+    }
+}, [dispatch, history, userInfo, restaurant])
 
   const logoutHandler = () => {
     dispatch(logout())
@@ -42,7 +49,7 @@ const Header = () => {
                   <i className='fas fa-utensils'></i> Browse
                 </Nav.Link>
               </LinkContainer>
-              <LinkContainer to='/partner'>
+              <LinkContainer to='/partner-with-us'>
                 <Nav.Link className='header-nav__links'>
                   <i className='fas fa-hands-helping'></i> Partner with Us
                 </Nav.Link>
@@ -82,14 +89,14 @@ const Header = () => {
                 </NavDropdown>
               )}
               {userInfo && userInfo.isSeller && (
-                <NavDropdown title='Seller' id='sellermenu'>
-                  <LinkContainer to='/restaurant/details'>
-                    <NavDropdown.Item>Details</NavDropdown.Item>
+                <NavDropdown title={restaurantName} id='sellermenu'>
+                  <LinkContainer to='/partner/profile'>
+                    <NavDropdown.Item>Profile</NavDropdown.Item>
                   </LinkContainer>
-                  <LinkContainer to='/restaurant/products'>
+                  <LinkContainer to='/partner/products'>
                     <NavDropdown.Item>Products</NavDropdown.Item>
                   </LinkContainer>
-                  <LinkContainer to='/restaurant/orderlist'>
+                  <LinkContainer to='/partner/orderlist'>
                     <NavDropdown.Item>Orders</NavDropdown.Item>
                   </LinkContainer>
                 </NavDropdown>

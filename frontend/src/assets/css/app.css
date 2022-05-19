@@ -2845,6 +2845,46 @@
   padding-left: 0.75rem;
 }
 
+.seller-profile h2 {
+  padding-bottom: 1.25rem;
+}
+.seller-profile .seller-profile-form__address {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+.seller-profile .seller-profile-form__address .seller-profile-form__address_city-street-barangay, .seller-profile .seller-profile-form__address .seller-profile__address_lat-lon {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.seller-profile .seller-profile-form__address .seller-profile-form__address_city-street-barangay > :not([hidden]) ~ :not([hidden]), .seller-profile .seller-profile-form__address .seller-profile__address_lat-lon > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(1rem * var(--tw-space-x-reverse));
+  margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
+}
+.seller-profile .seller-profile-form__address .seller-profile-form__address_city-street-barangay .form-group, .seller-profile .seller-profile-form__address .seller-profile__address_lat-lon .form-group {
+  width: 100% !important;
+}
+.seller-profile .seller-profile-form__address_lat-lon {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  align-items: center;
+}
+.seller-profile .seller-profile-form__address_lat-lon > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(1rem * var(--tw-space-x-reverse));
+  margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
+}
+.seller-profile .seller-profile-form__address_lat-lon .form-group {
+  width: 100% !important;
+}
+.seller-profile .seller-profile__update-btn {
+  margin-top: 1.25rem;
+}
+
 .user-edit__seller {
   padding-top: 1.25rem;
   padding-bottom: 1.25rem;

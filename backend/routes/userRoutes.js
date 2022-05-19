@@ -9,6 +9,8 @@ import {
   deleteUser,
   getUserById,
   updateUser,
+  getRestaurantProfile,
+  updateRestaurantProfile
 } from '../controllers/userController.js'
 import { protect, admin } from '../middleware/authMiddleware.js'
 
@@ -18,6 +20,10 @@ router
   .route('/profile')
   .get(protect, getUserProfile)
   .put(protect, updateUserProfile)
+router
+  .route('/restaurant/profile')
+  .get(protect, getRestaurantProfile)
+  .put(protect, updateRestaurantProfile)
 router
   .route('/:id')
   .delete(protect, admin, deleteUser)

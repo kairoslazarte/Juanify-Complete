@@ -1,0 +1,29 @@
+.seller-profile {
+    h2 {
+        @apply pb-5;
+    }
+
+    .seller-profile-form__address {
+        @apply py-2;
+
+        .seller-profile-form__address_city-street-barangay, .seller-profile__address_lat-lon  {
+            @apply flex flex-row items-center space-x-4 w-full justify-center;
+
+            .form-group {
+                width: 100% !important;
+            }
+        }
+    }
+
+    .seller-profile-form__address_lat-lon {
+        @apply flex flex-row items-center space-x-4 w-full;
+
+        .form-group {
+            width: 100% !important;
+        }
+    }
+
+    .seller-profile__update-btn {
+        @apply mt-5;
+    }
+}

@@ -34,6 +34,7 @@ const PlaceOrderScreen = ({ history }) => {
     Number(cart.taxPrice)
   ).toFixed(2)
 
+
   const orderCreate = useSelector((state) => state.orderCreate)
   const { order, success, error } = orderCreate
 
@@ -49,6 +50,7 @@ const PlaceOrderScreen = ({ history }) => {
   const placeOrderHandler = () => {
     dispatch(
       createOrder({
+        restaurant: cart.cartItems[0].restaurant_id,
         orderItems: cart.cartItems,
         shippingAddress: cart.shippingAddress,
         paymentMethod: cart.paymentMethod,

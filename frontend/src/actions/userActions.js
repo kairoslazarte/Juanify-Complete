@@ -24,6 +24,12 @@ import {
   USER_UPDATE_FAIL,
   USER_UPDATE_SUCCESS,
   USER_UPDATE_REQUEST,
+  SELLER_DETAILS_REQUEST,
+  SELLER_DETAILS_SUCCESS,
+  SELLER_DETAILS_FAIL,
+  SELLER_UPDATE_PROFILE_FAIL,
+  SELLER_UPDATE_PROFILE_SUCCESS,
+  SELLER_UPDATE_PROFILE_REQUEST,
 } from '../constants/userConstants'
 import { ORDER_LIST_MY_RESET } from '../constants/orderConstants'
 
@@ -146,6 +152,82 @@ export const getUserDetails = (id) => async (dispatch, getState) => {
     }
     dispatch({
       type: USER_DETAILS_FAIL,
+      payload: message,
+    })
+  }
+}
+
+
+export const getRestaurantProfile = (id) => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: SELLER_DETAILS_REQUEST,
+    })
+
+    const {
+      userLogin: { userInfo },
+    } = getState()
+
+    const config = {
+      headers: {
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    }
+
+    const { data } = await axios.get(`/api/users/${id}`, config)
+
+    dispatch({
+      type: SELLER_DETAILS_SUCCESS,
+      payload: data,
+    })
+  } catch (error) {
+    const message =
+      error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message
+    if (message === 'Not authorized, token failed') {
+      dispatch(logout())
+    }
+    dispatch({
+      type: SELLER_DETAILS_FAIL,
+      payload: message,
+    })
+  }
+}
+
+export const updateRestaurantProfile = (restaurant) => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: SELLER_UPDATE_PROFILE_REQUEST,
+    })
+
+    const {
+      userLogin: { userInfo },
+    } = getState()
+
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    }
+
+    const { data } = await axios.put(`/api/users/restaurant/profile`, restaurant, config)
+
+    dispatch({
+      type: SELLER_UPDATE_PROFILE_SUCCESS,
+      payload: data,
+    })
+  } catch (error) {
+    const message =
+      error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message
+    if (message === 'Not authorized, token failed') {
+      dispatch(logout())
+    }
+    dispatch({
+      type: SELLER_UPDATE_PROFILE_FAIL,
       payload: message,
     })
   }
