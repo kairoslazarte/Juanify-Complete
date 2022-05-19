@@ -95,7 +95,6 @@ const RestaurantScreen = ({ history, match }) => {
             const cartItem = cartItems.findIndex((cart_item => cart_item.id == prod_id))
             console.log(cartItem)
             if (cartItem >= 0) {
-                cartItems[cartItem].price += price
                 cartItems[cartItem].qty += 1
             }
             else {

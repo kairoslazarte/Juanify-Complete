@@ -1,5 +1,6 @@
 import asyncHandler from 'express-async-handler'
 import Order from '../models/orderModel.js'
+import Restaurant from '../models/restaurantModel.js'
 
 // @desc    Create new order
 // @route   POST /api/orders
@@ -110,15 +111,17 @@ const getMyOrders = asyncHandler(async (req, res) => {
 
 // @desc    Get all orders
 // @route   GET /api/orders
-// @access  Private/Admin
-const getOrders = asyncHandler(async (req, res) => {
-  const orders = await Order.find({}).populate('user', 'id name')
+// @access  Private/Seller
+const getOrders = asyncHandler(async (req, res) => {  
+  const restaurant = await Restaurant.findOne({ 'user': req.user._id })
+  const orders = await Order.find({ 'restaurant': restaurant._id }).populate('user', 'id name')
+
   res.json(orders)
 })
 
 export {
   addOrderItems,
-  getOrderById,
+  getOrderById, 
   updateOrderToPaid,
   updateOrderToDelivered,
   getMyOrders,
