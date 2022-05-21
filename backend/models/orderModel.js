@@ -65,6 +65,26 @@ const orderSchema = mongoose.Schema(
       required: true,
       default: false,
     },
+    isOnTheWay: {
+      type: Boolean,
+      required: true,
+      default: false,
+    },
+    isOnTheKitchen: {
+      type: Boolean,
+      required: true,
+      default: false,
+    },
+    isRecieved: {
+      type: Boolean,
+      required: true,
+      default: true,
+    },
+    isComplete: {
+      type: Boolean,
+      required: true,
+      default: false,
+    },
     deliveredAt: {
       type: Date,
     },

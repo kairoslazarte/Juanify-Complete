@@ -34,10 +34,11 @@ const PlaceOrderScreen = ({ history }) => {
     Number(cart.taxPrice)
   ).toFixed(2)
 
-
   const orderCreate = useSelector((state) => state.orderCreate)
   const { order, success, error } = orderCreate
 
+  console.log(cart.cartItems[0].restaurant)
+  
   useEffect(() => {
     if (success) {
       history.push(`/order/${order._id}`)
@@ -51,6 +52,7 @@ const PlaceOrderScreen = ({ history }) => {
     dispatch(
       createOrder({
         restaurant: cart.cartItems[0].restaurant_id,
+        restaurantName: cart.cartItems[0].restaurant,
         orderItems: cart.cartItems,
         shippingAddress: cart.shippingAddress,
         paymentMethod: cart.paymentMethod,

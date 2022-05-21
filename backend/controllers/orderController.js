@@ -1,6 +1,7 @@
 import asyncHandler from 'express-async-handler'
 import Order from '../models/orderModel.js'
 import Restaurant from '../models/restaurantModel.js'
+import User from '../models/userModel.js'
 
 // @desc    Create new order
 // @route   POST /api/orders
@@ -15,6 +16,7 @@ const addOrderItems = asyncHandler(async (req, res) => {
     taxPrice,
     shippingPrice,
     totalPrice,
+    restaurantName,
   } = req.body
 
   if (orderItems && orderItems.length === 0) {
@@ -32,6 +34,7 @@ const addOrderItems = asyncHandler(async (req, res) => {
       taxPrice,
       shippingPrice,
       totalPrice,
+      restaurantName,
     })
 
     const createdOrder = await order.save()
@@ -82,15 +85,25 @@ const updateOrderToPaid = asyncHandler(async (req, res) => {
   }
 })
 
-// @desc    Update order to delivered
-// @route   GET /api/orders/:id/deliver
-// @access  Private/Admin
-const updateOrderToDelivered = asyncHandler(async (req, res) => {
-  const order = await Order.findById(req.params.id)
+const markAsPaid = asyncHandler(async (req, res) => {
+  const order = await Order.findById(req.params.id).populate(
+    'user',
+    'name email'
+  )
+
+  const {
+    id,
+    email
+  } = order.user
 
   if (order) {
-    order.isDelivered = true
-    order.deliveredAt = Date.now()
+    order.isPaid = true
+    order.paidAt = Date.now()
+    order.paymentResult = {
+      status: "COMPLETED",
+      update_time: Date.now(),
+      email_address: email,
+    }
 
     const updatedOrder = await order.save()
 
@@ -100,6 +113,64 @@ const updateOrderToDelivered = asyncHandler(async (req, res) => {
     throw new Error('Order not found')
   }
 })
+
+// @desc    Update order to delivered
+// @route   GET /api/orders/:id/update
+// @access  Private/Admin
+const updateOrderStatus = asyncHandler(async (req, res) => {
+  const order = await Order.findById(req.params.id)
+
+  const {orderStatus} = req.body
+
+  if (order) {
+    if (orderStatus == 'or') {
+      order.isRecieved = true
+      order.isOnTheKitchen = false
+      order.isOnTheWay = false
+      order.isDelivered = false
+    }
+    else if (orderStatus == 'itk') {
+      order.isRecieved = false
+      order.isOnTheKitchen = true
+      order.isOnTheWay = false
+      order.isDelivered = false
+    }
+    else if (orderStatus == 'otw') {
+      order.isRecieved = false
+      order.isOnTheKitchen = false
+      order.isOnTheWay = true
+      order.isDelivered = false
+    }
+    else {
+      order.isRecieved = false
+      order.isOnTheKitchen = false
+      order.isOnTheWay = false
+      order.isDelivered = true
+      order.deliveredAt = Date.now()
+    }
+
+    const updatedOrder = await order.save()
+
+    res.json(updatedOrder)
+  } else {
+    res.status(404)
+    throw new Error('Order not found')
+  }
+})
+
+const completeOrder = asyncHandler(async (req, res) => {
+  const order = await Order.findById(req.params.id)
+
+  if (order) {
+    order.isComplete = true
+    const updatedOrder = await order.save()
+    res.json(updatedOrder)
+  } else {
+    res.status(404)
+    throw new Error('Order not found')
+  }
+})
+
 
 // @desc    Get logged in user orders
 // @route   GET /api/orders/myorders
@@ -123,7 +194,9 @@ export {
   addOrderItems,
   getOrderById, 
   updateOrderToPaid,
-  updateOrderToDelivered,
+  updateOrderStatus,
+  completeOrder,
   getMyOrders,
   getOrders,
+  markAsPaid
 }

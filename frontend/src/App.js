@@ -30,6 +30,7 @@ import SellerProductsScreen from './screens/seller/SellerProductsScreen'
 import SellerProductEditScreen from './screens/seller/SellerProductEditScreen'
 import SellerCreateProductScreen from './screens/seller/SellerCreateProductScreen'
 import SellerOrderlistScreen from './screens/seller/SellerOrderlistScreen'
+import SellerOrderDetailsScreen from './screens/seller/SellerOrderDetailsScreen'
 
 // ADMIN
 import UserListScreen from './screens/UserListScreen'
@@ -121,6 +122,7 @@ const App = () => {
                 <Container>
                   <Route path='/input-location' component={LocationScreen} />
                   <Route path='/order/:id' component={OrderScreen} />
+                  <Route path='/partner/order/:id' component={SellerOrderDetailsScreen} />
                   <Route path='/shipping' component={ShippingScreen} />
                   <Route path='/payment' component={PaymentScreen} />
                   <Route path='/placeorder' component={PlaceOrderScreen} />

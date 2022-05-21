@@ -1,0 +1,19 @@
+.order-details {
+
+
+    .order-details__status--label {
+        @apply block text-lg uppercase font-semibold text-black text-center pt-4;
+    }
+
+    .order-details__status-btn--active {
+        @apply bg-red-500 text-white hover:opacity-60 transition duration-200 rounded-md;
+    }
+
+    .order-details__status-btn--non-active {
+        @apply bg-white text-gray-900 shadow-md hover:bg-red-500 hover:text-white transition duration-200 rounded-md;
+    }
+
+    .order-details__mark-pay-btn {
+        @apply bg-yellow-500 text-white hover:opacity-60 transition duration-200 rounded-md;
+    }   
+}

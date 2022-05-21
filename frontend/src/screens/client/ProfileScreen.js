@@ -29,6 +29,8 @@ const ProfileScreen = ({ location, history }) => {
   const orderListMy = useSelector((state) => state.orderListMy)
   const { loading: loadingOrders, error: errorOrders, orders } = orderListMy
 
+  console.log(orders)
+
   useEffect(() => {
     if (!userInfo) {
       history.push('/login')

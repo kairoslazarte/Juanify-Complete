@@ -81,10 +81,6 @@ const OrderScreen = ({ match, history }) => {
     dispatch(payOrder(orderId, paymentResult))
   }
 
-  const deliverHandler = () => {
-    dispatch(deliverOrder(order))
-  }
-
   return loading ? (
     <Loader />
   ) : error ? (
@@ -111,11 +107,15 @@ const OrderScreen = ({ match, history }) => {
                 {order.shippingAddress.country}
               </p>
               {order.isDelivered ? (
-                <Message variant='success'>
+                  <Message variant='success'>
                   Delivered on {order.deliveredAt}
-                </Message>
+                  </Message>
+              ) : order.isOnTheWay ? (
+                <Message variant='warning'>Your order is on the way</Message>
+              ) : order.isOnTheKitchen ? (
+                  <Message variant='info'>Order is in the kitchen</Message>
               ) : (
-                <Message variant='danger'>Not Delivered</Message>
+                  <Message variant='warning'>Order recieved</Message>
               )}
             </ListGroup.Item>
 
@@ -208,21 +208,6 @@ const OrderScreen = ({ match, history }) => {
                   )}
                 </ListGroup.Item>
               )}
-              {loadingDeliver && <Loader />}
-              {userInfo &&
-                userInfo.isSeller &&
-                order.isPaid &&
-                !order.isDelivered && (
-                  <ListGroup.Item>
-                    <Button
-                      type='button'
-                      className='btn btn-block'
-                      onClick={deliverHandler}
-                    >
-                      Mark As Delivered
-                    </Button>
-                  </ListGroup.Item>
-                )}
             </ListGroup>
           </Card>
         </Col>
