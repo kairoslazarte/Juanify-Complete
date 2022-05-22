@@ -30,11 +30,12 @@
         @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 xl:gap-8 py-10;
 
         .restaurant-product {
-            @apply flex flex-col flex-1 justify-between shadow-lg rounded-lg hover:no-underline;
+            @apply flex flex-col flex-1 justify-between shadow-lg rounded-lg hover:no-underline bg-white;
         
             .restaurant-product__img {
                 img {
-                    @apply object-cover w-full h-40;
+                    height: 170px;
+                    @apply object-cover rounded-t-lg w-full;
                 }
             }
         

@@ -16,16 +16,19 @@ const addOrderItems = asyncHandler(async (req, res) => {
     taxPrice,
     shippingPrice,
     totalPrice,
-    restaurantName,
   } = req.body
+  
+  const restau = await Restaurant.findById(restaurant)
 
   if (orderItems && orderItems.length === 0) {
     res.status(400)
     throw new Error('No order items')
     return
   } else {
+    console.log(restau.name)
     const order = new Order({
       restaurant, 
+      restaurantName: restau.name,
       orderItems,
       user: req.user._id,
       shippingAddress,
@@ -34,11 +37,8 @@ const addOrderItems = asyncHandler(async (req, res) => {
       taxPrice,
       shippingPrice,
       totalPrice,
-      restaurantName,
     })
-
     const createdOrder = await order.save()
-
     res.status(201).json(createdOrder)
   }
 })
@@ -75,9 +75,7 @@ const updateOrderToPaid = asyncHandler(async (req, res) => {
       update_time: req.body.update_time,
       email_address: req.body.payer.email_address,
     }
-
     const updatedOrder = await order.save()
-
     res.json(updatedOrder)
   } else {
     res.status(404)
@@ -104,9 +102,7 @@ const markAsPaid = asyncHandler(async (req, res) => {
       update_time: Date.now(),
       email_address: email,
     }
-
     const updatedOrder = await order.save()
-
     res.json(updatedOrder)
   } else {
     res.status(404)
@@ -123,6 +119,7 @@ const updateOrderStatus = asyncHandler(async (req, res) => {
   const {orderStatus} = req.body
 
   if (order) {
+    console.log(orderStatus)
     if (orderStatus == 'or') {
       order.isRecieved = true
       order.isOnTheKitchen = false
@@ -134,6 +131,7 @@ const updateOrderStatus = asyncHandler(async (req, res) => {
       order.isOnTheKitchen = true
       order.isOnTheWay = false
       order.isDelivered = false
+      console.log('true')
     }
     else if (orderStatus == 'otw') {
       order.isRecieved = false
@@ -148,15 +146,15 @@ const updateOrderStatus = asyncHandler(async (req, res) => {
       order.isDelivered = true
       order.deliveredAt = Date.now()
     }
-
-    const updatedOrder = await order.save()
-
-    res.json(updatedOrder)
+    
+    await order.save()
+    res.json(order)
   } else {
     res.status(404)
     throw new Error('Order not found')
   }
 })
+
 
 const completeOrder = asyncHandler(async (req, res) => {
   const order = await Order.findById(req.params.id)
@@ -186,7 +184,6 @@ const getMyOrders = asyncHandler(async (req, res) => {
 const getOrders = asyncHandler(async (req, res) => {  
   const restaurant = await Restaurant.findOne({ 'user': req.user._id })
   const orders = await Order.find({ 'restaurant': restaurant._id }).populate('user', 'id name')
-
   res.json(orders)
 })
 

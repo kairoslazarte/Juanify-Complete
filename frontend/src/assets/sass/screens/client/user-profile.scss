@@ -1,0 +1,23 @@
+.profile-user {
+    @apply w-full;
+
+    .profiler-user__password, .profiler-user__name-email {
+        @apply flex items-center space-x-8;
+
+        .form-group {
+            @apply w-full;
+        }
+
+        input {
+            @apply block w-full shadow-sm py-3 px-4 focus:border-indigo-500 border border-gray-200 rounded-md;
+        }
+    }
+
+    button {
+        @apply mt-5;
+    }
+}
+
+.profile-orders {
+    @apply pt-10 w-full;
+}

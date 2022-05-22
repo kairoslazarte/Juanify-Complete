@@ -27,8 +27,7 @@ const FoodDeliveryScreen = ({ match }) => {
     <>
       <Meta />
       <div className='user-location-input'>
-        <h1>Delivering at <span className='user-location-input__location'>{sessionStorage.getItem('user_location')}</span></h1>
-        <a href='/input-location'>Change location</a>
+        <h1>Gutom ka na ba ka-<span className='user-location-input__location'>Juan</span>? Kain na!</h1>
       </div>
       {loading ? (
         <Loader />

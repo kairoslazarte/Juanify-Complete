@@ -26,19 +26,16 @@ const PlaceOrderScreen = ({ history }) => {
   cart.itemsPrice = addDecimals(
     cart.cartItems.reduce((acc, item) => acc + item.price * item.qty, 0)
   )
-  cart.shippingPrice = addDecimals(cart.itemsPrice > 100 ? 0 : 100)
-  cart.taxPrice = addDecimals(Number((0.15 * cart.itemsPrice).toFixed(2)))
+  cart.shippingPrice = 49
+  // cart.taxPrice = addDecimals(Number((0.15 * cart.itemsPrice).toFixed(2)))
   cart.totalPrice = (
     Number(cart.itemsPrice) +
-    Number(cart.shippingPrice) +
-    Number(cart.taxPrice)
+    Number(cart.shippingPrice) 
   ).toFixed(2)
 
   const orderCreate = useSelector((state) => state.orderCreate)
   const { order, success, error } = orderCreate
 
-  console.log(cart.cartItems[0].restaurant)
-  
   useEffect(() => {
     if (success) {
       history.push(`/order/${order._id}`)
@@ -52,13 +49,11 @@ const PlaceOrderScreen = ({ history }) => {
     dispatch(
       createOrder({
         restaurant: cart.cartItems[0].restaurant_id,
-        restaurantName: cart.cartItems[0].restaurant,
         orderItems: cart.cartItems,
         shippingAddress: cart.shippingAddress,
         paymentMethod: cart.paymentMethod,
         itemsPrice: cart.itemsPrice,
         shippingPrice: cart.shippingPrice,
-        taxPrice: cart.taxPrice,
         totalPrice: cart.totalPrice,
       })
     )
@@ -137,12 +132,12 @@ const PlaceOrderScreen = ({ history }) => {
                   <Col>{cart.shippingPrice}php</Col>
                 </Row>
               </ListGroup.Item>
-              <ListGroup.Item>
+              {/* <ListGroup.Item>
                 <Row>
                   <Col>Tax</Col>
                   <Col>{cart.taxPrice}php</Col>
                 </Row>
-              </ListGroup.Item>
+              </ListGroup.Item> */}
               <ListGroup.Item>
                 <Row>
                   <Col>Total</Col>

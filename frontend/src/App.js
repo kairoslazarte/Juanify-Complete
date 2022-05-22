@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import alanBtn from "@alan-ai/alan-sdk-web"
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { Container } from 'react-bootstrap'
@@ -36,7 +36,7 @@ import SellerOrderDetailsScreen from './screens/seller/SellerOrderDetailsScreen'
 import UserListScreen from './screens/UserListScreen'
 import UserEditScreen from './screens/UserEditScreen'
 import ForgotPassword from './screens/client/ForgotPassword'
-import OrderListScreen from './screens/client/OrderListScreen'
+import SellerAdminFooter from './components/SellerAdminFooter'
 
 var today = new Date()
 var currDate = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate()
@@ -105,59 +105,142 @@ const App = () => {
     )
   })
 
+  const userLogin = useSelector((state) => state.userLogin)
+  const { userInfo } = userLogin
+
+  console.log(userInfo)
+
   return (
     <>
-      {sessionStorage.getItem('user_location') === null
-        ?
+    {!userInfo ? (
+       <>
+       <Router>
+         <Header />
+           <main className='main-layout'>
+             <Container>
+               <Route path='/input-location' component={LocationScreen} />
+               <Route path='/order/:id' component={OrderScreen} />
+               <Route path='/shipping' component={ShippingScreen} />
+               <Route path='/payment' component={PaymentScreen} />
+               <Route path='/placeorder' component={PlaceOrderScreen} />
+               <Route path='/login' component={LoginScreen} />
+               <Route path='/register' component={RegisterScreen} />
+               <Route path='/partner-with-us' component={PartnerScreen} />
+               <Route path='/about-us' component={AboutScreen} />
+               <Route path='/profile' component={ProfileScreen} />
+               <Route path='/restaurant/:id' component={RestaurantScreen} />
+               <Route path='/product-screen' component={ProductScreen} />
+               <Route path='/food' component={FoodDeliveryScreen} />
+               <Route path='/cart/:id?' component={CartScreen} />
+               <Route path='/forgot-password' component={ForgotPassword} />
+               <Route path='/search/:keyword' component={HomeScreen} exact />
+               <Route path='/page/:pageNumber' component={HomeScreen} exact />
+               <Route
+                 path='/search/:keyword/page/:pageNumber'
+                 component={HomeScreen}
+                 exact
+               />
+               <Route path='/' component={HomeScreen} exact />
+               <Route path='/home' component={HomeScreen} exact />
+             </Container>
+           </main>
+         <Footer />
+       </Router>
+     </>
+    ) : (
+      userInfo.isSeller ? (
         <>
-         <main className='main-layout'>
-            <LocationScreen />
-         </main>
+        <Router>
+          <Header />
+            <main className='main-layout'>
+              <Container>
+                <Route path='/partner/order/:id' component={SellerOrderDetailsScreen} />
+                <Route path='/profile' component={ProfileScreen} />
+                <Route path='/login' component={LoginScreen} />
+                <Route path='/register' component={RegisterScreen} />
+                <Route path='/forgot-password' component={ForgotPassword} />
+                <Route path='/partner/profile' component={SellerProfileScreen} />
+                <Route path='/partner/products' component={SellerProductsScreen} />
+                <Route path='/partner/create-product' component={SellerCreateProductScreen} />
+                <Route path='/partner/product/:id/edit' component={SellerProductEditScreen} />
+                <Route path='/partner/orderlist' component={SellerOrderlistScreen} />
+                <Route path='/search/:keyword' component={HomeScreen} exact />
+                <Route path='/page/:pageNumber' component={HomeScreen} exact />
+                <Route
+                  path='/search/:keyword/page/:pageNumber'
+                  component={SellerProfileScreen}
+                  exact
+                />
+                <Route path='/' component={SellerProfileScreen} exact />
+                <Route path='/home' component={SellerProfileScreen} exact />
+              </Container>
+            </main>
+          <SellerAdminFooter />
+        </Router>
         </>
-        :
+      ) : userInfo.isAdmin ? (
         <>
-          <Router>
-            <Header />
-              <main className='main-layout'>
-                <Container>
-                  <Route path='/input-location' component={LocationScreen} />
-                  <Route path='/order/:id' component={OrderScreen} />
-                  <Route path='/partner/order/:id' component={SellerOrderDetailsScreen} />
-                  <Route path='/shipping' component={ShippingScreen} />
-                  <Route path='/payment' component={PaymentScreen} />
-                  <Route path='/placeorder' component={PlaceOrderScreen} />
-                  <Route path='/login' component={LoginScreen} />
-                  <Route path='/register' component={RegisterScreen} />
-                  <Route path='/partner-with-us' component={PartnerScreen} />
-                  <Route path='/about-us' component={AboutScreen} />
-                  <Route path='/profile' component={ProfileScreen} />
-                  <Route path='/restaurant/:id' component={RestaurantScreen} />
-                  <Route path='/product-screen' component={ProductScreen} />
-                  <Route path='/food' component={FoodDeliveryScreen} />
-                  <Route path='/cart/:id?' component={CartScreen} />
-                  <Route path='/admin/userlist' component={UserListScreen} />
-                  <Route path='/admin/user/:id/edit' component={UserEditScreen} />
-                  <Route path='/forgot-password' component={ForgotPassword} />
-                  <Route path='/partner/profile' component={SellerProfileScreen} />
-                  <Route path='/partner/products' component={SellerProductsScreen} />
-                  <Route path='/partner/create-product' component={SellerCreateProductScreen} />
-                  <Route path='/partner/product/:id/edit' component={SellerProductEditScreen} />
-                  <Route path='/partner/orderlist' component={SellerOrderlistScreen} />
-                  <Route path='/search/:keyword' component={HomeScreen} exact />
-                  <Route path='/page/:pageNumber' component={HomeScreen} exact />
-                  <Route
-                    path='/search/:keyword/page/:pageNumber'
-                    component={HomeScreen}
-                    exact
-                  />
-                  <Route path='/' component={HomeScreen} exact />
-                  <Route path='/home' component={HomeScreen} exact />
-                </Container>
-              </main>
-            <Footer />
-          </Router>
+        <Router>
+          <Header />
+            <main className='main-layout'>
+              <Container>
+                <Route path='/login' component={LoginScreen} />
+                <Route path='/register' component={RegisterScreen} />
+                <Route path='/profile' component={ProfileScreen} />
+                <Route path='/admin/userlist' component={UserListScreen} />
+                <Route path='/admin/user/:id/edit' component={UserEditScreen} />
+                <Route path='/forgot-password' component={ForgotPassword} />
+                <Route path='/search/:keyword' component={HomeScreen} exact />
+                <Route path='/page/:pageNumber' component={HomeScreen} exact />
+                <Route
+                  path='/search/:keyword/page/:pageNumber'
+                  component={ProfileScreen}
+                  exact
+                />
+                <Route path='/' component={ProfileScreen} exact />
+                <Route path='/home' component={ProfileScreen} exact />
+              </Container>
+            </main>
+          <SellerAdminFooter />
+        </Router>
         </>
-      }
+    ) : (
+      <>
+      <Router>
+        <Header />
+          <main className='main-layout'>
+            <Container>
+              <Route path='/input-location' component={LocationScreen} />
+              <Route path='/order/:id' component={OrderScreen} />
+              <Route path='/shipping' component={ShippingScreen} />
+              <Route path='/payment' component={PaymentScreen} />
+              <Route path='/placeorder' component={PlaceOrderScreen} />
+              <Route path='/login' component={LoginScreen} />
+              <Route path='/register' component={RegisterScreen} />
+              <Route path='/partner-with-us' component={PartnerScreen} />
+              <Route path='/about-us' component={AboutScreen} />
+              <Route path='/profile' component={ProfileScreen} />
+              <Route path='/restaurant/:id' component={RestaurantScreen} />
+              <Route path='/product-screen' component={ProductScreen} />
+              <Route path='/food' component={FoodDeliveryScreen} />
+              <Route path='/cart/:id?' component={CartScreen} />
+              <Route path='/forgot-password' component={ForgotPassword} />
+              <Route path='/search/:keyword' component={HomeScreen} exact />
+              <Route path='/page/:pageNumber' component={HomeScreen} exact />
+              <Route
+                path='/search/:keyword/page/:pageNumber'
+                component={HomeScreen}
+                exact
+              />
+              <Route path='/' component={HomeScreen} exact />
+              <Route path='/home' component={HomeScreen} exact />
+            </Container>
+          </main>
+        <Footer />
+      </Router>
+       </>
+    )
+    )}
     </>
   )
 }

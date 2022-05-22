@@ -45,10 +45,6 @@ const HomeScreen = ({ match }) => {
         <>
           
           <section id="home-restaurants" className="home-restaurants">
-            <div className='user-location-input'>
-              <h1>Delivering to <span className='user-location-input__location'>{sessionStorage.getItem('user_location')}</span></h1>
-              <a href='/input-location'>Change location</a>
-            </div>
             <div className="home-restaurants__container">
               {restaurants.map((restaurant) => (
                 <RestaurantCard restaurant={restaurant} key={restaurant._id} />

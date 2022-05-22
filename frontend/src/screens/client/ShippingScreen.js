@@ -10,9 +10,9 @@ const ShippingScreen = ({ history }) => {
   const { shippingAddress } = cart
 
   const [address, setAddress] = useState(shippingAddress.address)
-  const [city, setCity] = useState(shippingAddress.city)
+  const [city, setCity] = useState('Davao City')
   const [postalCode, setPostalCode] = useState(shippingAddress.postalCode)
-  const [country, setCountry] = useState(shippingAddress.country)
+  const [country, setCountry] = useState('Philippines')
 
   const dispatch = useDispatch()
 
@@ -44,6 +44,7 @@ const ShippingScreen = ({ history }) => {
             type='text'
             placeholder='Enter city'
             value={city}
+            disabled
             required
             onChange={(e) => setCity(e.target.value)}
           ></Form.Control>
@@ -66,6 +67,7 @@ const ShippingScreen = ({ history }) => {
             type='text'
             placeholder='Enter country'
             value={country}
+            disabled
             required
             onChange={(e) => setCountry(e.target.value)}
           ></Form.Control>

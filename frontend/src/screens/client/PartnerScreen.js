@@ -17,7 +17,7 @@ const PartnerScreen = ({ location, history }) => {
     const [email, setEmail] = useState('')
     const [phone, setPhone] = useState('')
     const [restaurantName, setRestaurantName] = useState('')
-    const [city, setCity] = useState('')
+    const [city, setCity] = useState('Davao City')
     const [lon, setLon] = useState('')
     const [lat, setLat] = useState('')
     const [street, setStreet] = useState('')
@@ -61,25 +61,17 @@ const PartnerScreen = ({ location, history }) => {
 
     const submitHandler = (e) => {
         e.preventDefault()
-        if (password !== confirmPassword) {
-            setMessage('Passwords do not match')
-        } else {
-            dispatch(login(email, password))
-            dispatch(createRestaurant({
-                userID,
-                restaurantName,
-                city,
-                street,
-                barangay,
-                zipCode,
-                lon,
-                lat
-            }))
-            if(!window.location.hash) {
-                window.location = window.location + '#loaded';
-                window.location.reload();
-            }
-        }
+        dispatch(createRestaurant({
+            userID,
+            restaurantName,
+            city,
+            street,
+            barangay,
+            zipCode,
+            lon,
+            lat
+        }))
+        window.location.reload();
     }
 
     return (
@@ -200,6 +192,7 @@ const PartnerScreen = ({ location, history }) => {
                                     <Form.Group controlId='name'>
                                         <Form.Label>Name</Form.Label>
                                         <Form.Control
+                                        disabled
                                         type='name'
                                         placeholder='Enter name'
                                         value={name}
@@ -210,6 +203,7 @@ const PartnerScreen = ({ location, history }) => {
                                     <Form.Group controlId='email'>
                                         <Form.Label>Email Address</Form.Label>
                                         <Form.Control
+                                        disabled
                                         type='email'
                                         placeholder='Enter email'
                                         value={email}
@@ -220,6 +214,7 @@ const PartnerScreen = ({ location, history }) => {
                                     <Form.Group controlId='phone'>
                                     <Form.Label>Phone number</Form.Label>
                                     <Form.Control
+                                        disabled
                                         type='number'
                                         placeholder='Enter phone'
                                         value={phone}
@@ -234,6 +229,7 @@ const PartnerScreen = ({ location, history }) => {
                                         type='text'
                                         placeholder='Enter restaurant name'
                                         value={restaurantName}
+                                        required
                                         onChange={(e) => setRestaurantName(e.target.value)}
                                     ></Form.Control>
                                     </Form.Group>
@@ -246,6 +242,7 @@ const PartnerScreen = ({ location, history }) => {
                                             type='text'
                                             placeholder='Enter restaurant city'
                                             value={city}
+                                            disabled
                                             onChange={(e) => setCity(e.target.value)}
                                         ></Form.Control>
                                         </Form.Group>
@@ -256,6 +253,7 @@ const PartnerScreen = ({ location, history }) => {
                                             type='text'
                                             placeholder='Enter restaurant street'
                                             value={street}
+                                            required
                                             onChange={(e) => setStreet(e.target.value)}
                                         ></Form.Control>
                                         </Form.Group>
@@ -266,6 +264,7 @@ const PartnerScreen = ({ location, history }) => {
                                             type='text'
                                             placeholder='Enter restaurant barangay'
                                             value={barangay}
+                                            required
                                             onChange={(e) => setBarangay(e.target.value)}
                                         ></Form.Control>
                                         </Form.Group>
@@ -276,6 +275,7 @@ const PartnerScreen = ({ location, history }) => {
                                             type='text'
                                             placeholder='Enter restaurant zip/postal code'
                                             value={zipCode}
+                                            required
                                             onChange={(e) => setZipCode(e.target.value)}
                                         ></Form.Control>
                                         </Form.Group> 
@@ -283,7 +283,7 @@ const PartnerScreen = ({ location, history }) => {
                                     
                                     <div className='partner-screen-form__address_lat-lon'>
                                         <Form.Group controlId='lon'>
-                                        <Form.Label>Longtitude (from google maps)</Form.Label>
+                                        <Form.Label>Longtitude (optional)</Form.Label>
                                         <Form.Control
                                             type='text'
                                             placeholder='Enter restaurant longtitude'
@@ -293,7 +293,7 @@ const PartnerScreen = ({ location, history }) => {
                                         </Form.Group>
 
                                         <Form.Group controlId='lat'>
-                                        <Form.Label>Latitude (from google maps)</Form.Label>
+                                        <Form.Label>Latitude (optional)</Form.Label>
                                         <Form.Control
                                             type='text'
                                             placeholder='Enter restaurant latitude'
@@ -303,26 +303,6 @@ const PartnerScreen = ({ location, history }) => {
                                         </Form.Group>
                                     </div>
                                     </div>
-
-                                    <Form.Group controlId='password'>
-                                    <Form.Label>Password</Form.Label>
-                                    <Form.Control
-                                        type='password'
-                                        placeholder='Enter password'
-                                        value={password}
-                                        onChange={(e) => setPassword(e.target.value)}
-                                    ></Form.Control>
-                                    </Form.Group>
-
-                                    <Form.Group controlId='confirmPassword'>
-                                    <Form.Label>Confirm Password</Form.Label>
-                                    <Form.Control
-                                        type='password'
-                                        placeholder='Confirm password'
-                                        value={confirmPassword}
-                                        onChange={(e) => setConfirmPassword(e.target.value)}
-                                    ></Form.Control>
-                                    </Form.Group>
 
                                     <button
                                         type="submit"

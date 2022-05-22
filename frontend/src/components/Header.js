@@ -42,23 +42,31 @@ const Header = ({ history }) => {
           </LinkContainer>
           <Navbar.Toggle aria-controls='basic-navbar-nav' />
           <Navbar.Collapse id='basic-navbar-nav'>
-            <Route render={({ history }) => <SearchBox history={history} />} />
+            {userInfo && !userInfo.isSeller && !userInfo.isAdmin && (
+                <Route render={({ history }) => <SearchBox history={history} />} />
+              )}
             <Nav className='ml-auto'>
-              <LinkContainer to='/food'>
-                <Nav.Link className='header-nav__links'>
-                  <i className='fas fa-utensils'></i> Browse
-                </Nav.Link>
-              </LinkContainer>
-              <LinkContainer to='/partner-with-us'>
-                <Nav.Link className='header-nav__links'>
-                  <i className='fas fa-hands-helping'></i> Partner with Us
-                </Nav.Link>
-              </LinkContainer>
-              <LinkContainer to='/cart'>
-                <Nav.Link className='header-nav__links'>
-                  <i className='fas fa-shopping-cart'></i> Cart
-                </Nav.Link>
-              </LinkContainer>
+              {userInfo && (
+                !userInfo && !userInfo.isSeller && !userInfo.isAdmin && (
+                  <>
+                    <LinkContainer to='/food'>
+                      <Nav.Link className='header-nav__links'>
+                        <i className='fas fa-utensils'></i> Browse
+                      </Nav.Link>
+                    </LinkContainer>
+                    <LinkContainer to='/partner-with-us'>
+                      <Nav.Link className='header-nav__links'>
+                        <i className='fas fa-hands-helping'></i> Partner with Us
+                      </Nav.Link>
+                    </LinkContainer>
+                    <LinkContainer to='/cart'>
+                      <Nav.Link className='header-nav__links'>
+                        <i className='fas fa-shopping-cart'></i> Cart
+                      </Nav.Link>
+                    </LinkContainer>
+                  </>
+                )
+              )}
               {userInfo ? (
                 <NavDropdown title={userInfo.name} id='username'>
                   <LinkContainer to='/profile'>
@@ -79,12 +87,6 @@ const Header = ({ history }) => {
                 <NavDropdown title='Admin' id='adminmenu'>
                   <LinkContainer to='/admin/userlist'>
                     <NavDropdown.Item>Users</NavDropdown.Item>
-                  </LinkContainer>
-                  <LinkContainer to='/admin/productlist'>
-                    <NavDropdown.Item>Products</NavDropdown.Item>
-                  </LinkContainer>
-                  <LinkContainer to='/admin/orderlist'>
-                    <NavDropdown.Item>Orders</NavDropdown.Item>
                   </LinkContainer>
                 </NavDropdown>
               )}

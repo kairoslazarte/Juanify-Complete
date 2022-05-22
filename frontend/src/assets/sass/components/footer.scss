@@ -1,5 +1,7 @@
 .footer-main {
-    @apply bg-blue-400;
+    box-shadow: 0px 0 10px  rgba(0, 0, 0, 0.1);
+    border-top: 1px solid #0547FC !important;
+    @apply bg-white mt-10;
 
     .footer-position {
         @apply max-w-7xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8;
@@ -11,13 +13,21 @@
         @apply px-5 py-2;
     }
     .footer-nav-links {
-        @apply text-base text-white hover:text-red-400;
+        @apply text-base text-gray-900 hover:no-underline font-medium;
+
+        &:hover {
+            color: red;
+        }
     }
     .footer-nav-contents {
         @apply mt-8 flex justify-center space-x-6;
     }
     .footer-nav-anchor {
-        @apply text-white hover:text-gray-500;
+        @apply text-gray-900 hover:text-blue-700;
+
+        &:hover {
+            color: blue;
+        }
     }
     .footer-nav-span {
         @apply sr-only;
@@ -26,6 +36,6 @@
         @apply h-6 w-6;
     }
     .footer-nav-p {
-        @apply mt-8 text-center text-base text-white;
+        @apply mt-8 text-center text-base text-gray-900;
     }
 }

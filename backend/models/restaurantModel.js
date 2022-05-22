@@ -55,11 +55,9 @@ const locationSchema = mongoose.Schema(
     },
     long: {
       type: Number,
-      required: true,
     },
     lat: {
       type: Number,
-      required: true,
     },
     street: {
       type: String,

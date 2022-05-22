@@ -81,6 +81,13 @@ const OrderScreen = ({ match, history }) => {
     dispatch(payOrder(orderId, paymentResult))
   }
 
+  window.setInterval(function(){
+      if(localStorage["update"] == "1"){
+          localStorage["update"] = "0"
+          window.location.reload()
+      }
+  }, 500);
+
   return loading ? (
     <Loader />
   ) : error ? (
@@ -89,7 +96,7 @@ const OrderScreen = ({ match, history }) => {
     <>
       <h1>Order {order._id}</h1>
       <Row>
-        <Col md={8}>
+        <Col md={8} className='order-details__container'>
           <ListGroup variant='flush'>
             <ListGroup.Item>
               <h2>Shipping</h2>
@@ -113,7 +120,7 @@ const OrderScreen = ({ match, history }) => {
               ) : order.isOnTheWay ? (
                 <Message variant='warning'>Your order is on the way</Message>
               ) : order.isOnTheKitchen ? (
-                  <Message variant='info'>Order is in the kitchen</Message>
+                  <Message variant='info'>Your order is in the kitchen</Message>
               ) : (
                   <Message variant='warning'>Order recieved</Message>
               )}
@@ -123,17 +130,17 @@ const OrderScreen = ({ match, history }) => {
               <h2>Payment Method</h2>
               <p>
                 <strong>Method: </strong>
-                {order.paymentMethod}
+                {order.paymentMethod == 'COD' ? 'Cash on Delivery' : 'PayPal'}
               </p>
               {order.isPaid ? (
                 <Message variant='success'>Paid on {order.paidAt}</Message>
               ) : (
-                <Message variant='danger'>Not Paid</Message>
+                <Message variant='danger'>Not yet paid</Message>
               )}
             </ListGroup.Item>
 
             <ListGroup.Item>
-              <h2>Order Items</h2>
+              <h2>Order Items at {order.restaurantName}</h2>
               {order.orderItems.length === 0 ? (
                 <Message>Order is empty</Message>
               ) : (
@@ -166,7 +173,7 @@ const OrderScreen = ({ match, history }) => {
           </ListGroup>
         </Col>
         <Col md={4}>
-          <Card>
+          <Card className='order-summary__card'>
             <ListGroup variant='flush'>
               <ListGroup.Item>
                 <h2>Order Summary</h2>
@@ -183,19 +190,20 @@ const OrderScreen = ({ match, history }) => {
                   <Col>{order.shippingPrice}php</Col>
                 </Row>
               </ListGroup.Item>
-              <ListGroup.Item>
+              {/* <ListGroup.Item>
                 <Row>
                   <Col>Tax</Col>
                   <Col>{order.taxPrice}php</Col>
                 </Row>
-              </ListGroup.Item>
+              </ListGroup.Item> */}
               <ListGroup.Item>
                 <Row>
                   <Col>Total</Col>
                   <Col>{order.totalPrice}php</Col>
                 </Row>
               </ListGroup.Item>
-              {!order.isPaid && (
+              {!order.isPaid &&  
+              order.paymentMethod != 'COD' && (
                 <ListGroup.Item>
                   {loadingPay && <Loader />}
                   {!sdkReady ? (

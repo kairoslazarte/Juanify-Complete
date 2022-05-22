@@ -29,7 +29,7 @@ const PaymentScreen = ({ history }) => {
       <h1>Payment Method</h1>
       <Form onSubmit={submitHandler}>
         <Form.Group>
-          <Form.Label as='legend'>Select Method</Form.Label>
+          <Form.Label as='legend' className='payment-method__label'>Select Method</Form.Label>
           <Col>
             <Form.Check
               type='radio'
@@ -40,14 +40,15 @@ const PaymentScreen = ({ history }) => {
               checked
               onChange={(e) => setPaymentMethod(e.target.value)}
             ></Form.Check>
-            {/* <Form.Check
+            <Form.Check
               type='radio'
-              label='Stripe'
-              id='Stripe'
+              className='payment-method__cod'
+              label='Cash on Delivery'
+              id='cod'
               name='paymentMethod'
-              value='Stripe'
+              value='COD'
               onChange={(e) => setPaymentMethod(e.target.value)}
-            ></Form.Check> */}
+            ></Form.Check>
           </Col>
         </Form.Group>
 

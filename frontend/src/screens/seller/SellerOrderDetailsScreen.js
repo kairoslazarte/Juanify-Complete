@@ -114,8 +114,10 @@ const SellerOrderDetailsScreen = ({ match, history, location }) => {
         dispatch(completeOrder(order))
     }
 
+    localStorage.setItem("update", "0");
     const updateOrderStatusHandler = (orderStatus) => {
         dispatch(updateStatus(order, {orderStatus}))
+        localStorage.setItem("update", "1");
         window.location.reload()
     }
     
@@ -127,7 +129,7 @@ const SellerOrderDetailsScreen = ({ match, history, location }) => {
         <div className='order-details'>
             <h1>Order {order._id}</h1>
             <Row>
-                <Col md={8}>
+                <Col md={8} className="order-details__container">
                 <ListGroup variant='flush'>
                     <ListGroup.Item>
                     <h2>Shipping</h2>
@@ -153,7 +155,7 @@ const SellerOrderDetailsScreen = ({ match, history, location }) => {
                     ) : order.isOnTheKitchen ? (
                         <Message variant='info'>Order is in the kitchen</Message>
                     ) : order.isOnTheWay ? (
-                        <Message variant='warning'>Your order is on the way</Message>
+                        <Message variant='warning'>Order is on the way</Message>
                     ) : (
                         <Message variant='success'>
                         Order is Complete. Delivered on {order.deliveredAt}
@@ -165,12 +167,12 @@ const SellerOrderDetailsScreen = ({ match, history, location }) => {
                     <h2>Payment Method</h2>
                     <p>
                         <strong>Method: </strong>
-                        {order.paymentMethod}
+                        {order.paymentMethod == 'COD' ? 'Cash on Delivery' : 'PayPal'}
                     </p>
                     {order.isPaid ? (
                         <Message variant='success'>Paid on {order.paidAt}</Message>
                     ) : (
-                        <Message variant='danger'>Not Paid</Message>
+                        <Message variant='danger'>Not yet paid</Message>
                     )}
                     </ListGroup.Item>
 
@@ -208,7 +210,7 @@ const SellerOrderDetailsScreen = ({ match, history, location }) => {
                 </ListGroup>
                 </Col>
                 <Col md={4}>
-                <Card>
+                <Card className="order-summary__card">
                     <ListGroup variant='flush'>
                     <ListGroup.Item>
                         <h2>Order Summary</h2>
@@ -225,12 +227,12 @@ const SellerOrderDetailsScreen = ({ match, history, location }) => {
                         <Col>{order.shippingPrice}php</Col>
                         </Row>
                     </ListGroup.Item>
-                    <ListGroup.Item>
+                    {/* <ListGroup.Item>
                         <Row>
                         <Col>Tax</Col>
                         <Col>{order.taxPrice}php</Col>
                         </Row>
-                    </ListGroup.Item>
+                    </ListGroup.Item> */}
                     <ListGroup.Item>
                         <Row>
                         <Col>Total</Col>
@@ -242,8 +244,7 @@ const SellerOrderDetailsScreen = ({ match, history, location }) => {
                         !order.isComplete ? (
                             <>
                                {userInfo &&
-                                   userInfo.isSeller &&
-                                   !order.isPaid && (
+                                   userInfo.isSeller && (
                                     <>
                                         <h4 className='order-details__status--label'>Update order status:</h4>
                                         <ListGroup.Item>
@@ -258,8 +259,7 @@ const SellerOrderDetailsScreen = ({ match, history, location }) => {
                                     </>
                                )}
                                 {userInfo &&
-                                   userInfo.isSeller &&
-                                   !order.isPaid && (
+                                   userInfo.isSeller && (
                                    <ListGroup.Item>
                                        <Button
                                        type='button'
@@ -271,8 +271,7 @@ const SellerOrderDetailsScreen = ({ match, history, location }) => {
                                    </ListGroup.Item>
                                )}
                                 {userInfo &&
-                                   userInfo.isSeller &&
-                                   !order.isPaid && (
+                                   userInfo.isSeller && (
                                    <ListGroup.Item>
                                        <Button
                                        type='button'
@@ -284,8 +283,7 @@ const SellerOrderDetailsScreen = ({ match, history, location }) => {
                                    </ListGroup.Item>
                                )}
                                 {userInfo &&
-                                   userInfo.isSeller &&
-                                   !order.isPaid && (
+                                   userInfo.isSeller && (
                                    <ListGroup.Item>
                                        <Button
                                        type='button'
@@ -299,8 +297,8 @@ const SellerOrderDetailsScreen = ({ match, history, location }) => {
    
                               
                                {userInfo &&
-                                   userInfo.isSeller &&
-                                   !order.isPaid && (
+                                   userInfo.isSeller && 
+                                    !order.isPaid && (
                                     <>
                                         <h4 className='order-details__status--label'>Payment status:</h4>
                                         <ListGroup.Item>

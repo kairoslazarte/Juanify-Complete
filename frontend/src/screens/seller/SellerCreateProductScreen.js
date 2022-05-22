@@ -61,7 +61,7 @@ const SellerCreateProductScreen = ({history}) => {
         <Link to='/partner/products' className='btn btn-light my-3'>
             Go Back
         </Link>
-        <FormContainer>
+        <FormContainer className='seller-create-product'>
             <h1>Create new product</h1>
             <Form onSubmit={submitHandler}>
                 <Form.Group controlId='name'>

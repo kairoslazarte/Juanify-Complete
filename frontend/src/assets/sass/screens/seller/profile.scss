@@ -3,6 +3,10 @@
         @apply pb-5;
     }
 
+    input {
+        @apply block w-full shadow-sm py-3 px-4 focus:border-indigo-500 border border-gray-200 rounded-md;
+    }
+
     .seller-profile-form__address {
         @apply py-2;
 

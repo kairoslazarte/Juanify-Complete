@@ -94,7 +94,7 @@ const SellerProfileScreen = ({ history }) => {
 
     return (
         <div className='seller-profile'>
-            <h2>SEE/UPDATE YOUR DETAILS</h2>
+            <h2>RESTAURANT PROFILE</h2>
             {message && <Message variant='danger'>{message}</Message>}
             {}
             {success && <Message variant='success'>Profile Updated</Message>}
