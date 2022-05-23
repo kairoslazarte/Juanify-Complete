@@ -37,6 +37,7 @@ import UserListScreen from './screens/UserListScreen'
 import UserEditScreen from './screens/UserEditScreen'
 import ForgotPassword from './screens/client/ForgotPassword'
 import SellerAdminFooter from './components/SellerAdminFooter'
+import AdminHeader from './components/AdminHeader'
 
 var today = new Date()
 var currDate = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate()
@@ -148,10 +149,10 @@ const App = () => {
        </Router>
      </>
     ) : (
-      userInfo.isSeller ? (
+      userInfo.isSeller == true ? (
         <>
         <Router>
-          <Header />
+          <SellerHeader />
             <main className='main-layout'>
               <Container>
                 <Route path='/partner/order/:id' component={SellerOrderDetailsScreen} />
@@ -178,10 +179,10 @@ const App = () => {
           <SellerAdminFooter />
         </Router>
         </>
-      ) : userInfo.isAdmin ? (
+      ) : userInfo.isAdmin == true ? (
         <>
         <Router>
-          <Header />
+          <AdminHeader />
             <main className='main-layout'>
               <Container>
                 <Route path='/login' component={LoginScreen} />

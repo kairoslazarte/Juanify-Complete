@@ -9,7 +9,7 @@ import { getRestaurantProfile } from '../actions/userActions'
 import juan_icon from '../assets/img/icons/juan-nav.png'
 
 
-const Header = ({ history }) => {
+const SellerHeader = ({ history }) => {
   const [restaurantName, setRestaurantName] = useState('')
   const dispatch = useDispatch()
 
@@ -42,46 +42,17 @@ const Header = ({ history }) => {
           </LinkContainer>
           <Navbar.Toggle aria-controls='basic-navbar-nav' />
           <Navbar.Collapse id='basic-navbar-nav'>
-            <Route render={({ history }) => <SearchBox history={history} />} />
             <Nav className='ml-auto'>
-              <LinkContainer to='/food'>
+                <LinkContainer to='/profile'>
                 <Nav.Link className='header-nav__links'>
-                  <i className='fas fa-utensils'></i> Browse
+                  <i className='fas fa-user'></i> Profile
                 </Nav.Link>
               </LinkContainer>
-              <LinkContainer to='/partner-with-us'>
+              <div onClick={logoutHandler}>
                 <Nav.Link className='header-nav__links'>
-                  <i className='fas fa-hands-helping'></i> Partner with Us
+                  <i className='fas fa-right-from-bracket'></i> Logout
                 </Nav.Link>
-              </LinkContainer>
-              <LinkContainer to='/cart'>
-                <Nav.Link className='header-nav__links'>
-                  <i className='fas fa-shopping-cart'></i> Cart
-                </Nav.Link>
-              </LinkContainer>
-              {userInfo ? (
-                <NavDropdown title={userInfo.name} id='username'>
-                  <LinkContainer to='/profile'>
-                    <NavDropdown.Item>Profile</NavDropdown.Item>
-                  </LinkContainer>
-                  <NavDropdown.Item onClick={logoutHandler}>
-                    Logout
-                  </NavDropdown.Item>
-                </NavDropdown>
-              ) : (
-                <LinkContainer to='/login'>
-                  <Nav.Link className='header-nav__links'>
-                    <i className='fas fa-user'></i> Sign In
-                  </Nav.Link>
-                </LinkContainer>
-              )}
-              {userInfo && userInfo.isAdmin && (
-                <NavDropdown title='Admin' id='adminmenu'>
-                  <LinkContainer to='/admin/userlist'>
-                    <NavDropdown.Item>Users</NavDropdown.Item>
-                  </LinkContainer>
-                </NavDropdown>
-              )}
+              </div>
               {userInfo && userInfo.isSeller && (
                 <NavDropdown title={restaurantName} id='sellermenu'>
                   <LinkContainer to='/partner/profile'>
@@ -103,4 +74,4 @@ const Header = ({ history }) => {
   )
 }
 
-export default Header
+export default SellerHeader
