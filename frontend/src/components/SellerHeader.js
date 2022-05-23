@@ -44,28 +44,28 @@ const SellerHeader = ({ history }) => {
           <Navbar.Collapse id='basic-navbar-nav'>
             <Nav className='ml-auto'>
                 <LinkContainer to='/profile'>
-                <Nav.Link className='header-nav__links'>
-                  <i className='fas fa-user'></i> Profile
-                </Nav.Link>
-              </LinkContainer>
-              <div onClick={logoutHandler}>
-                <Nav.Link className='header-nav__links'>
-                  <i className='fas fa-right-from-bracket'></i> Logout
-                </Nav.Link>
-              </div>
-              {userInfo && userInfo.isSeller && (
-                <NavDropdown title={restaurantName} id='sellermenu'>
-                  <LinkContainer to='/partner/profile'>
-                    <NavDropdown.Item>Profile</NavDropdown.Item>
-                  </LinkContainer>
-                  <LinkContainer to='/partner/products'>
-                    <NavDropdown.Item>Products</NavDropdown.Item>
-                  </LinkContainer>
-                  <LinkContainer to='/partner/orderlist'>
-                    <NavDropdown.Item>Orders</NavDropdown.Item>
-                  </LinkContainer>
-                </NavDropdown>
-              )}
+                    <Nav.Link className='header-nav__links'>
+                    <i className='fas fa-user'></i> Profile
+                    </Nav.Link>
+                </LinkContainer>
+                {userInfo && userInfo.isSeller && (
+                    <NavDropdown title={restaurantName} id='sellermenu'>
+                    <LinkContainer to='/partner/profile'>
+                        <NavDropdown.Item>Profile</NavDropdown.Item>
+                    </LinkContainer>
+                    <LinkContainer to='/partner/products'>
+                        <NavDropdown.Item>Products</NavDropdown.Item>
+                    </LinkContainer>
+                    <LinkContainer to='/partner/orderlist'>
+                        <NavDropdown.Item>Orders</NavDropdown.Item>
+                    </LinkContainer>
+                    </NavDropdown>
+                )}
+                <div onClick={logoutHandler}>
+                    <Nav.Link className='header-nav__links'>
+                    <i className='fas fa-right-from-bracket'></i> Logout
+                    </Nav.Link>
+                </div>
             </Nav>
           </Navbar.Collapse>
         </Container>
