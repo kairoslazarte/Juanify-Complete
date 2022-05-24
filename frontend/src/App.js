@@ -152,7 +152,7 @@ const App = () => {
       userInfo.isSeller == true ? (
         <>
         <Router>
-          <SellerHeader />
+          <Header />
             <main className='main-layout'>
               <Container>
                 <Route path='/partner/order/:id' component={SellerOrderDetailsScreen} />
@@ -182,7 +182,7 @@ const App = () => {
       ) : userInfo.isAdmin == true ? (
         <>
         <Router>
-          <AdminHeader />
+          <Header />
             <main className='main-layout'>
               <Container>
                 <Route path='/login' component={LoginScreen} />
