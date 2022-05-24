@@ -15,7 +15,9 @@ module.exports = {
     colors: {
       transparent: 'transparent',
       current: 'currentColor',
-
+      'juanify-yellow': '#FDEF03',
+      'juanify-red': '#FB0508',
+      'juanify-blue': '#0547FC',
       black: colors.black,
       white: colors.white,
       gray: colors.coolGray,

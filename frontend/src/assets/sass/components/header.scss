@@ -1,7 +1,6 @@
 .header {
     z-index: 99;
-    border-bottom: 1px solid #FDEF03 !important;
-    @apply shadow fixed top-0 w-full bg-white;
+    @apply shadow fixed top-0 w-full bg-blue-400;
     
     .header__nav{
         @apply ml-auto;
@@ -16,16 +15,16 @@
     }
     
     .header-nav__links, .nav-link {
-        color: #000 !important;
+        font-weight: bolder !important;
+        color: #fff !important;
 
         &:hover {
-            color: red !important;
+            color: #FB0508 !important;
         }
     }
 
     .active {
-        color: blue !important;
-        background-color: white !important;
+        color: #FDEF03 !important;
     }
 
     .header__search-box {

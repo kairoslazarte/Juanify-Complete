@@ -15,6 +15,8 @@ const ProductCarousel = () => {
   const restaurantTopRated = useSelector((state) => state.restaurantTopRated)
   const { loading, error, restaurants } = restaurantTopRated
 
+  console.log(restaurants)
+
   useEffect(() => {
     dispatch(listTopRestaurants())
   }, [dispatch])
