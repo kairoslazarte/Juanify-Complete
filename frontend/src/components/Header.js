@@ -38,7 +38,7 @@ const Header = ({ history }) => {
             <Container className='.header__nav--container-desktop '>
               <LinkContainer to='/'>
                 <Navbar.Brand>
-                  <Image src={juan_icon} height="40" />
+                  <Image src={juan_icon} height="40" width="129" />
                 </Navbar.Brand>
               </LinkContainer>
               <Navbar.Toggle aria-controls='basic-navbar-nav' />
@@ -47,7 +47,7 @@ const Header = ({ history }) => {
                 <Nav className='ml-auto'>
                   <LinkContainer to='/food'>
                     <Nav.Link className='header-nav__links'>
-                      <i className='fas fa-utensils'></i> Browse
+                      <i className='fas fa-utensils'></i> Restaurants
                     </Nav.Link>
                   </LinkContainer>
                   <LinkContainer to='/partner-with-us'>
@@ -86,7 +86,7 @@ const Header = ({ history }) => {
             <Container className='.header__nav--container-desktop '>
               <LinkContainer to='/'>
                 <Navbar.Brand>
-                  <Image src={juan_icon} height="40" />
+                  <Image src={juan_icon} height="40" width="129" />
                 </Navbar.Brand>
               </LinkContainer>
               <Navbar.Toggle aria-controls='basic-navbar-nav' />
@@ -124,7 +124,7 @@ const Header = ({ history }) => {
             <Container className='.header__nav--container-desktop '>
               <LinkContainer to='/'>
                 <Navbar.Brand>
-                  <Image src={juan_icon} height="40" />
+                  <Image src={juan_icon} height="40" width="129" />
                 </Navbar.Brand>
               </LinkContainer>
               <Navbar.Toggle aria-controls='basic-navbar-nav' />
@@ -154,7 +154,7 @@ const Header = ({ history }) => {
             <Container className='.header__nav--container-desktop '>
               <LinkContainer to='/'>
                 <Navbar.Brand>
-                  <Image src={juan_icon} height="40" />
+                  <Image src={juan_icon} height="40" width="129" />
                 </Navbar.Brand>
               </LinkContainer>
               <Navbar.Toggle aria-controls='basic-navbar-nav' />
@@ -163,7 +163,7 @@ const Header = ({ history }) => {
                 <Nav className='ml-auto'>
                   <LinkContainer to='/food'>
                     <Nav.Link className='header-nav__links'>
-                      <i className='fas fa-utensils'></i> Browse
+                      <i className='fas fa-utensils'></i> Restaurants
                     </Nav.Link>
                   </LinkContainer>
                   <LinkContainer to='/partner-with-us'>

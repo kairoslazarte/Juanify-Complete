@@ -20,7 +20,7 @@ const SellerOrderlistScreen = ({history}) => {
     }, [dispatch, history, userInfo])
   
     return (
-      <>
+      <div className='container pt-10'>
         <h1>Orders</h1>
         {loading ? (
           <Loader />
@@ -72,7 +72,7 @@ const SellerOrderlistScreen = ({history}) => {
             </tbody>
           </Table>
         )}
-      </>
+      </div>
     )
 }
 

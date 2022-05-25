@@ -1,6 +1,6 @@
 .header {
     z-index: 99;
-    @apply shadow fixed top-0 w-full bg-blue-400;
+    @apply shadow fixed top-0 w-full bg-white border-b border-gray-200 opacity-95;
     
     .header__nav{
         @apply ml-auto;
@@ -15,16 +15,18 @@
     }
     
     .header-nav__links, .nav-link {
+        @apply transition duration-200;
         font-weight: bolder !important;
-        color: #fff !important;
+        color: #000 !important;
 
         &:hover {
-            color: #FB0508 !important;
+            color: #0547FC !important;
         }
     }
 
     .active {
-        color: #FDEF03 !important;
+        color: #FB0508 !important;
+        background-color: #fff !important;
     }
 
     .header__search-box {

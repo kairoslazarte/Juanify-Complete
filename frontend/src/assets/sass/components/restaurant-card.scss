@@ -1,9 +1,9 @@
 .restaurant-card {
-    @apply flex flex-col flex-1 justify-between shadow-lg rounded-lg hover:no-underline bg-white;
+    @apply flex flex-col flex-1 justify-between shadow-lg rounded-lg hover:no-underline bg-white transition duration-200 hover:scale-110 border-2 hover:border-red-500;
 
     .restaurant-card__img {
         img {
-            height: 200px;
+            height: 250px;
             @apply object-cover w-full rounded-t-lg;
         }
     }
@@ -11,9 +11,9 @@
     .restaurant-card__name {
         @apply pt-5 px-4;
 
-        h3 {
-            @apply text-lg sm:text-base font-bold;
-        }
+       p {
+           @apply font-bold text-xl;
+       }
     }
 
     .restaurant-card__location {
@@ -21,7 +21,15 @@
     }
 
     .restaurant-card__rating {
-        @apply pb-5 px-4 pt-1;
+        @apply pb-5 px-4 pt-1 flex items-center space-x-2;
+
+        p {
+            margin-bottom: 0 !important;
+        }
+
+        span {
+            @apply italic;
+        }
     }
 
     .restaurant-card__price {

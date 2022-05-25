@@ -37,7 +37,7 @@ import UserListScreen from './screens/UserListScreen'
 import UserEditScreen from './screens/UserEditScreen'
 import ForgotPassword from './screens/client/ForgotPassword'
 import SellerAdminFooter from './components/SellerAdminFooter'
-import AdminHeader from './components/AdminHeader'
+
 
 var today = new Date()
 var currDate = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate()
@@ -118,7 +118,6 @@ const App = () => {
        <Router>
          <Header />
            <main className='main-layout'>
-             <Container>
                <Route path='/input-location' component={LocationScreen} />
                <Route path='/order/:id' component={OrderScreen} />
                <Route path='/shipping' component={ShippingScreen} />
@@ -134,16 +133,15 @@ const App = () => {
                <Route path='/food' component={FoodDeliveryScreen} />
                <Route path='/cart/:id?' component={CartScreen} />
                <Route path='/forgot-password' component={ForgotPassword} />
-               <Route path='/search/:keyword' component={HomeScreen} exact />
-               <Route path='/page/:pageNumber' component={HomeScreen} exact />
+               <Route path='/search/:keyword' component={FoodDeliveryScreen} exact />
+               <Route path='/food/page/:pageNumber' component={FoodDeliveryScreen} exact />
                <Route
-                 path='/search/:keyword/page/:pageNumber'
-                 component={HomeScreen}
+                 path='/search/:keyword/food/page/:pageNumber'
+                 component={FoodDeliveryScreen}
                  exact
                />
                <Route path='/' component={HomeScreen} exact />
                <Route path='/home' component={HomeScreen} exact />
-             </Container>
            </main>
          <Footer />
        </Router>
@@ -154,7 +152,6 @@ const App = () => {
         <Router>
           <Header />
             <main className='main-layout'>
-              <Container>
                 <Route path='/partner/order/:id' component={SellerOrderDetailsScreen} />
                 <Route path='/profile' component={ProfileScreen} />
                 <Route path='/login' component={LoginScreen} />
@@ -174,7 +171,6 @@ const App = () => {
                 />
                 <Route path='/' component={SellerProfileScreen} exact />
                 <Route path='/home' component={SellerProfileScreen} exact />
-              </Container>
             </main>
           <SellerAdminFooter />
         </Router>
@@ -184,7 +180,6 @@ const App = () => {
         <Router>
           <Header />
             <main className='main-layout'>
-              <Container>
                 <Route path='/login' component={LoginScreen} />
                 <Route path='/register' component={RegisterScreen} />
                 <Route path='/profile' component={ProfileScreen} />
@@ -200,7 +195,6 @@ const App = () => {
                 />
                 <Route path='/' component={ProfileScreen} exact />
                 <Route path='/home' component={ProfileScreen} exact />
-              </Container>
             </main>
           <SellerAdminFooter />
         </Router>
@@ -210,7 +204,6 @@ const App = () => {
       <Router>
         <Header />
           <main className='main-layout'>
-            <Container>
               <Route path='/input-location' component={LocationScreen} />
               <Route path='/order/:id' component={OrderScreen} />
               <Route path='/shipping' component={ShippingScreen} />
@@ -235,7 +228,6 @@ const App = () => {
               />
               <Route path='/' component={HomeScreen} exact />
               <Route path='/home' component={HomeScreen} exact />
-            </Container>
           </main>
         <Footer />
       </Router>

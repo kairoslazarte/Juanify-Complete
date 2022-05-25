@@ -22,11 +22,6 @@ const getRestaurants = asyncHandler(async (req, res) => {
   const restaurants = await Restaurant.find({ ...keyword })
     .limit(pageSize)
     .skip(pageSize * (page - 1))
-  // restaurants.map((restaurant) => {
-  //   restaurant.products.map((product) => {
-  //     console.log(product.name)
-  //   })
-  // })
   res.json({ restaurants, page, pages: Math.ceil(count / pageSize) })
 })
 
@@ -91,7 +86,7 @@ const createRestaurant = asyncHandler(async (req, res) => {
 // @route   GET /api/restaurants/top
 // @access  Public
 const getTopRestaurants = asyncHandler(async (req, res) => {
-    const restaurants = await Restaurant.find({}).sort({ rating: -1 }).limit(3)
+    const restaurants = await Restaurant.find({}).sort({ rating: -1 }).limit(6)
   
     res.json(restaurants)
 })

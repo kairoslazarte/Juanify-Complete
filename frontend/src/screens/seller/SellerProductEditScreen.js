@@ -84,7 +84,7 @@ const SellerProductEditScreen = ({ match, history }) => {
         window.location.reload();
     }
     return (
-        <>
+        <div className='container pt-10'>
             <Link to='/partner/products' className='btn btn-light my-3'>
                 Go Back
             </Link>
@@ -161,7 +161,7 @@ const SellerProductEditScreen = ({ match, history }) => {
                     </Form>
                 )}
             </FormContainer>
-        </>
+        </div>
     )
 }
 

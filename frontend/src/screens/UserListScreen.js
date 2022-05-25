@@ -33,8 +33,8 @@ const UserListScreen = ({ history }) => {
   }
 
   return (
-    <>
-      <h1>Users</h1>
+    <div className='container pt-10'>
+      <h1 className='pb-5'>Users</h1>
       {loading ? (
         <Loader />
       ) : error ? (
@@ -81,7 +81,7 @@ const UserListScreen = ({ history }) => {
                     <i className='fas fa-times' style={{ color: 'red' }}></i>
                   )}
                 </td>
-                <td>
+                <td className='flex items-center space-x-2'>
                   <LinkContainer to={`/admin/user/${user._id}/edit`}>
                     <Button variant='light' className='btn-sm'>
                       <i className='fas fa-edit'></i>
@@ -100,7 +100,7 @@ const UserListScreen = ({ history }) => {
           </tbody>
         </Table>
       )}
-    </>
+    </div>
   )
 }
 

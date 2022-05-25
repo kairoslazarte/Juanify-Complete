@@ -51,7 +51,7 @@ const SellerProductsScreen = ({ history, match }) => {
   }
 
   return (
-    <>
+    <div className='container pt-10'>
       <Row className='align-items-center'>
         <Col>
           <h1>Products</h1>
@@ -92,7 +92,7 @@ const SellerProductsScreen = ({ history, match }) => {
                         <td>{product.category}</td>
                         <td>{product.price}</td>
                         <td>{product.countInStock}</td>
-                        <td>
+                        <td className='flex items-center space-x-2'>
                             <LinkContainer to={`/partner/product/${product._id}/edit`}>
                                 <Button variant='light' className='btn-sm'>
                                 <i className='fas fa-edit'></i>
@@ -113,7 +113,7 @@ const SellerProductsScreen = ({ history, match }) => {
           </Table>
         </>
       )}
-    </>
+    </div>
   )
 }
 

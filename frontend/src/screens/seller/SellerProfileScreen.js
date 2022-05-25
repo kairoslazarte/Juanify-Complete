@@ -93,7 +93,7 @@ const SellerProfileScreen = ({ history }) => {
     }
 
     return (
-        <div className='seller-profile'>
+        <div className='seller-profile container pt-10'>
             <h2>RESTAURANT PROFILE</h2>
             {message && <Message variant='danger'>{message}</Message>}
             {}

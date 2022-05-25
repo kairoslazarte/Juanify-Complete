@@ -57,7 +57,7 @@ const SellerCreateProductScreen = ({history}) => {
     }
 
     return ( 
-        <>
+        <div className='container pt-10'>
         <Link to='/partner/products' className='btn btn-light my-3'>
             Go Back
         </Link>
@@ -126,7 +126,7 @@ const SellerCreateProductScreen = ({history}) => {
                 </Button>
             </Form>
         </FormContainer>
-    </>
+    </div>
     )
 }
 

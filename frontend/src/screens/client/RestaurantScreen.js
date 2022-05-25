@@ -31,8 +31,6 @@ const RestaurantScreen = ({ history, match }) => {
         error: errorRestaurantReview,
     } = restaurantReviewCreate
 
-    console.log(restaurant)
-
     useEffect(() => {
         if (successRestaurantReview) {
             setRating(0)
@@ -73,8 +71,6 @@ const RestaurantScreen = ({ history, match }) => {
             product_category.push(i)
         }
     }
-
-    console.log(product_category)
 
     const addToCartHandler = (name, price, image, prod_id) => {
         console.log(prod_id)
@@ -117,17 +113,13 @@ const RestaurantScreen = ({ history, match }) => {
     }
 
     return (
-        <section className="restaurant">
+        <section className="restaurant container">
             <>
                 {restaurant ? (
                     <>
                         <div className='restaurant-heading'>
                             <div className='restaurant-heading__container'>
-                                <h1 className='restaurant-heading__head'>{restaurant.name} - {restaurant.location && (<>{restaurant.location.city}, {restaurant.location.barangay}</>)}</h1>
-                                <div className='user-location-input'>
-                                    <h1>Delivering to <span className='user-location-input__location'>{sessionStorage.getItem('user_location')}</span></h1>
-                                    <a href='/input-location'>Change location</a>
-                                </div>
+                                <h1 className='restaurant-heading__head'><span className='text-red-600'>{restaurant.name}</span> - {restaurant.location && (<>{restaurant.location.city}, {restaurant.location.barangay}</>)}</h1>
                                 {/* <div className='restaurant-categories'>
                                     <div className='restaurant-categories__container'>
                                         {product_category.map((prod_cat) => (
@@ -139,23 +131,20 @@ const RestaurantScreen = ({ history, match }) => {
                         </div>
                         <div className="restaurant-product__container">
                             {products.map((product) => (
-                                <div className="restaurant-product">
+                                <div className="restaurant-product" onClick={() => addToCartHandler(product.name, product.price, product.image, product._id)}>
                                     <div className="restaurant-product__img">
                                         <img src={product.image} />
                                     </div>
-                                    <div className="restaurant-product__name">
-                                        <h3>{product.name}</h3>
-                                    </div>
-                                    <div className="restaurant-product__rating">
-                                        <p>{product.price} php</p>
+                                    <div className="restaurant-product__details">
+                                        <p className='restaurant-product__name'>{product.name}</p>
+                                        <p className='restaurant-product__price'>{product.price} php</p>
                                     </div>
                                     <button
-                                    onClick={() => addToCartHandler(product.name, product.price, product.image, product._id)}
                                     className='restaurant-product__add-to-cart--btn'
                                     type='button'
                                     disabled={product.countInStock === 0}
                                     >
-                                        Add To Cart
+                                       <i className="fas fa-plus"></i>
                                     </button>
                                 </div>
                             ))}

@@ -69,6 +69,7 @@ const locationSchema = mongoose.Schema(
     },
     zipCode: {
       type: Number,
+      default: 8000,
       required: true
     }
   },

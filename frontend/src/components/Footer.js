@@ -14,7 +14,7 @@ import { Container, Row, Col } from 'react-bootstrap'
 // }
 const navigation = {
   main: [
-    { name: 'About Juanify', href: '/about-us' },
+    { name: 'About Juanify', href: '/#about-us' },
     { name: 'Partner with us', href: '/partner-with-us' },
     { name: 'Browse restaurants', href: '/food' }
   ],

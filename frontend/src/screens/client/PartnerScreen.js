@@ -22,7 +22,7 @@ const PartnerScreen = ({ location, history }) => {
     const [lat, setLat] = useState('')
     const [street, setStreet] = useState('')
     const [barangay, setBarangay] = useState('')
-    const [zipCode, setZipCode] = useState('')
+    const [zipCode, setZipCode] = useState(8000)
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
     const [message, setMessage] = useState(null)
@@ -75,7 +75,8 @@ const PartnerScreen = ({ location, history }) => {
     }
 
     return (
-        !userInfo 
+        <div className='pt-10'>
+            { !userInfo 
         ?
         <>
             {
@@ -93,7 +94,7 @@ const PartnerScreen = ({ location, history }) => {
                         <div className='partner-screen-col-one-size'>
                             <h2>Partner With Us</h2>
                             <p className='partner-screen-desc'>
-                            Fill out the form to be one of our merchants
+                                Fill out the form to be one of our merchants
                             </p>
                             <dl>
                             <div>
@@ -174,9 +175,9 @@ const PartnerScreen = ({ location, history }) => {
                                 )
                             ) : (
                                 <>
-                                    <h2>You already applied to partner with us.</h2>
+                                    <h2>Thank you for applying as our partner!</h2>
                                     <p className='partner-screen-desc'>
-                                        We already are reviewing your application. Thank you for your patience!
+                                        We are currently reviewing your application.
                                     </p>
                                 </>
                             )}
@@ -275,7 +276,7 @@ const PartnerScreen = ({ location, history }) => {
                                             type='text'
                                             placeholder='Enter restaurant zip/postal code'
                                             value={zipCode}
-                                            required
+                                            disabled
                                             onChange={(e) => setZipCode(e.target.value)}
                                         ></Form.Control>
                                         </Form.Group> 
@@ -316,6 +317,8 @@ const PartnerScreen = ({ location, history }) => {
                     )}
                 </div>
             </div>
+        </div>
+        }
         </div>
     )
 }
