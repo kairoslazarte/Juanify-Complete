@@ -111,11 +111,10 @@ const App = () => {
 
   console.log(userInfo)
 
-  return (
-    <>
+  return (      
+  <Router>
     {!userInfo ? (
        <>
-       <Router>
          <Header />
            <main className='main-layout'>
                <Route path='/input-location' component={LocationScreen} />
@@ -144,12 +143,10 @@ const App = () => {
                <Route path='/home' component={HomeScreen} exact />
            </main>
          <Footer />
-       </Router>
      </>
     ) : (
       userInfo.isSeller == true ? (
         <>
-        <Router>
           <Header />
             <main className='main-layout'>
                 <Route path='/partner/order/:id' component={SellerOrderDetailsScreen} />
@@ -173,11 +170,9 @@ const App = () => {
                 <Route path='/home' component={SellerProfileScreen} exact />
             </main>
           <SellerAdminFooter />
-        </Router>
         </>
       ) : userInfo.isAdmin == true ? (
         <>
-        <Router>
           <Header />
             <main className='main-layout'>
                 <Route path='/login' component={LoginScreen} />
@@ -197,11 +192,9 @@ const App = () => {
                 <Route path='/home' component={ProfileScreen} exact />
             </main>
           <SellerAdminFooter />
-        </Router>
         </>
     ) : (
       <>
-      <Router>
         <Header />
           <main className='main-layout'>
               <Route path='/input-location' component={LocationScreen} />
@@ -230,11 +223,10 @@ const App = () => {
               <Route path='/home' component={HomeScreen} exact />
           </main>
         <Footer />
-      </Router>
        </>
     )
     )}
-    </>
+    </Router>
   )
 }
 
