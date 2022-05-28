@@ -53,12 +53,12 @@ const CartScreen = ({ history }) => {
                       <Col md={2}>
                         <Image src={item.image} alt={item.name} fluid rounded />
                       </Col>
-                      <Col md={3}>
+                      <Col md={3} className="cart-screen-details__name">
                         <Link to={`/restaurant/${item.restaurant_id}`}>{item.name}</Link>
                       </Col>
-                      <Col md={2}>php {item.price}</Col>
-                      <Col md={2}>x {item.qty}</Col>
-                      <Col md={2}>
+                      <Col md={2} className="cart-screen-details">php {item.price}</Col>
+                      <Col md={2} className="cart-screen-details">x {item.qty}</Col>
+                      <Col md={2} className="cart-screen-details">
                         <Button
                           type='button'
                           variant='light'
@@ -74,7 +74,7 @@ const CartScreen = ({ history }) => {
             </>
           )}
         </Col>
-        <Col md={4}>
+        <Col md={4} className="pt-10 md:pt-0">
           <Card>
             <ListGroup variant='flush'>
               <ListGroup.Item>

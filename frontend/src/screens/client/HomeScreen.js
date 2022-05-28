@@ -84,7 +84,12 @@ const HomeScreen = () => {
   return (
     <>
       <Meta />
-      <div id="home-jumbotron" className="home-jumbotron" style={{backgroundImage: `url(${JuanifyJumbotron})`}}></div>
+      <div className='lg:block hidden'>
+        <div id="home-jumbotron" className="home-jumbotron" style={{backgroundImage: `url(${JuanifyJumbotron})`}}></div>
+      </div>
+      <div className='lg:hidden block'>
+        <ProductCarousel />
+      </div>
       <Container>
         {loading ? (
           <Loader />
@@ -105,8 +110,8 @@ const HomeScreen = () => {
       </Container>
       
       <section id="about-us">
-        <div className='bg-blue-500 w-[83%] py-10 px-10 transition duration-200 hover:scale-105 rounded-tr-lg'>
-          <div className='flex flex-row justify-between items-center space-x-8'>
+        <div className='bg-blue-500 w-full lg:w-[83%] py-10 px-10 transition duration-200 hover:scale-105 rounded-tr-lg'>
+          <div className='flex flex-col lg:flex-row justify-between items-center lg:space-y-0 space-y-4 lg:space-x-8'>
               <div>
                 <h2 className='text-white'>Juanify history</h2>
                 <p className='text-white text-lg'>
@@ -116,15 +121,15 @@ const HomeScreen = () => {
                 </p>
               </div>
               <div>
-                <img src={hassleFreeImg} />
+                <img src={hassleFreeImg} className='lg:w-auto w-40 md:w-60' />
               </div>
           </div>
         </div>
 
-        <div className='bg-red-500 w-[83%] ml-auto py-10 px-10 transition duration-200 hover:scale-105'>
-          <div className='flex flex-row justify-between items-center space-x-8'>
+        <div className='bg-red-500 w-full lg:w-[83%] ml-auto py-10 px-10 transition duration-200 hover:scale-105'>
+          <div className='flex flex-col lg:flex-row justify-between items-center lg:space-y-0 space-y-4 lg:space-x-8'>
               <div>
-                <img src={JuanifyIcon} className="w-[245px]"/>
+                <img src={JuanifyIcon} className="w-40 md:w-60 lg:w-[245px]" />
               </div>
               <div>
                 <h2 className='text-white'>Mission</h2>
@@ -135,10 +140,10 @@ const HomeScreen = () => {
           </div>
         </div>
 
-        <div className='bg-yellow-300 w-[83%] py-10 px-10 transition duration-200 hover:scale-105 rounded-br-lg'>
-          <div className='flex flex-row justify-between items-center space-x-8'>
+        <div className='bg-yellow-300 w-full lg:w-[83%] py-10 px-10 transition duration-200 hover:scale-105 rounded-br-lg'>
+          <div className='flex flex-col lg:flex-row justify-between items-center lg:space-y-0 space-y-4 lg:space-x-8'>
               <div>
-                <img src={aboutUsImg} className="w-[500px]" />
+                <img src={aboutUsImg} className="w-40 md:w-60 lg:w-[500px]" />
               </div>
               <div>
                 <h2 className='text-black'>About Juanify</h2>
@@ -164,7 +169,7 @@ const HomeScreen = () => {
                       <div className="h-0 aspect-w-3 aspect-h-2 sm:aspect-w-3 sm:aspect-h-4">
                         <img className="object-cover shadow-lg rounded-lg" src={person.imageUrl} alt="" />
                       </div>
-                      <div className="sm:col-span-2">
+                      <div className="sm:col-span-2 sm:pt-0 pt-40">
                         <div className="space-y-4">
                           <div className="text-lg leading-6 font-medium space-y-1">
                             <h3>{person.name}</h3>

@@ -596,20 +596,10 @@
 }
 
 .home-jumbotron {
-  min-height: 500px;
-  background-size: contain;
-}
-
-@media (min-width: 1024px) {
-  .home-jumbotron {
-    min-height: 800px;
-    background-size: cover;
-  }
-}
-
-.home-jumbotron {
-  background-attachment: fixed;
+  min-height: 800px;
+  background-size: cover;
   background-position: center;
+  background-attachment: fixed;
   background-repeat: no-repeat;
 }
 
@@ -1718,7 +1708,12 @@
   text-decoration-line: none;
 }
 .restaurant .restaurant-product__container .restaurant-product .restaurant-product__img {
-  width: 70%;
+  width: 35%;
+}
+@media (min-width: 640px) {
+  .restaurant .restaurant-product__container .restaurant-product .restaurant-product__img {
+    width: 70%;
+  }
 }
 .restaurant .restaurant-product__container .restaurant-product .restaurant-product__img img {
   width: 138px !important;
@@ -1743,9 +1738,15 @@
   padding-top: 0.5rem;
 }
 .restaurant .restaurant-product__container .restaurant-product .restaurant-product__details .restaurant-product__name {
-  font-size: 1.125rem;
-  line-height: 1.75rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
   font-weight: 700;
+}
+@media (min-width: 640px) {
+  .restaurant .restaurant-product__container .restaurant-product .restaurant-product__details .restaurant-product__name {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
 }
 .restaurant .restaurant-product__container .restaurant-product .restaurant-product__details .restaurant-product__price {
   font-size: 0.875rem;
@@ -3252,4 +3253,45 @@ p {
 
 .container {
   max-width: 1280px !important;
+}
+
+h1 {
+  font-size: 1.5rem !important;
+  line-height: 2rem !important;
+}
+@media (min-width: 640px) {
+  h1 {
+    font-size: 2.25rem !important;
+    line-height: 2.5rem !important;
+  }
+}
+
+h2 {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+@media (min-width: 640px) {
+  h2 {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+}
+
+.cart-screen-details__name {
+  padding-top: 1.25rem;
+}
+@media (min-width: 768px) {
+  .cart-screen-details__name {
+    padding-top: 0px;
+  }
+}
+
+.cart-screen-details {
+  padding-top: 0.5rem;
+}
+@media (min-width: 768px) {
+  .cart-screen-details {
+    padding-top: 0px;
+  }
 }

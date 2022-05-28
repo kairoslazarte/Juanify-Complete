@@ -14,7 +14,7 @@ const SearchBox = ({ history }) => {
   }
 
   return (
-    <div className='header__search-box'>
+    <div className='header__search-box xl:my-0 my-2'>
       <div>
         <Form onSubmit={submitHandler} inline>
           <Form.Control

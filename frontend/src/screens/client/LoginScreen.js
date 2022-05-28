@@ -78,12 +78,6 @@ const LoginScreen = ({ location, history }) => {
                     Remember me
                   </label>
                 </div>
-
-                <div className="login-screen_forgot-container">
-                  <a href="/forgot-password" className="login-screen_forgot-styles">
-                    Forgot your password?
-                  </a>
-                </div>
               </div>
 
               <div>

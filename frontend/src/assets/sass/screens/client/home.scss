@@ -14,9 +14,8 @@
 }
 
 .home-jumbotron {
-    @apply min-h-[500px] lg:min-h-[800px] bg-contain lg:bg-cover;
+    @apply min-h-[800px] bg-cover bg-center;
     background-attachment: fixed;
-    background-position: center;
     background-repeat: no-repeat;
 }
 

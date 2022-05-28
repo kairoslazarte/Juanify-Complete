@@ -1,6 +1,6 @@
 .restaurant {
     @apply pt-10;
-    
+
     .restaurant-heading {
         @apply pb-7;
         .restaurant-heading__container {
@@ -30,7 +30,8 @@
             @apply flex flex-row shadow-lg rounded-lg hover:no-underline bg-white relative cursor-pointer transition duration-200 hover:scale-105 border-2 hover:border-blue-700;
         
             .restaurant-product__img {
-                width: 70%;
+                @apply w-[35%] sm:w-[70%];
+               
                 img {
                     width: 138px !important;
                     @apply object-cover rounded-l-lg h-full;
@@ -41,7 +42,7 @@
                 @apply flex flex-col space-y-1 pt-2 px-2 w-full;
         
                 .restaurant-product__name {
-                    @apply text-lg font-bold;
+                    @apply text-base sm:text-lg font-bold;
                 }
 
                 .restaurant-product__price {

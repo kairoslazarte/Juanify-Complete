@@ -81,3 +81,34 @@ p {
 .container {
     max-width: 1280px !important;
 }
+
+
+h1 {
+    font-size: 1.5rem !important;
+    line-height: 2rem !important;
+    
+    @media (min-width: 640px) {
+        font-size: 2.25rem !important;
+        line-height: 2.5rem !important;
+    }
+}
+
+h2 {
+    @apply text-xl sm:text-3xl;
+}
+
+.cart-screen-details__name {
+    padding-top: 1.25rem/* 20px */;
+    
+    @media (min-width: 768px) {
+        padding-top: 0px;
+    }
+}
+
+.cart-screen-details {
+    padding-top: 0.5rem/* 20px */;
+    
+    @media (min-width: 768px) {
+        padding-top: 0px;
+    }
+}
