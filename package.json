@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Juanify Food Delivery Web Application",
   "main": "server.js",
+  "engines": {
+    "node": "14.17.0"
+  },
   "type": "module",
   "scripts": {
     "start": "node backend/server",
