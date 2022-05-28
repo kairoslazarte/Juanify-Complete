@@ -14,11 +14,10 @@
 }
 
 .home-jumbotron {
-    min-height: 800px; 
+    @apply min-h-[500px] lg:min-h-[800px] bg-contain lg:bg-cover;
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;
 }
 
 .home-location {

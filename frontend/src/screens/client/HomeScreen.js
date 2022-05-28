@@ -21,25 +21,53 @@ const people = [
     name: 'Mr. Efren Salvador',
     role: 'CEO',
     imageUrl: Efren,
-    bio: 'Ultricies massa malesuada viverra cras lobortis. Tempor orci hac ligula dapibus mauris sit ut eu. Eget turpis urna maecenas cras. Nisl dictum.',
+    bio: 
+    React.createElement('ul', { className: 'flex flex-col space-y-2' }, 
+      React.createElement('li', {}, 'Entrepreneur - Founder Good Fruit PH'),  
+      React.createElement('li', {}, 'Analytical problem solver'),  
+      React.createElement('li', {}, 'Data analysis and interpretation'),  
+      React.createElement('li', {}, 'Negotiation skills'),  
+      React.createElement('li', {}, 'Operations management'),  
+      React.createElement('li', {}, 'Business development'),  
+    ),
   },
   {
     name: 'Ms. Senibe Salve Dioso',
     role: 'CMO',
     imageUrl: Senibe,
-    bio: 'Ultricies massa malesuada viverra cras lobortis. Tempor orci hac ligula dapibus mauris sit ut eu. Eget turpis urna maecenas cras. Nisl dictum.',
+    bio: 
+    React.createElement('ul', { className: 'flex flex-col space-y-2' }, 
+      React.createElement('li', {}, 'Entrepreneur - ecommerce - EzyPzy'),  
+      React.createElement('li', {}, 'Gumshoe Human Resource Consultancy'),  
+      React.createElement('li', {}, 'Operations'),  
+      React.createElement('li', {}, 'Transport Business - Montalban L300 For Rent'),  
+      React.createElement('li', {}, 'Strategic Management'),  
+      React.createElement('li', {}, 'Sales and Marketing Strategist'),  
+    ),
   },
   {
     name: 'Ms. Roxanne Pagaduan',
     role: 'CTO',
     imageUrl: Rox,
-    bio: 'Ultricies massa malesuada viverra cras lobortis. Tempor orci hac ligula dapibus mauris sit ut eu. Eget turpis urna maecenas cras. Nisl dictum.',
+    bio: 
+    React.createElement('ul', { className: 'flex flex-col space-y-2' }, 
+      React.createElement('li', {}, 'Assistant Professor IV, IT Dept. (T.I.P. Quezon City)'),  
+      React.createElement('li', {}, 'Can do C/C++, VB.Net, Java, PL/SQL, PHP, JavaScript, and ReactJS, management of databases using Oracle, MySQL, MSSQL, and Firebase'),  
+      React.createElement('li', {}, 'Research interests in educational games, mobile and web applications, computer vision, image processing, artificial intelligence and applications of data mining in the computing and educational disciplines'),  
+      React.createElement('li', {}, 'Published different research papers locally and internationally.'),   
+    ),
   },
   {
     name: 'Mr. Joel Bautista',
     role: 'CFO',
     imageUrl: Joel,
-    bio: 'Ultricies massa malesuada viverra cras lobortis. Tempor orci hac ligula dapibus mauris sit ut eu. Eget turpis urna maecenas cras. Nisl dictum.',
+    bio: 
+    React.createElement('ul', { className: 'flex flex-col space-y-2' }, 
+      React.createElement('li', {}, 'Manager Big Z Quality Food Corporation'),  
+      React.createElement('li', {}, 'Finance Head - Limatech Enterprise'),  
+      React.createElement('li', {}, 'Financial Management and forecasting'),  
+      React.createElement('li', {}, 'Operations management'),  
+    ),
   },
 ]
 
@@ -56,8 +84,7 @@ const HomeScreen = () => {
   return (
     <>
       <Meta />
-      <div id="home-jumbotron" className="home-jumbotron" style={{backgroundImage: `url(${JuanifyJumbotron})`}}>
-      </div>
+      <div id="home-jumbotron" className="home-jumbotron" style={{backgroundImage: `url(${JuanifyJumbotron})`}}></div>
       <Container>
         {loading ? (
           <Loader />

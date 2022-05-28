@@ -10,7 +10,7 @@ import Meta from '../../components/Meta'
 import { listRestaurants, listTopRestaurants } from '../../actions/restaurantActions'
 import ProductCarousel from '../../components/ProductCarousel'
 
-const FoodDeliveryScreen = ({ match }) => {
+const AllRestaurantsScreen = ({ match }) => {
   const keyword = match.params.keyword
 
   const pageNumber = match.params.pageNumber || 1
@@ -29,7 +29,7 @@ const FoodDeliveryScreen = ({ match }) => {
   }, [dispatch, keyword, pageNumber])
 
   return (
-    <Container id='food-delivery-screen'>
+    <Container>
       <Meta />
       <div className='py-10'>
         <ProductCarousel />
@@ -105,7 +105,6 @@ const FoodDeliveryScreen = ({ match }) => {
                   <Paginate
                     pages={pages}
                     page={page}
-                    id="food-delivery-screen__pagination"
                     keyword={keyword ? keyword : ''}
                   />
                 </div>
@@ -117,4 +116,4 @@ const FoodDeliveryScreen = ({ match }) => {
   )
 }
 
-export default FoodDeliveryScreen
+export default AllRestaurantsScreen

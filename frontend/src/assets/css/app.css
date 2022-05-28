@@ -596,11 +596,21 @@
 }
 
 .home-jumbotron {
-  min-height: 800px;
+  min-height: 500px;
+  background-size: contain;
+}
+
+@media (min-width: 1024px) {
+  .home-jumbotron {
+    min-height: 800px;
+    background-size: cover;
+  }
+}
+
+.home-jumbotron {
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
 }
 
 .home-location {

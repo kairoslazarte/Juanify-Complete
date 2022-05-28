@@ -37,6 +37,7 @@ import UserListScreen from './screens/UserListScreen'
 import UserEditScreen from './screens/UserEditScreen'
 import ForgotPassword from './screens/client/ForgotPassword'
 import SellerAdminFooter from './components/SellerAdminFooter'
+import AllRestaurantsScreen from './screens/client/AllRestaurantsScreen'
 
 
 var today = new Date()
@@ -133,10 +134,10 @@ const App = () => {
                <Route path='/cart/:id?' component={CartScreen} />
                <Route path='/forgot-password' component={ForgotPassword} />
                <Route path='/search/:keyword' component={FoodDeliveryScreen} exact />
-               <Route path='/food/page/:pageNumber' component={FoodDeliveryScreen} exact />
+               <Route path='/restaurants/page/:pageNumber' component={AllRestaurantsScreen} exact />
                <Route
-                 path='/search/:keyword/food/page/:pageNumber'
-                 component={FoodDeliveryScreen}
+                 path='/search/:keyword/restaurants/page/:pageNumber'
+                 component={AllRestaurantsScreen}
                  exact
                />
                <Route path='/' component={HomeScreen} exact />
@@ -212,11 +213,11 @@ const App = () => {
               <Route path='/food' component={FoodDeliveryScreen} />
               <Route path='/cart/:id?' component={CartScreen} />
               <Route path='/forgot-password' component={ForgotPassword} />
-              <Route path='/search/:keyword' component={HomeScreen} exact />
-              <Route path='/page/:pageNumber' component={HomeScreen} exact />
+              <Route path='/search/:keyword' component={FoodDeliveryScreen} exact />
+              <Route path='/restaurants/page/:pageNumber' component={AllRestaurantsScreen} exact />
               <Route
-                path='/search/:keyword/page/:pageNumber'
-                component={HomeScreen}
+                path='/search/:keyword/restaurants/page/:pageNumber'
+                component={AllRestaurantsScreen}
                 exact
               />
               <Route path='/' component={HomeScreen} exact />
