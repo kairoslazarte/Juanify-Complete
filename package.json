@@ -4,9 +4,6 @@
   "description": "Juanify Food Delivery Web Application",
   "main": "server.js",
   "type": "module",
-  "engines": {
-    "node": "16.5.0"
-  },
   "scripts": {
     "start": "node backend/server",
     "server": "nodemon backend/server",

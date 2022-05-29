@@ -88,14 +88,14 @@ const CartScreen = ({ history }) => {
                   .toFixed(2)}
               </ListGroup.Item>
               <ListGroup.Item>
-                <Button
+                <button
                   type='button'
-                  className='btn-block'
+                  className='w-full bg-red-500 text-white py-3 px-5 transition duration-200 hover:opacity-60'
                   disabled={cartItems.length === 0}
                   onClick={checkoutHandler}
                 >
                   Proceed To Checkout
-                </Button>
+                </button>
               </ListGroup.Item>
             </ListGroup>
           </Card>

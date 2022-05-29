@@ -112,9 +112,9 @@ const ProfileScreen = ({ location, history }) => {
                 </Form.Group>
               </div>
 
-              <Button type='submit' variant='warning'>
+              <button type='submit' className='bg-yellow-500 font-medium transition duration-200 text-white py-3 px-4 hover:opacity-60'>
                 Update
-              </Button>
+              </button>
           </Form>
         )}
       </div>

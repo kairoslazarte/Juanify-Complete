@@ -94,7 +94,23 @@ h1 {
 }
 
 h2 {
-    @apply text-xl sm:text-3xl;
+    font-size: 1.25rem !important;
+    line-height: 1.75rem !important;
+
+    @media (min-width: 640px) {
+        font-size: 1.875rem !important;
+        line-height: 2.25rem !important;
+    }
+}
+
+h3 {
+    font-size: 1rem !important;
+    line-height: 1.5rem !important;
+    
+    @media (min-width: 640px) {
+        font-size: 1.5rem !important;
+        line-height: 2rem !important;
+    }
 }
 
 .cart-screen-details__name {
