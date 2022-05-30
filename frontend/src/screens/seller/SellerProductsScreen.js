@@ -52,14 +52,14 @@ const SellerProductsScreen = ({ history, match }) => {
 
   return (
     <div className='container pt-10'>
-      <Row className='align-items-center'>
+      <Row className='flex flex-col sm:flex-row items-center'>
         <Col>
           <h1>Products</h1>
         </Col>
-        <Col className='text-right'>
-        <Button className='my-3' onClick={createProductHandler}>
+        <Col>
+        <button className='my-3 bg-red-500 font-medium transition duration-200 text-white py-3 px-4 hover:opacity-60' onClick={createProductHandler}>
             <i className='fas fa-plus'></i> Create Product
-          </Button>
+          </button>
         </Col>
       </Row>
       {loadingDelete && <Loader />}

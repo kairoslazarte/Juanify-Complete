@@ -3,8 +3,7 @@
 
     .restaurant-card__img {
         img {
-            height: 250px;
-            @apply object-cover w-full rounded-t-lg;
+            @apply object-cover w-full rounded-t-lg h-40 sm:h-60;
         }
     }
 
@@ -12,12 +11,12 @@
         @apply pt-5 px-4;
 
        p {
-           @apply font-bold text-xl;
+           @apply font-bold text-base sm:text-xl;
        }
     }
 
     .restaurant-card__location {
-        @apply px-4 text-sm italic;
+        @apply px-4 text-xs sm:text-sm italic;
     }
 
     .restaurant-card__rating {
@@ -28,7 +27,7 @@
         }
 
         span {
-            @apply italic;
+            @apply italic text-xs sm:text-sm;
         }
     }
 

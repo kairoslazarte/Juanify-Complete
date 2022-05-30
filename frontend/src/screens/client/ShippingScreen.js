@@ -75,9 +75,9 @@ const ShippingScreen = ({ history }) => {
             ></Form.Control>
           </Form.Group>
 
-          <Button type='submit' variant='primary'>
+          <button type='submit'  className='bg-red-500 text-white py-3 px-5 transition duration-200 hover:opacity-60 mt-3'>
             Continue
-          </Button>
+          </button>
         </Form>
       </FormContainer>
     </div>    

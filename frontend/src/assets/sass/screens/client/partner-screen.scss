@@ -1,5 +1,5 @@
 .partner-screen {
-    @apply grid grid-cols-1 ;
+    @apply grid grid-cols-1;
 
     .partner-screen__login-msg {
         @apply pt-10 text-center;
@@ -55,7 +55,7 @@
         @apply mt-3;
     }
     .partner-screen-col-two-bg {
-        @apply py-10; 
+        @apply py-10 px-4; 
     }   
     form {
         @apply gap-y-6; 
@@ -64,7 +64,7 @@
         @apply w-full;
     }
     .partner-screen-form__name-email-phone  {
-        @apply flex flex-row items-center space-x-4 w-full;
+        @apply flex flex-col sm:flex-row items-center sm:space-x-4 w-full;
     }
     .partner-screen-form__address  {
         @apply py-2;

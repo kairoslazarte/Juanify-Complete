@@ -11,7 +11,7 @@ const ProductCarousel = () => {
           <Image src={foodDeliveryImg} fluid className='mx-auto' />
           <Carousel.Caption className='carousel-caption'>
             <h2>
-              We Deliver right infront of your doorsteps
+              No need to go out!
             </h2>
           </Carousel.Caption>
         </Carousel.Item>

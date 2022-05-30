@@ -227,11 +227,16 @@
   text-decoration-line: none;
 }
 .restaurant-card .restaurant-card__img img {
-  height: 250px;
+  height: 10rem;
   width: 100%;
   border-top-left-radius: 0.5rem;
   border-top-right-radius: 0.5rem;
   object-fit: cover;
+}
+@media (min-width: 640px) {
+  .restaurant-card .restaurant-card__img img {
+    height: 15rem;
+  }
 }
 .restaurant-card .restaurant-card__name {
   padding-left: 1rem;
@@ -239,16 +244,28 @@
   padding-top: 1.25rem;
 }
 .restaurant-card .restaurant-card__name p {
-  font-size: 1.25rem;
-  line-height: 1.75rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
   font-weight: 700;
+}
+@media (min-width: 640px) {
+  .restaurant-card .restaurant-card__name p {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
 }
 .restaurant-card .restaurant-card__location {
   padding-left: 1rem;
   padding-right: 1rem;
-  font-size: 0.875rem;
-  line-height: 1.25rem;
+  font-size: 0.75rem;
+  line-height: 1rem;
   font-style: italic;
+}
+@media (min-width: 640px) {
+  .restaurant-card .restaurant-card__location {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
 }
 .restaurant-card .restaurant-card__rating {
   display: flex;
@@ -269,7 +286,15 @@
   margin-bottom: 0 !important;
 }
 .restaurant-card .restaurant-card__rating span {
+  font-size: 0.75rem;
+  line-height: 1rem;
   font-style: italic;
+}
+@media (min-width: 640px) {
+  .restaurant-card .restaurant-card__rating span {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
 }
 .restaurant-card .restaurant-card__price {
   padding-left: 1rem;
@@ -614,18 +639,20 @@
 }
 .home-restaurants .home-restaurants__container {
   display: grid;
-  grid-template-columns: repeat(1, minmax(0, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5rem;
   padding-top: 2rem;
 }
-@media (min-width: 640px) {
+@media (min-width: 768px) {
   .home-restaurants .home-restaurants__container {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
   }
 }
 @media (min-width: 1280px) {
   .home-restaurants .home-restaurants__container {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.5rem;
   }
 }
 
@@ -1928,6 +1955,8 @@
 .partner-screen .partner-screen-col-two-bg {
   padding-top: 2.5rem;
   padding-bottom: 2.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 .partner-screen form {
   row-gap: 1.5rem;
@@ -1938,13 +1967,18 @@
 .partner-screen .partner-screen-form__name-email-phone {
   display: flex;
   width: 100%;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
 }
-.partner-screen .partner-screen-form__name-email-phone > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-x-reverse: 0;
-  margin-right: calc(1rem * var(--tw-space-x-reverse));
-  margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
+@media (min-width: 640px) {
+  .partner-screen .partner-screen-form__name-email-phone {
+    flex-direction: row;
+  }
+  .partner-screen .partner-screen-form__name-email-phone > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-x-reverse: 0;
+    margin-right: calc(1rem * var(--tw-space-x-reverse));
+    margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
+  }
 }
 .partner-screen .partner-screen-form__address {
   padding-top: 0.5rem;
@@ -2882,12 +2916,21 @@
 }
 .profile-user .profiler-user__password, .profile-user .profiler-user__name-email {
   display: flex;
+  flex-direction: column;
   align-items: center;
 }
-.profile-user .profiler-user__password > :not([hidden]) ~ :not([hidden]), .profile-user .profiler-user__name-email > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-x-reverse: 0;
-  margin-right: calc(2rem * var(--tw-space-x-reverse));
-  margin-left: calc(2rem * calc(1 - var(--tw-space-x-reverse)));
+@media (min-width: 640px) {
+  .profile-user .profiler-user__password, .profile-user .profiler-user__name-email {
+    flex-direction: row;
+  }
+  .profile-user .profiler-user__password > :not([hidden]) ~ :not([hidden]), .profile-user .profiler-user__name-email > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-y-reverse: 0;
+    margin-top: calc(0px * calc(1 - var(--tw-space-y-reverse)));
+    margin-bottom: calc(0px * var(--tw-space-y-reverse));
+    --tw-space-x-reverse: 0;
+    margin-right: calc(2rem * var(--tw-space-x-reverse));
+    margin-left: calc(2rem * calc(1 - var(--tw-space-x-reverse)));
+  }
 }
 .profile-user .profiler-user__password .form-group, .profile-user .profiler-user__name-email .form-group {
   width: 100%;
@@ -2933,18 +2976,20 @@
 }
 .restaurants .restaurants__container {
   display: grid;
-  grid-template-columns: repeat(1, minmax(0, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5rem;
   padding-top: 2rem;
 }
-@media (min-width: 640px) {
+@media (min-width: 768px) {
   .restaurants .restaurants__container {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
   }
 }
 @media (min-width: 1280px) {
   .restaurants .restaurants__container {
     grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.5rem;
   }
 }
 
@@ -2962,14 +3007,19 @@
 .seller-profile .seller-profile-form__address .seller-profile-form__address_city-street-barangay, .seller-profile .seller-profile-form__address .seller-profile__address_lat-lon {
   display: flex;
   width: 100%;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
-.seller-profile .seller-profile-form__address .seller-profile-form__address_city-street-barangay > :not([hidden]) ~ :not([hidden]), .seller-profile .seller-profile-form__address .seller-profile__address_lat-lon > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-x-reverse: 0;
-  margin-right: calc(1rem * var(--tw-space-x-reverse));
-  margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
+@media (min-width: 640px) {
+  .seller-profile .seller-profile-form__address .seller-profile-form__address_city-street-barangay, .seller-profile .seller-profile-form__address .seller-profile__address_lat-lon {
+    flex-direction: row;
+  }
+  .seller-profile .seller-profile-form__address .seller-profile-form__address_city-street-barangay > :not([hidden]) ~ :not([hidden]), .seller-profile .seller-profile-form__address .seller-profile__address_lat-lon > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-x-reverse: 0;
+    margin-right: calc(1rem * var(--tw-space-x-reverse));
+    margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
+  }
 }
 .seller-profile .seller-profile-form__address .seller-profile-form__address_city-street-barangay .form-group, .seller-profile .seller-profile-form__address .seller-profile__address_lat-lon .form-group {
   width: 100% !important;
@@ -2990,6 +3040,23 @@
 }
 .seller-profile .seller-profile__update-btn {
   margin-top: 1.25rem;
+  --tw-bg-opacity: 1;
+  background-color: rgb(245 158 11 / var(--tw-bg-opacity));
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  font-weight: 500;
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
+  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+}
+.seller-profile .seller-profile__update-btn:hover {
+  opacity: 0.6;
 }
 
 .order-details .order-details__status--label {

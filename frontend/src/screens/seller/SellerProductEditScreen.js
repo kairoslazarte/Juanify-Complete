@@ -155,9 +155,9 @@ const SellerProductEditScreen = ({ match, history }) => {
                             ></Form.Control>
                         </Form.Group>
 
-                        <Button type='submit' variant='primary'>
+                        <button type='submit' className='mt-4 bg-blue-700 font-medium transition duration-200 text-white py-3 px-4 hover:opacity-60'>
                             Update
-                        </Button>
+                        </button>
                     </Form>
                 )}
             </FormContainer>

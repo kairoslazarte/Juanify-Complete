@@ -114,7 +114,7 @@ const PlaceOrderScreen = ({ history }) => {
             </ListGroup.Item>
           </ListGroup>
         </Col>
-        <Col md={4}>
+        <Col md={4} className="pt-4">
           <Card>
             <ListGroup variant='flush'>
               <ListGroup.Item>
@@ -148,14 +148,14 @@ const PlaceOrderScreen = ({ history }) => {
                 {error && <Message variant='danger'>{error}</Message>}
               </ListGroup.Item>
               <ListGroup.Item>
-                <Button
+                <button
                   type='button'
-                  className='btn-block'
+                  className='bg-blue-700 text-white py-3 px-5 transition duration-200 hover:opacity-60 w-full'
                   disabled={cart.cartItems === 0}
                   onClick={placeOrderHandler}
                 >
                   Place Order
-                </Button>
+                </button>
               </ListGroup.Item>
             </ListGroup>
           </Card>

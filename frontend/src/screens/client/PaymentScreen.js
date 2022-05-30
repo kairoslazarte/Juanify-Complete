@@ -32,30 +32,41 @@ const PaymentScreen = ({ history }) => {
           <Form.Group>
             <Form.Label as='legend' className='payment-method__label'>Select Method</Form.Label>
             <Col>
-              <Form.Check
-                type='radio'
-                label='PayPal/Credit Card'
-                id='PayPal'
-                name='paymentMethod'
-                value='PayPal'
-                checked
-                onChange={(e) => setPaymentMethod(e.target.value)}
-              ></Form.Check>
-              <Form.Check
-                type='radio'
-                className='payment-method__cod'
-                label='Cash on Delivery'
-                id='cod'
-                name='paymentMethod'
-                value='COD'
-                onChange={(e) => setPaymentMethod(e.target.value)}
-              ></Form.Check>
+              <div className="space-y-4">
+                <div className="flex items-center">
+                  <input
+                    id="paypal"
+                    name="paymentMethod"
+                    value='PayPal'
+                    type="radio"
+                    className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300"
+                    onChange={(e) => setPaymentMethod(e.target.value)}
+                  />
+                  <label htmlFor="paypal" className="ml-3 block text-sm font-medium text-gray-700">
+                    PayPal or Credit Card
+                  </label>
+                </div>
+
+                <div className="flex items-center">
+                  <input
+                    id="cod"
+                    name="paymentMethod"
+                    value='COD'
+                    type="radio"
+                    className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300"
+                    onChange={(e) => setPaymentMethod(e.target.value)}
+                  />
+                  <label htmlFor="cod" className="ml-3 block text-sm font-medium text-gray-700">
+                    Cash on Delivery
+                  </label>
+                </div>
+              </div>
             </Col>
           </Form.Group>
 
-          <Button type='submit' variant='primary'>
+          <button type='submit' className='bg-red-500 text-white py-3 px-5 transition duration-200 hover:opacity-60 mt-3'>
             Continue
-          </Button>
+          </button>
         </Form>
       </FormContainer>
     </div>

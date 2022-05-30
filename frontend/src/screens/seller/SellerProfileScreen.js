@@ -207,9 +207,9 @@ const SellerProfileScreen = ({ history }) => {
                     {uploading && <Loader />}
                 </Form.Group>
 
-                <Button type='submit' variant='primary' className='seller-profile__update-btn'>
+                <button type='submit' className='seller-profile__update-btn'>
                 Update
-                </Button>
+                </button>
             </Form>
             )}
         </div>

@@ -63,7 +63,7 @@ const Rating = ({ value, text, color }) => {
           }
         ></i>
       </span>
-      <span>{text && text}</span>
+      <span className='sm:inline-block hidden'>{text && text}</span>
     </div>
   )
 }

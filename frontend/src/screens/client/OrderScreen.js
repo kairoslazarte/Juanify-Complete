@@ -94,12 +94,12 @@ const OrderScreen = ({ match, history }) => {
     <Message variant='danger'>{error}</Message>
   ) : (
     <div className='container pt-10'>
-      <h1>Order {order._id}</h1>
+      <h1 className='break-all'>Order {order._id}</h1>
       <Row>
-        <Col md={8} className='order-details__container'>
+        <Col md={8} className='order-details__container py-2'>
           <ListGroup variant='flush'>
-            <ListGroup.Item>
-              <h2>Shipping</h2>
+            <ListGroup.Item className='flex flex-col space-y-2'>
+              <h2 className='pb-2'>Shipping</h2>
               <p>
                 <strong>Name: </strong> {order.user.name}
               </p>
@@ -126,8 +126,8 @@ const OrderScreen = ({ match, history }) => {
               )}
             </ListGroup.Item>
 
-            <ListGroup.Item>
-              <h2>Payment Method</h2>
+            <ListGroup.Item className='flex flex-col space-y-2'>
+              <h2 className='pb-2'>Payment Method</h2>
               <p>
                 <strong>Method: </strong>
                 {order.paymentMethod == 'COD' ? 'Cash on Delivery' : 'PayPal'}

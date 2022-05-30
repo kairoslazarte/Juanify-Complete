@@ -7,7 +7,7 @@
         @apply py-2;
 
         .seller-profile-form__address_city-street-barangay, .seller-profile__address_lat-lon  {
-            @apply flex flex-row items-center space-x-4 w-full justify-center;
+            @apply flex flex-col sm:flex-row items-center sm:space-x-4 w-full justify-center;
 
             .form-group {
                 width: 100% !important;
@@ -24,6 +24,6 @@
     }
 
     .seller-profile__update-btn {
-        @apply mt-5;
+        @apply mt-5 bg-yellow-500 font-medium transition duration-200 text-white py-3 px-5 hover:opacity-60;
     }
 }

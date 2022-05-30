@@ -2,7 +2,7 @@
     @apply pt-10;
 
     .restaurants__container {
-        @apply grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 pt-8;
+        @apply grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-2 md:gap-4 xl:gap-6 pt-8;
     }
 }
 

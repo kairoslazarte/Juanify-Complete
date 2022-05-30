@@ -2,7 +2,7 @@
     @apply w-full;
 
     .profiler-user__password, .profiler-user__name-email {
-        @apply flex items-center space-x-8;
+        @apply flex sm:flex-row flex-col items-center sm:space-y-0 sm:space-x-8;
 
         .form-group {
             @apply w-full;
