@@ -43,7 +43,7 @@ const CartScreen = ({ history }) => {
             </Message>
           ) : (
             <>
-              <h1>Your Order/s at {cartItems[0].restaurant}</h1>
+              <h1>Your Order/s at <span className='text-blue-700'>{cartItems[0].restaurant}</span></h1>
               <br/>
               <br/>
               <ListGroup variant='flush'>

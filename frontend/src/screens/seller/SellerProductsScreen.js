@@ -52,12 +52,12 @@ const SellerProductsScreen = ({ history, match }) => {
 
   return (
     <div className='container pt-10'>
-      <Row className='flex flex-col sm:flex-row items-center'>
+      <Row className='flex flex-col sm:flex-row items-center justify-between w-full'>
         <Col>
           <h1>Products</h1>
         </Col>
-        <Col>
-        <button className='my-3 bg-red-500 font-medium transition duration-200 text-white py-3 px-4 hover:opacity-60' onClick={createProductHandler}>
+        <Col className='sm:text-right'>
+        <button className='my-3 bg-blue-700 font-medium transition duration-200 text-white py-3 px-4 hover:opacity-60' onClick={createProductHandler}>
             <i className='fas fa-plus'></i> Create Product
           </button>
         </Col>
@@ -98,13 +98,12 @@ const SellerProductsScreen = ({ history, match }) => {
                                 <i className='fas fa-edit'></i>
                                 </Button>
                             </LinkContainer>
-                            <Button
-                                variant='danger'
-                                className='btn-sm'
+                            <button
+                                className='bg-red-500 font-medium transition duration-200 py-2 px-3 hover:opacity-60 text-white text-xs'
                                 onClick={() => deleteHandler(product._id)}
                             >
                                 <i className='fas fa-trash'></i>
-                            </Button>
+                            </button>
                         </td>
                     </tr>
                     ))

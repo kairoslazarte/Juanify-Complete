@@ -87,13 +87,12 @@ const UserListScreen = ({ history }) => {
                       <i className='fas fa-edit'></i>
                     </Button>
                   </LinkContainer>
-                  <Button
-                    variant='danger'
-                    className='btn-sm'
+                  <button
+                    className='bg-red-500 font-medium transition duration-200 py-2 px-3 hover:opacity-60 text-white text-xs'
                     onClick={() => deleteHandler(user._id)}
                   >
                     <i className='fas fa-trash'></i>
-                  </Button>
+                  </button>
                 </td>
               </tr>
             ))}

@@ -99,7 +99,7 @@ const HomeScreen = () => {
           <>
             <section id="home-restaurants" className="home-restaurants">
               <h1>Most <span className='text-red-500'>popular</span>/<span className='text-blue-700'>top-rated</span> restaurants</h1>
-              <div className="home-restaurants__container">
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-4 xl:gap-6 pt-8">
                 {restaurants.map((restaurant) => (
                   <RestaurantCard restaurant={restaurant} key={restaurant._id} />
                 ))}

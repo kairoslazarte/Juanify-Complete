@@ -31,7 +31,7 @@ const LoginScreen = ({ location, history }) => {
 
   return (
     <>
-      <div className="login-screen_container">
+      <div className="login-screen_container pt-20">
         <div className="login-screen_small-screen-grid">
           <img
             className="login-screen_img "
