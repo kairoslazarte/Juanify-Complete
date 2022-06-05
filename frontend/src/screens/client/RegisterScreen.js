@@ -9,7 +9,9 @@ import JuanifyIcon from '../../assets/img/icons/juanify.png'
 import { register } from '../../actions/userActions'
 
 const RegisterScreen = ({ location, history }) => {
-  const [name, setName] = useState('')
+  const [firstName, setfirstName] = useState('')
+  const [middleName, setMiddleName] = useState('')
+  const [lastName, setlastName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [phone, setPhone] = useState('')
@@ -34,7 +36,7 @@ const RegisterScreen = ({ location, history }) => {
     if (password !== confirmPassword) {
       setMessage('Passwords do not match')
     } else {
-      dispatch(register(name, email, phone, password))
+      dispatch(register(firstName, middleName, lastName, email, phone, password))
     }
   }
 
@@ -56,13 +58,35 @@ const RegisterScreen = ({ location, history }) => {
         <div className="register-screen_form-container">
           <div className="register-screen_form-container-styles">
           <Form onSubmit={submitHandler}>
-              <Form.Group controlId='name'>
+              <Form.Group controlId='firstName'>
+                <Form.Label>First name</Form.Label>
+                <Form.Control
+                  type='name'
+                  placeholder='Enter first name'
+                  value={firstName}
+                  required
+                  onChange={(e) => setfirstName(e.target.value)}
+                ></Form.Control>
+              </Form.Group>
+
+              <Form.Group controlId='middleName'>
+                <Form.Label>Middle name</Form.Label>
+                <Form.Control
+                  type='name'
+                  placeholder='Enter middle name'
+                  value={middleName}
+                  onChange={(e) => setMiddleName(e.target.value)}
+                ></Form.Control>
+              </Form.Group>
+
+              <Form.Group controlId='lastName'>
                 <Form.Label>Name</Form.Label>
                 <Form.Control
                   type='name'
-                  placeholder='Enter name'
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
+                  placeholder='Enter last name'
+                  value={lastName}
+                  required
+                  onChange={(e) => setlastName(e.target.value)}
                 ></Form.Control>
               </Form.Group>
 
@@ -72,6 +96,7 @@ const RegisterScreen = ({ location, history }) => {
                   type='number'
                   placeholder='Enter phone'
                   value={phone}
+                  required
                   onChange={(e) => setPhone(e.target.value)}
                 ></Form.Control>
               </Form.Group>
@@ -82,6 +107,7 @@ const RegisterScreen = ({ location, history }) => {
                   type='email'
                   placeholder='Enter email'
                   value={email}
+                  required
                   onChange={(e) => setEmail(e.target.value)}
                 ></Form.Control>
               </Form.Group>
@@ -92,6 +118,7 @@ const RegisterScreen = ({ location, history }) => {
                   type='password'
                   placeholder='Enter password'
                   value={password}
+                  required
                   onChange={(e) => setPassword(e.target.value)}
                 ></Form.Control>
               </Form.Group>
@@ -102,6 +129,7 @@ const RegisterScreen = ({ location, history }) => {
                   type='password'
                   placeholder='Confirm password'
                   value={confirmPassword}
+                  required
                   onChange={(e) => setConfirmPassword(e.target.value)}
                 ></Form.Control>
               </Form.Group>

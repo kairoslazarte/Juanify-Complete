@@ -71,19 +71,34 @@ const shippingAddressFromStorage = localStorage.getItem('shippingAddress')
   ? JSON.parse(localStorage.getItem('shippingAddress'))
   : {}
 
-const initialState = {
-  cart: {
-    cartItems: cartItemsFromStorage,
-    shippingAddress: shippingAddressFromStorage,
-  },
-  userLogin: { userInfo: userInfoFromStorage },
+var confirmed_acc
+
+if (userInfoFromStorage) {
+  userInfoFromStorage.confirmed && (
+    confirmed_acc = {
+      cart: {
+        cartItems: cartItemsFromStorage,
+        shippingAddress: shippingAddressFromStorage,
+      },
+      userLogin: { userInfo: userInfoFromStorage },
+    }
+  )
+} else {
+  confirmed_acc = {
+    cart: {
+      cartItems: cartItemsFromStorage,
+      shippingAddress: shippingAddressFromStorage,
+    },
+  }
 }
+
+console.log(confirmed_acc)
 
 const middleware = [thunk]
 
 const store = createStore(
   reducer,
-  initialState,
+  confirmed_acc,
   composeWithDevTools(applyMiddleware(...middleware))
 )
 

@@ -35,6 +35,8 @@ const OrderScreen = ({ match, history }) => {
   const userLogin = useSelector((state) => state.userLogin)
   const { userInfo } = userLogin
 
+  console.log(order)
+
   if (!loading) {
     //   Calculate prices
     const addDecimals = (num) => {
@@ -101,7 +103,7 @@ const OrderScreen = ({ match, history }) => {
             <ListGroup.Item className='flex flex-col space-y-2'>
               <h2 className='pb-2'>Shipping</h2>
               <p>
-                <strong>Name: </strong> {order.user.name}
+                <strong>Name: </strong> {order.user.first_name} {order.user.middle_name} {order.user.last_name}  
               </p>
               <p>
                 <strong>Email: </strong>{' '}

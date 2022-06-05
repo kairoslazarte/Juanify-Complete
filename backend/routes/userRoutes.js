@@ -10,10 +10,12 @@ import {
   getUserById,
   updateUser,
   getRestaurantProfile,
-  updateRestaurantProfile
+  updateRestaurantProfile,
+  confirmUserEmail
 } from '../controllers/userController.js'
 import { protect, admin } from '../middleware/authMiddleware.js'
 
+router.route('/confirmation/:token').get(confirmUserEmail)
 router.route('/').post(registerUser).get(protect, admin, getUsers)
 router.post('/login', authUser)
 router
@@ -29,5 +31,4 @@ router
   .delete(protect, admin, deleteUser)
   .get(protect, admin, getUserById)
   .put(protect, admin, updateUser)
-
 export default router

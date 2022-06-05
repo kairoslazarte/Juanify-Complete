@@ -1,6 +1,7 @@
 import asyncHandler from 'express-async-handler'
 import Restaurant from '../models/restaurantModel.js'
 import User from '../models/userModel.js'
+import Order from '../models/orderModel.js'
 
 // @desc    Fetch all restaurants
 // @route   GET /api/restaurants
@@ -89,6 +90,17 @@ const getTopRestaurants = asyncHandler(async (req, res) => {
     const restaurants = await Restaurant.find({}).sort({ rating: -1 }).limit(6)
   
     res.json(restaurants)
+})
+
+// @desc    Get top rated restaurants
+// @route   GET /api/restaurants/top
+// @access  Public
+const getRecentlyOrdered = asyncHandler(async (req, res) => {
+  const orders = await Order.find({ 'user': req.user._id })
+
+  const restaurants = await Restaurant.find({ '_id': orders.map((order) => (order.restaurant)) })
+
+  res.json(restaurants)
 })
 
 
@@ -268,5 +280,6 @@ export {
   updateRestaurantDetails,
   deleteProduct,
   updateProduct,
-  createProduct
+  createProduct,
+  getRecentlyOrdered
 }

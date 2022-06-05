@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect , useState} from 'react'
 import { LinkContainer } from 'react-router-bootstrap'
 import { Table, Button } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
@@ -7,6 +7,7 @@ import Loader from '../components/Loader'
 import { listUsers, deleteUser } from '../actions/userActions'
 
 const UserListScreen = ({ history }) => {
+  const [filter, setFilter] = useState('All')
   const dispatch = useDispatch()
 
   const userList = useSelector((state) => state.userList)
@@ -34,12 +35,46 @@ const UserListScreen = ({ history }) => {
 
   return (
     <div className='container pt-10'>
-      <h1 className='pb-5'>Users</h1>
+      <h1 className='pb-2'>Users</h1>
       {loading ? (
         <Loader />
       ) : error ? (
         <Message variant='danger'>{error}</Message>
       ) : (
+        <>
+        <h3>Filter users by:</h3>
+        <div className='restaurant-categories'>
+          <div className='restaurant-categories__container'>
+            <button 
+              type='button' 
+              className={filter == 'All' ? 'restaurant-category__active' : 'restaurant-category'}
+              onClick={() => setFilter('All')}
+            >
+              All
+            </button>
+            <button 
+              type='button' 
+              className={filter == 'Seller' ? 'restaurant-category__active' : 'restaurant-category'}
+              onClick={() => setFilter('Seller')}
+            >
+              Seller
+            </button>
+            <button 
+              type='button' 
+              className={filter == 'Admin' ? 'restaurant-category__active' : 'restaurant-category'}
+              onClick={() => setFilter('Admin')}
+            >
+              Admin
+            </button>
+            <button 
+              type='button' 
+              className={filter == 'Apply' ? 'restaurant-category__active' : 'restaurant-category'}
+              onClick={() => setFilter('Apply')}
+            >
+              Applying for Partnership
+            </button>
+          </div>
+        </div>
         <Table striped bordered hover responsive className='table-sm'>
           <thead>
             <tr>
@@ -54,9 +89,10 @@ const UserListScreen = ({ history }) => {
           </thead>
           <tbody>
             {users.map((user) => (
-              <tr key={user._id}>
+              filter == 'All' ? (
+                <tr key={user._id}>
                 <td>{user._id}</td>
-                <td>{user.name}</td>
+                <td>{user.first_name} {user.last_name}</td>
                 <td>
                   <a href={`mailto:${user.email}`}>{user.email}</a>
                 </td>
@@ -94,10 +130,144 @@ const UserListScreen = ({ history }) => {
                     <i className='fas fa-trash'></i>
                   </button>
                 </td>
-              </tr>
+                </tr>
+              ) : filter == 'Seller' ? (
+                user.isSeller && (
+                  <tr key={user._id}>
+                  <td>{user._id}</td>
+                  <td>{user.first_name} {user.last_name}</td>
+                  <td>
+                    <a href={`mailto:${user.email}`}>{user.email}</a>
+                  </td>
+                  <td>
+                    {user.isAdmin ? (
+                      <i className='fas fa-check' style={{ color: 'green' }}></i>
+                    ) : (
+                      <i className='fas fa-times' style={{ color: 'red' }}></i>
+                    )}
+                  </td>
+                  <td>
+                    {user.isSeller ? (
+                      <i className='fas fa-check' style={{ color: 'green' }}></i>
+                    ) : (
+                      <i className='fas fa-times' style={{ color: 'red' }}></i>
+                    )}
+                  </td>
+                   <td>
+                    {user.applyingForSeller ? (
+                      <i className='fas fa-check' style={{ color: 'green' }}></i>
+                    ) : (
+                      <i className='fas fa-times' style={{ color: 'red' }}></i>
+                    )}
+                  </td>
+                  <td className='flex items-center space-x-2'>
+                    <LinkContainer to={`/admin/user/${user._id}/edit`}>
+                      <Button variant='light' className='btn-sm'>
+                        <i className='fas fa-edit'></i>
+                      </Button>
+                    </LinkContainer>
+                    <button
+                      className='bg-red-500 font-medium transition duration-200 py-2 px-3 hover:opacity-60 text-white text-xs'
+                      onClick={() => deleteHandler(user._id)}
+                    >
+                      <i className='fas fa-trash'></i>
+                    </button>
+                  </td>
+                </tr>
+                )
+              ) : filter == 'Admin' ? (
+                user.isAdmin && (
+                  <tr key={user._id}>
+                  <td>{user._id}</td>
+                  <td>{user.first_name} {user.last_name}</td>
+                  <td>
+                    <a href={`mailto:${user.email}`}>{user.email}</a>
+                  </td>
+                  <td>
+                    {user.isAdmin ? (
+                      <i className='fas fa-check' style={{ color: 'green' }}></i>
+                    ) : (
+                      <i className='fas fa-times' style={{ color: 'red' }}></i>
+                    )}
+                  </td>
+                  <td>
+                    {user.isSeller ? (
+                      <i className='fas fa-check' style={{ color: 'green' }}></i>
+                    ) : (
+                      <i className='fas fa-times' style={{ color: 'red' }}></i>
+                    )}
+                  </td>
+                   <td>
+                    {user.applyingForSeller ? (
+                      <i className='fas fa-check' style={{ color: 'green' }}></i>
+                    ) : (
+                      <i className='fas fa-times' style={{ color: 'red' }}></i>
+                    )}
+                  </td>
+                  <td className='flex items-center space-x-2'>
+                    <LinkContainer to={`/admin/user/${user._id}/edit`}>
+                      <Button variant='light' className='btn-sm'>
+                        <i className='fas fa-edit'></i>
+                      </Button>
+                    </LinkContainer>
+                    <button
+                      className='bg-red-500 font-medium transition duration-200 py-2 px-3 hover:opacity-60 text-white text-xs'
+                      onClick={() => deleteHandler(user._id)}
+                    >
+                      <i className='fas fa-trash'></i>
+                    </button>
+                  </td>
+                </tr>
+                )
+              ) : (
+                user.applyingForSeller && (
+                  <tr key={user._id}>
+                  <td>{user._id}</td>
+                  <td>{user.first_name} {user.last_name}</td>
+                  <td>
+                    <a href={`mailto:${user.email}`}>{user.email}</a>
+                  </td>
+                  <td>
+                    {user.isAdmin ? (
+                      <i className='fas fa-check' style={{ color: 'green' }}></i>
+                    ) : (
+                      <i className='fas fa-times' style={{ color: 'red' }}></i>
+                    )}
+                  </td>
+                  <td>
+                    {user.isSeller ? (
+                      <i className='fas fa-check' style={{ color: 'green' }}></i>
+                    ) : (
+                      <i className='fas fa-times' style={{ color: 'red' }}></i>
+                    )}
+                  </td>
+                   <td>
+                    {user.applyingForSeller ? (
+                      <i className='fas fa-check' style={{ color: 'green' }}></i>
+                    ) : (
+                      <i className='fas fa-times' style={{ color: 'red' }}></i>
+                    )}
+                  </td>
+                  <td className='flex items-center space-x-2'>
+                    <LinkContainer to={`/admin/user/${user._id}/edit`}>
+                      <Button variant='light' className='btn-sm'>
+                        <i className='fas fa-edit'></i>
+                      </Button>
+                    </LinkContainer>
+                    <button
+                      className='bg-red-500 font-medium transition duration-200 py-2 px-3 hover:opacity-60 text-white text-xs'
+                      onClick={() => deleteHandler(user._id)}
+                    >
+                      <i className='fas fa-trash'></i>
+                    </button>
+                  </td>
+                </tr>
+                )
+              )
             ))}
           </tbody>
         </Table>
+        </>
       )}
     </div>
   )

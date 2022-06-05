@@ -13,7 +13,9 @@ import { createRestaurant } from '../../actions/restaurantActions'
 const PartnerScreen = ({ location, history }) => {
     const [userID, setUserID] = useState('')
     const [applied, setApplied] = useState('')
-    const [name, setName] = useState('')
+    const [firstName, setFirstName] = useState('')
+    const [middleName, setMiddleName] = useState('')
+    const [lastName, setLastName] = useState('')
     const [email, setEmail] = useState('')
     const [phone, setPhone] = useState('')
     const [restaurantName, setRestaurantName] = useState('')
@@ -48,12 +50,14 @@ const PartnerScreen = ({ location, history }) => {
     : []
    
     useEffect(() => {
-        if (!user || !user.name) {
+        if (!user || !user.first_name) {
         dispatch(getUserDetails('profile'))
         } else {
         setApplied(user.applyingForSeller)
         setUserID(user_info._id)
-        setName(user.name)
+        setFirstName(user.first_name)
+        setMiddleName(user.middle_name)
+        setLastName(user.last_name)
         setEmail(user.email)
         setPhone(user.phone)
         }
@@ -190,38 +194,62 @@ const PartnerScreen = ({ location, history }) => {
                                 {message && <Message variant='danger'>{message}</Message>}
                                 <Form onSubmit={submitHandler}>
                                     <div className='partner-screen-form__name-email-phone'>
-                                    <Form.Group controlId='name'>
-                                        <Form.Label>Name</Form.Label>
+                                        <Form.Group controlId='firstName'>
+                                        <Form.Label>First name</Form.Label>
                                         <Form.Control
-                                        disabled
-                                        type='name'
-                                        placeholder='Enter name'
-                                        value={name}
-                                        onChange={(e) => setName(e.target.value)}
+                                            type='name'
+                                            placeholder='Enter first name'
+                                            disabled
+                                            value={firstName}
+                                            onChange={(e) => setFirstName(e.target.value)}
                                         ></Form.Control>
-                                    </Form.Group>
+                                        </Form.Group>
 
-                                    <Form.Group controlId='email'>
-                                        <Form.Label>Email Address</Form.Label>
+                                        <Form.Group controlId='middleName'>
+                                        <Form.Label>Middle name</Form.Label>
                                         <Form.Control
-                                        disabled
-                                        type='email'
-                                        placeholder='Enter email'
-                                        value={email}
-                                        onChange={(e) => setEmail(e.target.value)}
+                                            type='name'
+                                            disabled
+                                            placeholder='Enter middle name'
+                                            value={middleName}
+                                            onChange={(e) => setMiddleName(e.target.value)}
                                         ></Form.Control>
-                                    </Form.Group>
+                                        </Form.Group>
 
-                                    <Form.Group controlId='phone'>
-                                    <Form.Label>Phone number</Form.Label>
-                                    <Form.Control
-                                        disabled
-                                        type='number'
-                                        placeholder='Enter phone'
-                                        value={phone}
-                                        onChange={(e) => setPhone(e.target.value)}
-                                    ></Form.Control>
-                                    </Form.Group>
+                                        <Form.Group controlId='lastName'>
+                                        <Form.Label>Last name</Form.Label>
+                                        <Form.Control
+                                            type='name'
+                                            disabled
+                                            placeholder='Enter last name'
+                                            value={lastName}
+                                            onChange={(e) => setLastName(e.target.value)}
+                                        ></Form.Control>
+                                        </Form.Group>
+                                    </div>
+
+                                    <div className='partner-screen-form__name-email-phone'>
+                                        <Form.Group controlId='email'>
+                                            <Form.Label>Email Address</Form.Label>
+                                            <Form.Control
+                                            disabled
+                                            type='email'
+                                            placeholder='Enter email'
+                                            value={email}
+                                            onChange={(e) => setEmail(e.target.value)}
+                                            ></Form.Control>
+                                        </Form.Group>
+
+                                        <Form.Group controlId='phone'>
+                                        <Form.Label>Phone number</Form.Label>
+                                        <Form.Control
+                                            disabled
+                                            type='number'
+                                            placeholder='Enter phone'
+                                            value={phone}
+                                            onChange={(e) => setPhone(e.target.value)}
+                                        ></Form.Control>
+                                        </Form.Group>
                                     </div>
 
                                     <Form.Group controlId='restaurant'>
@@ -307,7 +335,7 @@ const PartnerScreen = ({ location, history }) => {
 
                                     <button
                                         type="submit"
-                                        className="register-screen_sign-button"
+                                        className="register-screen_sign-button mt-3"
                                     >
                                         Apply now!
                                     </button>

@@ -73,6 +73,16 @@ const SellerCreateProductScreen = ({history}) => {
                     onChange={(e) => setName(e.target.value)}
                     ></Form.Control>
                 </Form.Group>
+
+                <Form.Group controlId='category'>
+                    <Form.Label>Category</Form.Label>
+                    <Form.Control
+                    type='text'
+                    placeholder='Enter category'
+                    value={category}
+                    onChange={(e) => setCategory(e.target.value)}
+                    ></Form.Control>
+                </Form.Group>
     
                 <Form.Group controlId='price'>
                     <Form.Label>Price</Form.Label>
@@ -81,6 +91,16 @@ const SellerCreateProductScreen = ({history}) => {
                     placeholder='Enter price'
                     value={price}
                     onChange={(e) => setPrice(e.target.value)}
+                    ></Form.Control>
+                </Form.Group>
+
+                <Form.Group controlId='countInStock'>
+                    <Form.Label>Count In Stock</Form.Label>
+                    <Form.Control
+                    type='number'
+                    placeholder='Enter countInStock'
+                    value={countInStock}
+                    onChange={(e) => setCountInStock(e.target.value)}
                     ></Form.Control>
                 </Form.Group>
     
@@ -100,30 +120,10 @@ const SellerCreateProductScreen = ({history}) => {
                     ></Form.File>
                     {uploading && <Loader />}
                 </Form.Group>
-    
-                <Form.Group controlId='countInStock'>
-                    <Form.Label>Count In Stock</Form.Label>
-                    <Form.Control
-                    type='number'
-                    placeholder='Enter countInStock'
-                    value={countInStock}
-                    onChange={(e) => setCountInStock(e.target.value)}
-                    ></Form.Control>
-                </Form.Group>
-    
-                <Form.Group controlId='category'>
-                    <Form.Label>Category</Form.Label>
-                    <Form.Control
-                    type='text'
-                    placeholder='Enter category'
-                    value={category}
-                    onChange={(e) => setCategory(e.target.value)}
-                    ></Form.Control>
-                </Form.Group>
 
-                <Button type='submit' variant='primary'>
-                    Add
-                </Button>
+                <button type='submit' className='mt-4 bg-blue-700 font-medium transition duration-200 text-white py-3 px-4 hover:opacity-60'>
+                    Added
+                </button>
             </Form>
         </FormContainer>
     </div>

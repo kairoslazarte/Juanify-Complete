@@ -3,7 +3,14 @@ import bcrypt from 'bcryptjs'
 
 const userSchema = mongoose.Schema(
   {
-    name: {
+    first_name: {
+      type: String,
+      required: true,
+    },
+    middle_name: {
+      type: String,
+    },
+    last_name: {
       type: String,
       required: true,
     },
@@ -39,6 +46,10 @@ const userSchema = mongoose.Schema(
     restaurant_name: {
         type: String
     },
+    confirmed: {
+      type: Boolean,
+      default: false
+    }
   },
   {
     timestamps: true,

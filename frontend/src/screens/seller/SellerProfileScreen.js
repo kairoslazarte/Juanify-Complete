@@ -9,7 +9,6 @@ import { SELLER_UPDATE_PROFILE_RESET } from '../../constants/userConstants'
 
 const SellerProfileScreen = ({ history }) => {
     const [message, setMessage] = useState(null)
-
     const [restaurantName, setRestaurantName] = useState('')
     const [city, setCity] = useState('')
     const [lon, setLon] = useState('')
@@ -95,6 +94,7 @@ const SellerProfileScreen = ({ history }) => {
     return (
         <div className='seller-profile container pt-10'>
             <h2>RESTAURANT PROFILE</h2>
+            <h3>ID: {restaurant && restaurant._id}</h3>
             {message && <Message variant='danger'>{message}</Message>}
             {}
             {success && <Message variant='success'>Profile Updated</Message>}

@@ -11,7 +11,9 @@ import { USER_UPDATE_RESET } from '../constants/userConstants'
 const UserEditScreen = ({ match, history }) => {
   const userId = match.params.id
 
-  const [name, setName] = useState('')
+  const [firstName, setFirstName] = useState('')
+  const [middleName, setMiddleName] = useState('')
+  const [lastName, setLastName] = useState('')
   const [email, setEmail] = useState('')
   const [isAdmin, setIsAdmin] = useState(false)
   const [isSeller, setIsSeller] = useState(false)
@@ -34,10 +36,12 @@ const UserEditScreen = ({ match, history }) => {
       dispatch({ type: USER_UPDATE_RESET })
       history.push('/admin/userlist')
     } else {
-      if (!user.name || user._id !== userId) {
+      if (!user.first_name || user._id !== userId) {
         dispatch(getUserDetails(userId))
       } else {
-        setName(user.name)
+        setFirstName(user.first_name)
+        setMiddleName(user.middle_name)
+        setLastName(user.last_name)
         setEmail(user.email)
         setIsAdmin(user.isAdmin)
         setIsSeller(user.isSeller)
@@ -48,7 +52,7 @@ const UserEditScreen = ({ match, history }) => {
 
   const submitHandler = (e) => {
     e.preventDefault()
-    dispatch(updateUser({ _id: userId, name, email, isAdmin, isSeller }))
+    dispatch(updateUser({ _id: userId, first_name: firstName, middle_name: middleName, last_name: lastName, email, isAdmin, isSeller }))
   }
 
   return (
@@ -77,13 +81,33 @@ const UserEditScreen = ({ match, history }) => {
               </div>
             )}
 
-            <Form.Group controlId='name'>
-              <Form.Label>Name</Form.Label>
+            <Form.Group controlId='firstName'>
+              <Form.Label>First name</Form.Label>
               <Form.Control
                 type='name'
-                placeholder='Enter name'
-                value={name}
-                onChange={(e) => setName(e.target.value)}
+                placeholder='Enter first name'
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
+              ></Form.Control>
+            </Form.Group>
+
+            <Form.Group controlId='middleName'>
+              <Form.Label>Middle name</Form.Label>
+              <Form.Control
+                type='name'
+                placeholder='Enter middle name'
+                value={middleName}
+                onChange={(e) => setMiddleName(e.target.value)}
+              ></Form.Control>
+            </Form.Group>
+
+            <Form.Group controlId='lastName'>
+              <Form.Label>Last name</Form.Label>
+              <Form.Control
+                type='name'
+                placeholder='Enter last name'
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
               ></Form.Control>
             </Form.Group>
 

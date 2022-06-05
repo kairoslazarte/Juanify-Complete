@@ -2,6 +2,21 @@ import asyncHandler from 'express-async-handler'
 import generateToken from '../utils/generateToken.js'
 import User from '../models/userModel.js'
 import Restaurant from '../models/restaurantModel.js'
+import jwt from 'jsonwebtoken'
+import nodemailer from 'nodemailer'
+
+
+const transporter = nodemailer.createTransport({
+  host: 'smtp.gmail.com',
+  port: 465,
+  secure: true, // use SSL
+  auth: {
+    user: 'qfkrlazarte@tip.edu.ph',
+    pass: '@Elohimfcan21',
+  },
+});
+
+const EMAIL_SECRET = 'asdf16568944asd6s1a64as9d9aa11'
 
 // @desc    Auth user & get token
 // @route   POST /api/users/login
@@ -11,19 +26,28 @@ const authUser = asyncHandler(async (req, res) => {
 
   const user = await User.findOne({ email })
 
-  if (user && (await user.matchPassword(password))) {
-    res.json({
-      _id: user._id,
-      name: user.name,
-      phone: user.phone,
-      email: user.email,
-      isAdmin: user.isAdmin,
-      isSeller: user.isSeller,
-      token: generateToken(user._id),
-    })
-  } else {
-    res.status(401)
-    throw new Error('Invalid email or password')
+  if (!user.confirmed) {
+    throw new Error('Email not yet confirmed!')
+  }
+  else {
+    if (user && (await user.matchPassword(password)) && user.confirmed) {
+      res.json({
+        _id: user._id,
+        first_name: user.first_name,
+        middle_name: user.middle_name,
+        last_name: user.last_name,
+        phone: user.phone,
+        confirmed: user.confirmed,
+        email: user.email,
+        isAdmin: user.isAdmin,
+        isSeller: user.isSeller,
+        token: generateToken(user._id),
+      })
+    } 
+    else {
+      res.status(401)
+      throw new Error('Invalid email or password')
+    }
   }
 })
 
@@ -31,7 +55,7 @@ const authUser = asyncHandler(async (req, res) => {
 // @route   POST /api/users
 // @access  Public
 const registerUser = asyncHandler(async (req, res) => {
-  const { name, email, phone, password } = req.body
+  const { firstName: first_name, middleName: middle_name, lastName: last_name, email, phone, password } = req.body
 
   const userExists = await User.findOne({ email })
 
@@ -41,7 +65,9 @@ const registerUser = asyncHandler(async (req, res) => {
   }
 
   const user = await User.create({
-    name,
+    first_name,
+    middle_name,
+    last_name,
     email,
     phone,
     password,
@@ -50,7 +76,9 @@ const registerUser = asyncHandler(async (req, res) => {
   if (user) {
     res.status(201).json({
       _id: user._id,
-      name: user.name,
+      first_name: user.first_name,
+      middle_name: user.middle_name,
+      last_name: user.last_name,
       email: user.email,
       phone: user.phone,
       isSeller: user.isSeller,
@@ -58,9 +86,54 @@ const registerUser = asyncHandler(async (req, res) => {
       isAdmin: user.isAdmin,
       token: generateToken(user._id),
     })
+
+    const emailToken = jwt.sign(
+      {
+        user: user._id,
+      },
+      EMAIL_SECRET,
+      {
+        expiresIn: '1d',
+      },
+    );
+
+    const url = `https://juanify.herokuapp.com/api/users/confirmation/${emailToken}`;
+
+    let mailOptions = {
+      from: 'Test Juanify <qfkrlazarte@tip.edu.ph>',
+      to: email,
+      subject: 'Confirm your email',
+      html: `Thanks for signing up ka-Juan! Please click the link to confirm your email: <a href="${url}">${url}</a>`,
+    }
+
+    transporter.sendMail(mailOptions, (err, info) => {
+        if (err) {
+            console.log('Error', err);
+        } else {
+            console.log('Message Sent!');
+        }
+    })
   } else {
     res.status(400)
     throw new Error('Invalid user data')
+  }
+})
+
+const confirmUserEmail = asyncHandler(async (req, res) => {
+
+  const { user: _id } = jwt.verify(req.params.token, EMAIL_SECRET)
+
+  const user = await User.findById(_id)
+
+  if (user) {
+    user.confirmed = true
+
+    await user.save()
+
+    return res.redirect('https://juanify.herokuapp.com/login');
+  } else {
+    res.status(404)
+    throw new Error('User not found')
   }
 })
 
@@ -73,7 +146,9 @@ const getUserProfile = asyncHandler(async (req, res) => {
   if (user) {
     res.json({
       _id: user._id,
-      name: user.name,
+      first_name: user.first_name,
+      middle_name: user.middle_name,
+      last_name: user.last_name,
       phone: user.phone,
       email: user.email,
       isAdmin: user.isAdmin,
@@ -93,7 +168,9 @@ const updateUserProfile = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user._id)
 
   if (user) {
-    user.name = req.body.name || user.name
+    user.first_name = req.body.first_name || user.first_name
+    user.middle_name = req.body.middle_name || user.middle_name
+    user.last_name = req.body.last_name || user.last_name
     user.email = req.body.email || user.email
     user.phone = req.body.phone || user.phone
     if (req.body.password) {
@@ -104,7 +181,9 @@ const updateUserProfile = asyncHandler(async (req, res) => {
 
     res.json({
       _id: updatedUser._id,
-      name: updatedUser.name,
+      first_name: updatedUser.first_name,
+      middle_name: updatedUser.middle_name,
+      last_name: updatedUser.last_name,
       phone: updatedUser.phone,
       email: updatedUser.email,
       isAdmin: updatedUser.isAdmin,
@@ -169,11 +248,30 @@ const updateUser = asyncHandler(async (req, res) => {
     let applyingSeller
     if (req.body.isSeller == true) {
       applyingSeller = false
+
+      let mailOptions = {
+        from: 'Test Juanify <qfkrlazarte@tip.edu.ph>',
+        to: req.body.email,
+        subject: 'Your application has been accepted!',
+        text: `Congratulations, ${req.body.first_name} ${req.body.last_name}! Your application has been approved, welcome to Juanify! `,
+      }
+  
+      transporter.sendMail(mailOptions, (err, info) => {
+          if (err) {
+              console.log('Error', err);
+          } else {
+              console.log('Message Sent!');
+          }
+      })
     } else {
       applyingSeller = false
-      await restaurant.remove()
+      if (restaurant) {
+        await restaurant.remove()
+      }
     }
-    user.name = req.body.name || user.name
+    user.first_name = req.body.first_name || user.first_name
+    user.middle_name = req.body.middle_name || user.middle_name
+    user.last_name = req.body.last_name || user.last_name
     user.email = req.body.email || user.email
     user.phone = req.body.phone || user.phone
     user.isAdmin = req.body.isAdmin
@@ -184,7 +282,9 @@ const updateUser = asyncHandler(async (req, res) => {
 
     res.json({
       _id: updatedUser._id,
-      name: updatedUser.name,
+      first_name: updatedUser.first_name,
+      middle_name: updatedUser.middle_name,
+      last_name: updatedUser.last_name,
       phone: updatedUser.phone,
       email: updatedUser.email,
       isAdmin: updatedUser.isAdmin,
@@ -270,5 +370,6 @@ export {
   getUserById,
   updateUser,
   getRestaurantProfile,
-  updateRestaurantProfile
+  updateRestaurantProfile,
+  confirmUserEmail
 }

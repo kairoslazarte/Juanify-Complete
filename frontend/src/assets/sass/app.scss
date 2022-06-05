@@ -3,6 +3,7 @@
 @use "components/location-box";
 @use "components/footer";
 @use "components/restaurant-card";
+@use "components/restaurant-carousel";
 
 // Client - Screens
 @use "screens/client/location";
@@ -131,4 +132,25 @@ h3 {
 
 .react-multi-carousel-item {
     @apply sm:pr-2 lg:pr-4 xl:pr-6;
+}
+
+.form-group {
+    @apply pt-3;
+    margin-bottom: 0 !important;
+}
+
+.restaurant-categories {
+    @apply pb-4;
+    
+    .restaurant-categories__container {
+        @apply grid grid-cols-2 sm:gap-0 gap-4 sm:flex sm:flex-row sm:space-x-4 items-center;
+ 
+        .restaurant-category {
+            @apply bg-gray-100 rounded-md px-5 py-2 border-0 hover:bg-blue-100 transition duration-200 cursor-pointer;
+        }
+
+        .restaurant-category__active {
+            @apply bg-blue-100 rounded-md px-5 py-2 border-0;
+        }
+    }
 }

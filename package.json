@@ -28,13 +28,15 @@
     "mongoose": "^5.10.6",
     "morgan": "^1.10.0",
     "multer": "^1.4.2",
+    "nodemailer": "^6.7.5",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
     "react-scripts": "^5.0.1",
     "require-at": "^1.0.6",
     "toidentifier": "^1.0.1",
     "undefsafe": "^2.0.5",
-    "update-notifier": "^5.1.0"
+    "update-notifier": "^5.1.0",
+    "xoauth2": "^1.2.0"
   },
   "devDependencies": {
     "concurrently": "^5.3.0",

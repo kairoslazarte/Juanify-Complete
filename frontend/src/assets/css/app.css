@@ -341,6 +341,121 @@
   border-width: 0px;
 }
 
+.restaurant-carousel {
+  display: flex;
+  flex: 1 1 0%;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.restaurant-carousel .restaurant-carousel__img img {
+  height: 18rem;
+  width: 100%;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+  object-fit: cover;
+}
+@media (min-width: 640px) {
+  .restaurant-carousel .restaurant-carousel__img img {
+    height: 15rem;
+  }
+}
+.restaurant-carousel .restaurant-carousel__name {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 1.25rem;
+}
+.restaurant-carousel .restaurant-carousel__name p {
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 700;
+}
+@media (min-width: 640px) {
+  .restaurant-carousel .restaurant-carousel__name p {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+}
+.restaurant-carousel .restaurant-carousel__location {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-style: italic;
+}
+@media (min-width: 640px) {
+  .restaurant-carousel .restaurant-carousel__location {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+}
+.restaurant-carousel .restaurant-carousel__rating {
+  display: flex;
+  align-items: center;
+}
+.restaurant-carousel .restaurant-carousel__rating > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(0.5rem * var(--tw-space-x-reverse));
+  margin-left: calc(0.5rem * calc(1 - var(--tw-space-x-reverse)));
+}
+.restaurant-carousel .restaurant-carousel__rating {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 1.25rem;
+  padding-top: 0.25rem;
+}
+.restaurant-carousel .restaurant-carousel__rating p {
+  margin-bottom: 0 !important;
+}
+.restaurant-carousel .restaurant-carousel__rating span {
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-style: italic;
+}
+@media (min-width: 640px) {
+  .restaurant-carousel .restaurant-carousel__rating span {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+}
+.restaurant-carousel .restaurant-carousel__price {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+.restaurant-carousel .restaurant-carousel__price h4 {
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 600;
+}
+.restaurant-carousel .restaurant-carousel__add-to-cart--btn {
+  border-radius: 0.375rem;
+  border-width: 1px;
+  --tw-border-opacity: 1;
+  border-color: rgb(220 38 38 / var(--tw-border-opacity));
+  --tw-bg-opacity: 1;
+  background-color: rgb(220 38 38 / var(--tw-bg-opacity));
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  text-align: center;
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+  text-decoration-line: none;
+  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
+  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+}
+.restaurant-carousel .restaurant-carousel__add-to-cart--btn:hover {
+  background-color: transparent;
+  --tw-text-opacity: 1;
+  color: rgb(220 38 38 / var(--tw-text-opacity));
+}
+.restaurant-carousel .restaurant-carousel__add-to-cart--btn:focus {
+  border-width: 0px;
+}
+
 .location-screen {
   height: 100%;
   --tw-bg-opacity: 1;
@@ -3382,4 +3497,61 @@ h3 {
   .react-multi-carousel-item {
     padding-right: 1.5rem;
   }
+}
+
+.form-group {
+  padding-top: 0.75rem;
+  margin-bottom: 0 !important;
+}
+
+.restaurant-categories {
+  padding-bottom: 1rem;
+}
+.restaurant-categories .restaurant-categories__container {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: center;
+  gap: 1rem;
+}
+@media (min-width: 640px) {
+  .restaurant-categories .restaurant-categories__container {
+    display: flex;
+    flex-direction: row;
+    gap: 0px;
+  }
+  .restaurant-categories .restaurant-categories__container > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-x-reverse: 0;
+    margin-right: calc(1rem * var(--tw-space-x-reverse));
+    margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
+  }
+}
+.restaurant-categories .restaurant-categories__container .restaurant-category {
+  cursor: pointer;
+  border-radius: 0.375rem;
+  border-width: 0px;
+  --tw-bg-opacity: 1;
+  background-color: rgb(243 244 246 / var(--tw-bg-opacity));
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
+  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+}
+.restaurant-categories .restaurant-categories__container .restaurant-category:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(219 234 254 / var(--tw-bg-opacity));
+}
+.restaurant-categories .restaurant-categories__container .restaurant-category__active {
+  border-radius: 0.375rem;
+  border-width: 0px;
+  --tw-bg-opacity: 1;
+  background-color: rgb(219 234 254 / var(--tw-bg-opacity));
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 }

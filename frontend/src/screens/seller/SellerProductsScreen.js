@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { LinkContainer } from 'react-router-bootstrap'
 import { Table, Button, Row, Col } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
@@ -9,34 +9,52 @@ import {  deleteProduct, createProduct } from '../../actions/restaurantActions'
 
 
 const SellerProductsScreen = ({ history, match }) => {
-    const dispatch = useDispatch()
+  const [filterProducts, setFilterProducts] = useState('All')
 
-    const userLogin = useSelector((state) => state.userLogin)
-    const { userInfo } = userLogin
+  const dispatch = useDispatch()
 
-    const restaurantProfile = useSelector((state) => state.restaurantProfile)
-    const { loading, error, restaurant } = restaurantProfile
+  const userLogin = useSelector((state) => state.userLogin)
+  const { userInfo } = userLogin
 
-    const productDelete = useSelector((state) => state.productDelete)
-    const {
-      loading: loadingDelete,
-      error: errorDelete,
-      success: successDelete,
-    } = productDelete
+  const restaurantProfile = useSelector((state) => state.restaurantProfile)
+  const { loading, error, restaurant } = restaurantProfile
 
-    useEffect(() => {
-        if (!userInfo) {
-            history.push('/login')
-        } else {
-            if (!restaurant || !restaurant.name) {
-                dispatch(getRestaurantProfile('restaurant/profile'))
-            } 
-        }
-    }, [dispatch, history, userInfo, restaurant])
+  const productDelete = useSelector((state) => state.productDelete)
+  const {
+    loading: loadingDelete,
+    error: errorDelete,
+    success: successDelete,
+  } = productDelete
 
-    const { products } = restaurant
+  useEffect(() => {
+      if (!userInfo) {
+          history.push('/login')
+      } else {
+          if (!restaurant || !restaurant.name) {
+              dispatch(getRestaurantProfile('restaurant/profile'))
+          } 
+      }
+  }, [dispatch, history, userInfo, restaurant])
 
-    console.log(products)
+  const { products } = restaurant
+
+  const categories = []
+
+  products && (
+    products.map((product) => {
+      if (product.category == product.category) {
+          categories.push(product.category)
+      }
+    })
+  )
+
+  const product_category = []
+      
+  for(let i of categories) {
+      if(product_category.indexOf(i) === -1) {
+          product_category.push(i)
+      }
+  }
 
 
   const deleteHandler = (id) => {
@@ -72,6 +90,15 @@ const SellerProductsScreen = ({ history, match }) => {
         <Message variant='danger'>{error}</Message>
       ) : (
         <>
+        <h3>Filter products by category:</h3>
+         <div className='restaurant-categories'>
+            <div className='restaurant-categories__container'>
+                <button className={filterProducts == 'All' ? 'restaurant-category__active' : 'restaurant-category'} onClick={() => setFilterProducts('All')}>All</button>
+                {product_category.map((prod_cat) => (
+                    <button className={filterProducts == prod_cat ? 'restaurant-category__active' : 'restaurant-category'} onClick={() => setFilterProducts(prod_cat)}>{prod_cat}</button>
+                ))}
+            </div>
+          </div>
           <Table striped bordered hover responsive className='table-sm'>
             <thead>
                 <tr>
@@ -86,26 +113,54 @@ const SellerProductsScreen = ({ history, match }) => {
             <tbody>
                 {products && (
                     products.map((product) => (
-                    <tr key={product._id}>
-                        <td>{product._id}</td>
-                        <td>{product.name}</td>
-                        <td>{product.category}</td>
-                        <td>{product.price}</td>
-                        <td>{product.countInStock}</td>
-                        <td className='flex items-center space-x-2'>
-                            <LinkContainer to={`/partner/product/${product._id}/edit`}>
-                                <Button variant='light' className='btn-sm'>
-                                <i className='fas fa-edit'></i>
-                                </Button>
-                            </LinkContainer>
-                            <button
-                                className='bg-red-500 font-medium transition duration-200 py-2 px-3 hover:opacity-60 text-white text-xs'
-                                onClick={() => deleteHandler(product._id)}
-                            >
-                                <i className='fas fa-trash'></i>
-                            </button>
-                        </td>
-                    </tr>
+                      <>
+                      {filterProducts == 'All' 
+                      ? 
+                      <tr key={product._id}>
+                          <td>{product._id}</td>
+                          <td>{product.name}</td>
+                          <td>{product.category}</td>
+                          <td>{product.price}</td>
+                          <td>{product.countInStock}</td>
+                          <td className='flex items-center space-x-2'>
+                              <LinkContainer to={`/partner/product/${product._id}/edit`}>
+                                  <Button variant='light' className='btn-sm'>
+                                  <i className='fas fa-edit'></i>
+                                  </Button>
+                              </LinkContainer>
+                              <button
+                                  className='bg-red-500 font-medium transition duration-200 py-2 px-3 hover:opacity-60 text-white text-xs'
+                                  onClick={() => deleteHandler(product._id)}
+                              >
+                                  <i className='fas fa-trash'></i>
+                              </button>
+                          </td>
+                      </tr>
+                      :
+                      product.category == filterProducts && (
+                        <tr key={product._id}>
+                            <td>{product._id}</td>
+                            <td>{product.name}</td>
+                            <td>{product.category}</td>
+                            <td>{product.price}</td>
+                            <td>{product.countInStock}</td>
+                            <td className='flex items-center space-x-2'>
+                                <LinkContainer to={`/partner/product/${product._id}/edit`}>
+                                    <Button variant='light' className='btn-sm'>
+                                    <i className='fas fa-edit'></i>
+                                    </Button>
+                                </LinkContainer>
+                                <button
+                                    className='bg-red-500 font-medium transition duration-200 py-2 px-3 hover:opacity-60 text-white text-xs'
+                                    onClick={() => deleteHandler(product._id)}
+                                >
+                                    <i className='fas fa-trash'></i>
+                                </button>
+                            </td>
+                        </tr>
+                      )
+                      }
+                      </>
                     ))
                 )}
             </tbody>

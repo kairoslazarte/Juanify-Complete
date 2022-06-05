@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { LinkContainer } from 'react-router-bootstrap'
 import { Table, Button } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
@@ -7,6 +7,7 @@ import Loader from '../../components/Loader'
 import { listOrders } from '../../actions/orderActions'
 
 const SellerOrderlistScreen = ({history}) => {
+    const [filter, setFilter] = useState('All')
     const dispatch = useDispatch()
 
     const orderList = useSelector((state) => state.orderList)
@@ -27,7 +28,17 @@ const SellerOrderlistScreen = ({history}) => {
         ) : error ? (
           <Message variant='danger'>{error}</Message>
         ) : (
-          <Table striped bordered hover responsive className='table-sm'>
+          <>
+          <h3>Filter orders by status:</h3>
+           <div className='restaurant-categories'>
+              <div className='restaurant-categories__container'>
+                  <button className={filter == 'All' ? 'restaurant-category__active' : 'restaurant-category'} onClick={() => setFilter('All')}>All</button>
+                  <button className={filter == 'Delivered' ? 'restaurant-category__active' : 'restaurant-category'} onClick={() => setFilter('Delivered')}>Delivered</button>
+                  <button className={filter == 'Paid' ? 'restaurant-category__active' : 'restaurant-category'} onClick={() => setFilter('Paid')}>Paid</button>
+                  <button className={filter == 'Complete' ? 'restaurant-category__active' : 'restaurant-category'} onClick={() => setFilter('Complete')}>Complete</button>
+              </div>
+            </div>
+           <Table striped bordered hover responsive className='table-sm'>
             <thead>
               <tr>
                 <th>ID</th>
@@ -41,9 +52,10 @@ const SellerOrderlistScreen = ({history}) => {
             </thead>
             <tbody>
               {orders.map((order) => (
-                <tr key={order._id}>
+                filter == 'All' ? (
+                  <tr key={order._id}>
                   <td>{order._id}</td>
-                  <td>{order.user && order.user.name}</td>
+                  <td>{order.user && order.user.first_name} {order.user && order.user.last_name}</td>
                   <td>{order.createdAt.substring(0, 10)}</td>
                   <td>Php {order.totalPrice}</td>
                   <td>
@@ -67,10 +79,102 @@ const SellerOrderlistScreen = ({history}) => {
                       </Button>
                     </LinkContainer>
                   </td>
-                </tr>
+                  </tr>
+                ) : filter == 'Delivered' ? (
+                  order.isDelivered && (
+                    <tr key={order._id}>
+                  <td>{order._id}</td>
+                  <td>{order.user && order.user.first_name} {order.user && order.user.last_name}</td>
+                  <td>{order.createdAt.substring(0, 10)}</td>
+                  <td>Php {order.totalPrice}</td>
+                  <td>
+                    {order.isPaid ? (
+                      order.paidAt
+                    ) : (
+                      <i className='fas fa-times' style={{ color: 'red' }}></i>
+                    )}
+                  </td>
+                  <td>
+                    {order.isDelivered ? (
+                      order.deliveredAt
+                    ) : (
+                      <i className='fas fa-times' style={{ color: 'red' }}></i>
+                    )}
+                  </td>
+                  <td>
+                    <LinkContainer to={`/partner/order/${order._id}`}>
+                      <Button variant='light' className='btn-sm'>
+                        Details
+                      </Button>
+                    </LinkContainer>
+                  </td>
+                    </tr>
+                  )
+                ) : filter == 'Paid' ? (
+                  order.isPaid && (
+                    <tr key={order._id}>
+                  <td>{order._id}</td>
+                  <td>{order.user && order.user.first_name} {order.user && order.user.last_name}</td>
+                  <td>{order.createdAt.substring(0, 10)}</td>
+                  <td>Php {order.totalPrice}</td>
+                  <td>
+                    {order.isPaid ? (
+                      order.paidAt
+                    ) : (
+                      <i className='fas fa-times' style={{ color: 'red' }}></i>
+                    )}
+                  </td>
+                  <td>
+                    {order.isDelivered ? (
+                      order.deliveredAt
+                    ) : (
+                      <i className='fas fa-times' style={{ color: 'red' }}></i>
+                    )}
+                  </td>
+                  <td>
+                    <LinkContainer to={`/partner/order/${order._id}`}>
+                      <Button variant='light' className='btn-sm'>
+                        Details
+                      </Button>
+                    </LinkContainer>
+                  </td>
+                    </tr>
+                  )
+                ) : (
+                  order.isComplete && (
+                    <tr key={order._id}>
+                  <td>{order._id}</td>
+                  <td>{order.user && order.user.first_name} {order.user && order.user.last_name}</td>
+                  <td>{order.createdAt.substring(0, 10)}</td>
+                  <td>Php {order.totalPrice}</td>
+                  <td>
+                    {order.isPaid ? (
+                      order.paidAt
+                    ) : (
+                      <i className='fas fa-times' style={{ color: 'red' }}></i>
+                    )}
+                  </td>
+                  <td>
+                    {order.isDelivered ? (
+                      order.deliveredAt
+                    ) : (
+                      <i className='fas fa-times' style={{ color: 'red' }}></i>
+                    )}
+                  </td>
+                  <td>
+                    <LinkContainer to={`/partner/order/${order._id}`}>
+                      <Button variant='light' className='btn-sm'>
+                        Details
+                      </Button>
+                    </LinkContainer>
+                  </td>
+                    </tr>
+                  )
+                )
               ))}
             </tbody>
           </Table>
+          </>
         )}
       </div>
     )
