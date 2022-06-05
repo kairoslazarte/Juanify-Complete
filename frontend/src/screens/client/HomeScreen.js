@@ -5,7 +5,7 @@ import Message from '../../components/Message'
 import Loader from '../../components/Loader'
 import ProductCarousel from '../../components/ProductCarousel'
 import Meta from '../../components/Meta'
-import { listTopRestaurants } from '../../actions/restaurantActions'
+import { listTopRestaurants, listRecentlyOrdered } from '../../actions/restaurantActions'
 import JuanifyJumbotron from '../../assets/img/home-jumbo.png'
 import { Container } from 'react-bootstrap'
 import hassleFreeImg from '../../assets/img/hassle-free.png'
@@ -15,6 +15,26 @@ import Efren from '../../assets/img/efren.PNG'
 import Joel from '../../assets/img/joel.PNG'
 import Rox from '../../assets/img/roxanne.PNG'
 import Senibe from '../../assets/img/senibe.PNG'
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+
+const responsive = {
+  desktop: {
+    breakpoint: { max: 3000, min: 1024 },
+    items: 3,
+    slidesToSlide: 3 // optional, default to 1.
+  },
+  tablet: {
+    breakpoint: { max: 1024, min: 464 },
+    items: 2,
+    slidesToSlide: 2 // optional, default to 1.
+  },
+  mobile: {
+    breakpoint: { max: 464, min: 0 },
+    items: 1,
+    slidesToSlide: 1 // optional, default to 1.
+  }
+};
 
 const people = [
   {
@@ -74,11 +94,18 @@ const people = [
 const HomeScreen = () => {
   const dispatch = useDispatch()
 
+  const userLogin = useSelector((state) => state.userLogin)
+  const { userInfo } = userLogin
+
   const restaurantTopRated = useSelector((state) => state.restaurantTopRated)
   const { loading, error, restaurants } = restaurantTopRated
 
+  const restaurantRecentlyOrdered = useSelector((state) => state.restaurantRecentlyOrdered)
+  const { loading: loadingRecent, error: errorRecent, restaurants: recentlyOrdered } = restaurantRecentlyOrdered
+
   useEffect(() => {
     dispatch(listTopRestaurants())
+    dispatch(listRecentlyOrdered())
   }, [dispatch])
 
   return (
@@ -99,13 +126,31 @@ const HomeScreen = () => {
           <>
             <section id="home-restaurants" className="home-restaurants">
               <h1>Most <span className='text-red-500'>popular</span>/<span className='text-blue-700'>top-rated</span> restaurants</h1>
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-4 xl:gap-6 pt-8">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 lg:gap-4 xl:gap-6 pt-8">
                 {restaurants.map((restaurant) => (
                   <RestaurantCard restaurant={restaurant} key={restaurant._id} />
                 ))}
               </div>
             </section>
           </>
+        )}
+        {userInfo && (
+          loadingRecent ? (
+            <Loader />
+          ) : errorRecent ? (
+            <Message variant='danger'>{errorRecent}</Message>
+          ) : (
+            recentlyOrdered.length > 0 && (
+              <section id="home-restaurants" className="home-restaurants pt-0">
+                <h1 className='pb-8'>RECENTLY ORDERED FROM</h1>
+                <Carousel responsive={responsive}>
+                  {recentlyOrdered.map((recent_restau) => (
+                      <RestaurantCard restaurant={recent_restau} key={recent_restau._id} />
+                  ))}
+                </Carousel>
+              </section>
+            )
+          )
         )}
       </Container>
       

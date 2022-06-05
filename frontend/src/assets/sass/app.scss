@@ -42,7 +42,7 @@
 }
 
 .main-layout {
-    @apply pb-5 pt-[5rem];
+    @apply pb-5 pt-[6rem];
 }
 
 label {
@@ -127,4 +127,8 @@ h3 {
     @media (min-width: 768px) {
         padding-top: 0px;
     }
+}
+
+.react-multi-carousel-item {
+    @apply sm:pr-2 lg:pr-4 xl:pr-6;
 }

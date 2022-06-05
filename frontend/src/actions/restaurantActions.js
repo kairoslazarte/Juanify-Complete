@@ -30,6 +30,9 @@ import {
   PRODUCT_CREATE_REQUEST,
   PRODUCT_CREATE_SUCCESS,
   PRODUCT_CREATE_FAIL,
+  RESTAURANT_RECENTORDER_REQUEST,
+  RESTAURANT_RECENTORDER_SUCCESS,
+  RESTAURANT_RECENTORDER_FAIL,
 } from '../constants/restaurantConstants'
 import { logout } from './userActions'
 
@@ -95,6 +98,37 @@ export const listTopRestaurants = () => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: RESTAURANT_TOP_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    })
+  }
+}
+
+export const listRecentlyOrdered = () => async (dispatch, getState) => {
+  try {
+    dispatch({ type: RESTAURANT_RECENTORDER_REQUEST })
+
+    const {
+      userLogin: { userInfo },
+    } = getState()
+
+    const config = {
+      headers: {
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    }
+
+    const { data } = await axios.get(`/api/restaurants/recent`, config)
+
+    dispatch({
+      type: RESTAURANT_RECENTORDER_SUCCESS,
+      payload: data,
+    })
+  } catch (error) {
+    dispatch({
+      type: RESTAURANT_RECENTORDER_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message

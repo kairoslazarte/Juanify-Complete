@@ -1,5 +1,5 @@
 .header {
-  z-index: 99;
+  z-index: 99999;
   position: fixed;
   top: 0px;
   width: 100%;
@@ -219,15 +219,21 @@
 }
 
 .restaurant-card:hover {
-  --tw-scale-x: 1.1;
-  --tw-scale-y: 1.1;
+  --tw-scale-x: 1.05;
+  --tw-scale-y: 1.05;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
   --tw-border-opacity: 1;
   border-color: rgb(239 68 68 / var(--tw-border-opacity));
   text-decoration-line: none;
 }
+
+@media (min-width: 640px) {
+  .restaurant-card {
+    height: 24rem;
+  }
+}
 .restaurant-card .restaurant-card__img img {
-  height: 10rem;
+  height: 18rem;
   width: 100%;
   border-top-left-radius: 0.5rem;
   border-top-right-radius: 0.5rem;
@@ -636,24 +642,6 @@
 .home-restaurants {
   padding-top: 5rem;
   padding-bottom: 5rem;
-}
-.home-restaurants .home-restaurants__container {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.5rem;
-  padding-top: 2rem;
-}
-@media (min-width: 768px) {
-  .home-restaurants .home-restaurants__container {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 1rem;
-  }
-}
-@media (min-width: 1280px) {
-  .home-restaurants .home-restaurants__container {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 1.5rem;
-  }
 }
 
 .policies_screen-section {
@@ -2976,11 +2964,16 @@
 }
 .restaurants .restaurants__container {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(1, minmax(0, 1fr));
   gap: 0.5rem;
   padding-top: 2rem;
 }
-@media (min-width: 768px) {
+@media (min-width: 640px) {
+  .restaurants .restaurants__container {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (min-width: 1024px) {
   .restaurants .restaurants__container {
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 1rem;
@@ -3254,7 +3247,7 @@
 
 .main-layout {
   padding-bottom: 1.25rem;
-  padding-top: 5rem;
+  padding-top: 6rem;
 }
 
 label {
@@ -3370,5 +3363,23 @@ h3 {
 @media (min-width: 768px) {
   .cart-screen-details {
     padding-top: 0px;
+  }
+}
+
+@media (min-width: 640px) {
+  .react-multi-carousel-item {
+    padding-right: 0.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .react-multi-carousel-item {
+    padding-right: 1rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .react-multi-carousel-item {
+    padding-right: 1.5rem;
   }
 }

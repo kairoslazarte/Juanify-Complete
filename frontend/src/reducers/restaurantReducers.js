@@ -34,6 +34,9 @@ import {
     PRODUCT_CREATE_SUCCESS,
     PRODUCT_CREATE_RESET,
     PRODUCT_CREATE_FAIL,
+    RESTAURANT_RECENTORDER_REQUEST,
+    RESTAURANT_RECENTORDER_SUCCESS,
+    RESTAURANT_RECENTORDER_FAIL,
   } from '../constants/restaurantConstants'
   
   export const restaurantListReducer = (state = { restaurants: [] }, action) => {
@@ -77,6 +80,19 @@ import {
       case RESTAURANT_TOP_SUCCESS:
         return { loading: false, restaurants: action.payload }
       case RESTAURANT_TOP_FAIL:
+        return { loading: false, error: action.payload }
+      default:
+        return state
+    }
+  }
+
+  export const restaurantRecentlyOrdereddReducer = (state = { restaurants: [] }, action) => {
+    switch (action.type) {
+      case RESTAURANT_RECENTORDER_REQUEST:
+        return { loading: true, restaurants: [] }
+      case RESTAURANT_RECENTORDER_SUCCESS:
+        return { loading: false, restaurants: action.payload }
+      case RESTAURANT_RECENTORDER_FAIL:
         return { loading: false, error: action.payload }
       default:
         return state

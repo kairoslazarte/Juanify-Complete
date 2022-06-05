@@ -1,9 +1,9 @@
 .restaurant-card {
-    @apply flex flex-col flex-1 justify-between shadow-lg rounded-lg hover:no-underline bg-white transition duration-200 hover:scale-110 border-2 hover:border-red-500;
+    @apply flex flex-col flex-1 justify-between shadow-lg rounded-lg hover:no-underline bg-white transition duration-200 hover:scale-105 border-2 hover:border-red-500 sm:h-96;
 
     .restaurant-card__img {
         img {
-            @apply object-cover w-full rounded-t-lg h-40 sm:h-60;
+            @apply object-cover w-full rounded-t-lg h-72 sm:h-60;
         }
     }
 
