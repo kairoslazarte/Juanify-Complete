@@ -201,13 +201,9 @@ const RestaurantScreen = ({ history, match }) => {
                                                 ></Form.Control>
                                             </Form.Group>
                                             <br/>
-                                            <Button
-                                                disabled={loadingRestaurantReview}
-                                                type='submit'
-                                                variant='primary'
-                                            >
+                                            <button disabled={loadingRestaurantReview} type='submit' className='mt-2 bg-blue-700 font-medium transition duration-200 text-white py-3 px-4 hover:opacity-60'>
                                                 Submit
-                                            </Button>
+                                            </button>
                                             </Form>
                                         ) : (
                                             <Message>
