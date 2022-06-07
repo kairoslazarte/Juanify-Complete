@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Form, Button } from 'react-bootstrap'
 
-const SearchBox = ({ history }) => {
+const SearchBox = ({ history, isAdmin = false, atProductSeller = false, atOrdersSeller = false }) => {
   const [keyword, setKeyword] = useState('')
 
   const submitHandler = (e) => {
@@ -22,7 +22,7 @@ const SearchBox = ({ history }) => {
               type='text'
               name='q'
               onChange={(e) => setKeyword(e.target.value)}
-              placeholder='Search a Restaurant...'
+              placeholder={`${isAdmin || atOrdersSeller ? 'Search by First name' : atProductSeller ? 'Search by Product name' : 'Search for a Restaurant'}...`}
               className='mr-2'
             ></Form.Control>
 

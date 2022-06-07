@@ -104,7 +104,7 @@ const AllRestaurantsScreen = ({ match }) => {
           ) : (
             <>
               <section className="restaurants">
-                <h1 className='pt-5'>All <span className='text-blue-700'>available</span> restaurants</h1>
+                <h1>All <span className='text-blue-700'>available</span> restaurants</h1>
                 <div className="restaurants__container">
                   {restaurants.map((restaurant) => (
                     <RestaurantCard restaurant={restaurant} key={restaurant._id} />

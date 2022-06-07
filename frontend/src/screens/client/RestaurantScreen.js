@@ -73,7 +73,6 @@ const RestaurantScreen = ({ history, match }) => {
     }
 
     const addToCartHandler = (name, price, image, prod_id) => {
-        console.log(prod_id)
         if (cartItems.length === 0) {
             cartItems.push(
                 {
@@ -89,7 +88,6 @@ const RestaurantScreen = ({ history, match }) => {
         }
         else {
             const cartItem = cartItems.findIndex((cart_item => cart_item.id == prod_id))
-            console.log(cartItem)
             if (cartItem >= 0) {
                 cartItems[cartItem].qty += 1
             }
@@ -108,7 +106,6 @@ const RestaurantScreen = ({ history, match }) => {
             }
         }
         localStorage.setItem('cartItems', JSON.stringify(cartItems))
-        console.log(cartItems)
         alert('Added to cart!')
     }
 

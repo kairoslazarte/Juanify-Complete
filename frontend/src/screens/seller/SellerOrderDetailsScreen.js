@@ -106,7 +106,6 @@ const SellerOrderDetailsScreen = ({ match, history, location }) => {
     }, [dispatch, orderId, successPay, successDeliver, order])
 
     const markPaidHandler = (paymentResult) => {
-        console.log(paymentResult)
         dispatch(markAsPaid(order))
     }
 
@@ -134,7 +133,7 @@ const SellerOrderDetailsScreen = ({ match, history, location }) => {
                     <ListGroup.Item className='flex flex-col space-y-2'>
                     <h2 className='pb-2'>Shipping</h2>
                     <p>
-                        <strong>Name: </strong> {order.user.name}
+                        <strong>Name: </strong> {order.user.first_name} {order.user.middle_name && order.user.middle_name} {order.user.last_name}
                     </p>
                     <p>
                         <strong>Email: </strong>{' '}

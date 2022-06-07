@@ -90,8 +90,8 @@ const SellerProductsScreen = ({ history, match }) => {
         <Message variant='danger'>{error}</Message>
       ) : (
         <>
-        <h3>Filter products by category:</h3>
          <div className='restaurant-categories'>
+
             <div className='restaurant-categories__container'>
                 <button className={filterProducts == 'All' ? 'restaurant-category__active' : 'restaurant-category'} onClick={() => setFilterProducts('All')}>All</button>
                 {product_category.map((prod_cat) => (

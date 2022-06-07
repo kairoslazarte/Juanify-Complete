@@ -66,6 +66,10 @@ const PartnerScreen = ({ location, history }) => {
     const submitHandler = (e) => {
         e.preventDefault()
         dispatch(createRestaurant({
+            firstName,
+            lastName,
+            email,
+            phone,
             userID,
             restaurantName,
             city,
@@ -241,11 +245,11 @@ const PartnerScreen = ({ location, history }) => {
                                         </Form.Group>
 
                                         <Form.Group controlId='phone'>
-                                        <Form.Label>Phone number</Form.Label>
+                                        <Form.Label>Contact/mobile number</Form.Label>
                                         <Form.Control
                                             disabled
                                             type='number'
-                                            placeholder='Enter phone'
+                                            placeholder='Enter contact/mobile'
                                             value={phone}
                                             onChange={(e) => setPhone(e.target.value)}
                                         ></Form.Control>

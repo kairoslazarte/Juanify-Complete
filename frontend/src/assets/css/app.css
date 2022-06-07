@@ -2268,7 +2268,7 @@
   color: rgb(99 102 241 / var(--tw-text-opacity));
 }
 .login-screen_container .login-screen_form-container {
-  margin-top: 2rem;
+  margin-top: 1rem;
 }
 @media (min-width: 640px) {
   .login-screen_container .login-screen_form-container {
@@ -2295,11 +2295,6 @@
     padding-left: 2.5rem;
     padding-right: 2.5rem;
   }
-}
-.login-screen_container .login-screen_form-spaces > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-y-reverse: 0;
-  margin-top: calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));
-  margin-bottom: calc(1.5rem * var(--tw-space-y-reverse));
 }
 .login-screen_container .login-screen_label {
   display: block;
@@ -2582,7 +2577,7 @@
   color: rgb(99 102 241 / var(--tw-text-opacity));
 }
 .register-screen_container .register-screen_form-container {
-  margin-top: 2rem;
+  margin-top: 0.5rem;
 }
 @media (min-width: 640px) {
   .register-screen_container .register-screen_form-container {

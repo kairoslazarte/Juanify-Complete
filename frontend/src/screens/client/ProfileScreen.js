@@ -106,10 +106,10 @@ const ProfileScreen = ({ location, history }) => {
                 </Form.Group>
 
                 <Form.Group controlId='phone'>
-                  <Form.Label>Phone number</Form.Label>
+                  <Form.Label>Contact/mobile number</Form.Label>
                   <Form.Control
                     type='number'
-                    placeholder='Enter phone number'
+                    placeholder='Enter contact/mobile'
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                   ></Form.Control>
@@ -164,7 +164,6 @@ const ProfileScreen = ({ location, history }) => {
           <Message variant='danger'>{errorOrders}</Message>
         ) : (
           <>
-           <h4>Filter orders by status:</h4>
            <div className='restaurant-categories'>
               <div className='restaurant-categories__container'>
                   <button className={filter == 'All' ? 'restaurant-category__active' : 'restaurant-category'} onClick={() => setFilter('All')}>All</button>
@@ -208,7 +207,7 @@ const ProfileScreen = ({ location, history }) => {
                     )}
                   </td>
                   <td>
-                    <LinkContainer to={`/partner/order/${order._id}`}>
+                    <LinkContainer to={`/order/${order._id}`}>
                       <Button variant='light' className='btn-sm'>
                         Details
                       </Button>
@@ -237,7 +236,7 @@ const ProfileScreen = ({ location, history }) => {
                     )}
                   </td>
                   <td>
-                    <LinkContainer to={`/partner/order/${order._id}`}>
+                    <LinkContainer to={`/order/${order._id}`}>
                       <Button variant='light' className='btn-sm'>
                         Details
                       </Button>
@@ -267,7 +266,7 @@ const ProfileScreen = ({ location, history }) => {
                     )}
                   </td>
                   <td>
-                    <LinkContainer to={`/partner/order/${order._id}`}>
+                    <LinkContainer to={`/order/${order._id}`}>
                       <Button variant='light' className='btn-sm'>
                         Details
                       </Button>
@@ -297,7 +296,7 @@ const ProfileScreen = ({ location, history }) => {
                     )}
                   </td>
                   <td>
-                    <LinkContainer to={`/partner/order/${order._id}`}>
+                    <LinkContainer to={`/order/${order._id}`}>
                       <Button variant='light' className='btn-sm'>
                         Details
                       </Button>

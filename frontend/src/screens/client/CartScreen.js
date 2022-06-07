@@ -16,8 +16,6 @@ const CartScreen = ({ history }) => {
   const cart = useSelector((state) => state.cart)
   const { cartItems } = cart
 
-  console.log(cartItems)
-
   // const cart = localStorage.getItem('cartItems')
   // ? JSON.parse(localStorage.getItem('cartItems'))
   // : []

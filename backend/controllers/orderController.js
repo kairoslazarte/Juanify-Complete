@@ -182,9 +182,14 @@ const getMyOrders = asyncHandler(async (req, res) => {
 // @route   GET /api/orders
 // @access  Private/Seller
 const getOrders = asyncHandler(async (req, res) => {  
+  const pageSize = 10
+  const page = Number(req.query.pageNumber) || 1
+
   const restaurant = await Restaurant.findOne({ 'user': req.user._id })
-  const orders = await Order.find({ 'restaurant': restaurant._id }).populate('user', 'id name')
-  res.json(orders)
+  const orders = await Order.find({ 'restaurant': restaurant._id }).populate('user', `id first_name middle_name last_name`)
+  const count = await Order.countDocuments({ ...orders })
+  
+  res.json({orders, page, pages: Math.ceil(count / pageSize) })
 })
 
 export {

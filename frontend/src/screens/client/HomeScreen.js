@@ -65,30 +65,6 @@ const people = [
       React.createElement('li', {}, 'Sales and Marketing Strategist'),  
     ),
   },
-  {
-    name: 'Ms. Roxanne Pagaduan',
-    role: 'CTO',
-    imageUrl: Rox,
-    bio: 
-    React.createElement('ul', { className: 'flex flex-col space-y-2' }, 
-      React.createElement('li', {}, 'Assistant Professor IV, IT Dept. (T.I.P. Quezon City)'),  
-      React.createElement('li', {}, 'Can do C/C++, VB.Net, Java, PL/SQL, PHP, JavaScript, and ReactJS, management of databases using Oracle, MySQL, MSSQL, and Firebase'),  
-      React.createElement('li', {}, 'Research interests in educational games, mobile and web applications, computer vision, image processing, artificial intelligence and applications of data mining in the computing and educational disciplines'),  
-      React.createElement('li', {}, 'Published different research papers locally and internationally.'),   
-    ),
-  },
-  {
-    name: 'Mr. Joel Bautista',
-    role: 'CFO',
-    imageUrl: Joel,
-    bio: 
-    React.createElement('ul', { className: 'flex flex-col space-y-2' }, 
-      React.createElement('li', {}, 'Manager Big Z Quality Food Corporation'),  
-      React.createElement('li', {}, 'Finance Head - Limatech Enterprise'),  
-      React.createElement('li', {}, 'Financial Management and forecasting'),  
-      React.createElement('li', {}, 'Operations management'),  
-    ),
-  },
 ]
 
 const HomeScreen = () => {

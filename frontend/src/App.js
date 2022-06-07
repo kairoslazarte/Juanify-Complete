@@ -44,8 +44,6 @@ var today = new Date()
 var currDate = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate()
 var currTime = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
 
-console.log(currTime)
-
 const COMMANDS = {
   DATE: 'date',
   TIME: 'time'
@@ -110,8 +108,6 @@ const App = () => {
   const userLogin = useSelector((state) => state.userLogin)
   const { userInfo } = userLogin
 
-  console.log(userInfo)
-
   return (      
   <Router>
     {!userInfo ? (
@@ -159,14 +155,8 @@ const App = () => {
                 <Route path='/partner/products' component={SellerProductsScreen} />
                 <Route path='/partner/create-product' component={SellerCreateProductScreen} />
                 <Route path='/partner/product/:id/edit' component={SellerProductEditScreen} />
-                <Route path='/partner/orderlist' component={SellerOrderlistScreen} />
-                <Route path='/search/:keyword' component={HomeScreen} exact />
-                <Route path='/page/:pageNumber' component={HomeScreen} exact />
-                <Route
-                  path='/search/:keyword/page/:pageNumber'
-                  component={SellerProfileScreen}
-                  exact
-                />
+                <Route path='/partner/orderlist' component={SellerOrderlistScreen} />\
+                <Route path='/orders/page/:pageNumber' component={SellerOrderlistScreen} exact />
                 <Route path='/' component={SellerProfileScreen} exact />
                 <Route path='/home' component={SellerProfileScreen} exact />
             </main>
@@ -182,11 +172,11 @@ const App = () => {
                 <Route path='/admin/userlist' component={UserListScreen} />
                 <Route path='/admin/user/:id/edit' component={UserEditScreen} />
                 <Route path='/forgot-password' component={ForgotPassword} />
-                <Route path='/search/:keyword' component={HomeScreen} exact />
-                <Route path='/page/:pageNumber' component={HomeScreen} exact />
+                <Route path='/search/:keyword' component={UserListScreen} exact />
+                <Route path='/users/page/:pageNumber' component={UserListScreen} exact />
                 <Route
-                  path='/search/:keyword/page/:pageNumber'
-                  component={ProfileScreen}
+                  path='/search/:keyword/users/page/:pageNumber'
+                  component={UserListScreen}
                   exact
                 />
                 <Route path='/' component={ProfileScreen} exact />

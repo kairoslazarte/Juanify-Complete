@@ -2,6 +2,17 @@ import asyncHandler from 'express-async-handler'
 import Restaurant from '../models/restaurantModel.js'
 import User from '../models/userModel.js'
 import Order from '../models/orderModel.js'
+import nodemailer from 'nodemailer'
+
+const transporter = nodemailer.createTransport({
+  host: 'smtp.gmail.com',
+  port: 465,
+  secure: true, // use SSL
+  auth: {
+    user: 'qfkrlazarte@tip.edu.ph',
+    pass: '@Elohimfcan21',
+  },
+});
 
 // @desc    Fetch all restaurants
 // @route   GET /api/restaurants
@@ -45,6 +56,10 @@ const getRestaurantById = asyncHandler(async (req, res) => {
 // @access  Private/Admin
 const createRestaurant = asyncHandler(async (req, res) => {
     const {
+      firstName,
+      lastName, 
+      email,
+      phone,
       userID,
       restaurantName,
       city,
@@ -59,7 +74,46 @@ const createRestaurant = asyncHandler(async (req, res) => {
 
     if (user) {
       user.applyingForSeller = true 
+
       await user.save()
+
+      let sendToUser = {
+        from: 'Juanify <qfkrlazarte@tip.edu.ph>',
+        to: email,
+        subject: 'Thank you for applying to be our Partner!',
+        html: `Good day, ${firstName} ${lastName}! <br><br>
+        We are glad to hear that you are interested in Partnering with us. We will review your application and will let you know the results once it's done. Thank you! <br><br><br>
+
+        Sincerely, <br>
+        Juanify`,
+      }
+
+      let sendToAdmin = {
+        from: `${firstName} ${lastName} <${email}>`,
+        to: 'qfkrlazarte@tip.edu.ph',
+        subject: 'Application for Partnership with Juanify',
+        html: `${firstName} ${lastName} has applied to be a Partner or Seller for Juanify. <br><br>
+        Restaurant name: ${restaurantName} <br>
+        Restaurant address: ${street}, ${barangay}, ${zipCode}, ${city} <br>
+        Email: ${email} <br>
+        Contact/mobile number: ${phone} <br>`,
+      }
+  
+      transporter.sendMail(sendToUser, (err, info) => {
+          if (err) {
+              console.log('Error', err);
+          } else {
+              console.log('Message Sent!');
+          }
+      })
+
+      transporter.sendMail(sendToAdmin, (err, info) => {
+        if (err) {
+            console.log('Error', err);
+        } else {
+            console.log('Message Sent!');
+        }
+    })
     } else {
       res.status(404)
       throw new Error('User not found')
@@ -92,8 +146,8 @@ const getTopRestaurants = asyncHandler(async (req, res) => {
     res.json(restaurants)
 })
 
-// @desc    Get top rated restaurants
-// @route   GET /api/restaurants/top
+// @desc    Get recently ordered restaurants
+// @route   GET /api/restaurants/recent
 // @access  Public
 const getRecentlyOrdered = asyncHandler(async (req, res) => {
   const orders = await Order.find({ 'user': req.user._id })

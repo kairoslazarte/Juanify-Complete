@@ -38,7 +38,7 @@ const LoginScreen = ({ location, history }) => {
             src = {JuanifyIcon}
             alt="Workflow"
           />
-          <h2 className="login-screen_h2">Sign in to your account</h2>
+          <h2 className="login-screen_h2 pb-2">Sign in to your account</h2>
           {error && <Message variant='danger'>{error}</Message>}
           {loading && <Loader />}
         </div>
@@ -66,7 +66,7 @@ const LoginScreen = ({ location, history }) => {
                 ></Form.Control>
               </Form.Group>
 
-              <div className="login-screen_flex-items">
+              {/* <div className="login-screen_flex-items">
                 <div className="login-screen_flex-center">
                   <input
                     id="remember-me"
@@ -78,9 +78,9 @@ const LoginScreen = ({ location, history }) => {
                     Remember me
                   </label>
                 </div>
-              </div>
+              </div> */}
 
-              <div>
+              <div className='pt-4'>
                 <button
                   type="submit"
                   className="login-screen_sign-button"

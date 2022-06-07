@@ -26,11 +26,11 @@ const authUser = asyncHandler(async (req, res) => {
 
   const user = await User.findOne({ email })
 
-  if (!user.confirmed) {
-    throw new Error('Email not yet confirmed!')
-  }
-  else {
-    if (user && (await user.matchPassword(password)) && user.confirmed) {
+  if (user && (await user.matchPassword(password))) {
+    if (!user.confirmed) {
+      throw new Error('Email not yet confirmed!')
+    }
+    else {
       res.json({
         _id: user._id,
         first_name: user.first_name,
@@ -43,11 +43,11 @@ const authUser = asyncHandler(async (req, res) => {
         isSeller: user.isSeller,
         token: generateToken(user._id),
       })
-    } 
-    else {
-      res.status(401)
-      throw new Error('Invalid email or password')
     }
+  } 
+  else {
+    res.status(401)
+    throw new Error('Invalid email or password')
   }
 })
 
@@ -57,11 +57,17 @@ const authUser = asyncHandler(async (req, res) => {
 const registerUser = asyncHandler(async (req, res) => {
   const { firstName: first_name, middleName: middle_name, lastName: last_name, email, phone, password } = req.body
 
-  const userExists = await User.findOne({ email })
+  const userExists_email = await User.findOne({ email })
+  const userExists_phone = await User.findOne({ phone })
 
-  if (userExists) {
+  if (userExists_email) {
     res.status(400)
-    throw new Error('User already exists')
+    throw new Error('User already exists - email already taken')
+  }
+
+  if (userExists_phone) {
+    res.status(400)
+    throw new Error('User already exists - phone number already taken')
   }
 
   const user = await User.create({
@@ -97,21 +103,23 @@ const registerUser = asyncHandler(async (req, res) => {
       },
     );
 
-    const url = `https://juanify.herokuapp.com/api/users/confirmation/${emailToken}`;
+    const url = `http://localhost:5000/api/users/confirmation/${emailToken}`;
 
     let mailOptions = {
-      from: 'Test Juanify <qfkrlazarte@tip.edu.ph>',
+      from: 'Juanify <qfkrlazarte@tip.edu.ph>',
       to: email,
-      subject: 'Confirm your email',
-      html: `Thanks for signing up ka-Juan! Please click the link to confirm your email: <a href="${url}">${url}</a>`,
+      subject: 'Email confirmation',
+      html: `Thank you for signing up ka-Juan! <br><br>
+      Please click the link below to confirm your email: <br> 
+      <a href="${url}">${url}</a>`,
     }
 
     transporter.sendMail(mailOptions, (err, info) => {
-        if (err) {
-            console.log('Error', err);
-        } else {
-            console.log('Message Sent!');
-        }
+      if (err) {
+        console.log('Error', err);
+      } else {
+        console.log('Message Sent!');
+      }
     })
   } else {
     res.status(400)
@@ -130,7 +138,7 @@ const confirmUserEmail = asyncHandler(async (req, res) => {
 
     await user.save()
 
-    return res.redirect('https://juanify.herokuapp.com/login');
+    return res.redirect('http://localhost:3000/login');
   } else {
     res.status(404)
     throw new Error('User not found')
@@ -199,8 +207,17 @@ const updateUserProfile = asyncHandler(async (req, res) => {
 // @route   GET /api/users
 // @access  Private/Admin
 const getUsers = asyncHandler(async (req, res) => {
-  const users = await User.find({})
-  res.json(users)
+  const keyword = req.query.keyword
+    ? {
+        first_name: {
+          $regex: req.query.keyword,
+          $options: 'i',
+        },
+      }
+    : {}
+
+  const users = await User.find({ ...keyword })
+  res.json({ users })
 })
 
 // @desc    Delete user
@@ -250,10 +267,16 @@ const updateUser = asyncHandler(async (req, res) => {
       applyingSeller = false
 
       let mailOptions = {
-        from: 'Test Juanify <qfkrlazarte@tip.edu.ph>',
+        from: 'Juanify <qfkrlazarte@tip.edu.ph>',
         to: req.body.email,
-        subject: 'Your application has been accepted!',
-        text: `Congratulations, ${req.body.first_name} ${req.body.last_name}! Your application has been approved, welcome to Juanify! `,
+        subject: 'Your application has been approved!',
+        html: `Congratulations, ${req.body.first_name} ${req.body.last_name}! <br><br>
+        Your application has been approved, welcome to Juanify! We look forward partnering with you! <br>
+        Login and setup your restaurant now! <br>
+        If you have any questions or clarifications, feel free to ask us. <br><br><br>
+
+        Regards, <br>
+        Juanify `,
       }
   
       transporter.sendMail(mailOptions, (err, info) => {
@@ -265,6 +288,25 @@ const updateUser = asyncHandler(async (req, res) => {
       })
     } else {
       applyingSeller = false
+
+      let mailOptions = {
+        from: 'Juanify <qfkrlazarte@tip.edu.ph>',
+        to: req.body.email,
+        subject: 'Your application has been declined',
+        html: `Hi ${req.body.first_name} ${req.body.last_name}, <br><br>
+        We are sorry to say but we cannot accept your application to Partner with us as of this time. If you have any questions or clarifications, feel free to ask us. Thank you. <br><br><br>
+
+        Regards, <br>
+        Juanify `,
+      }
+  
+      transporter.sendMail(mailOptions, (err, info) => {
+          if (err) {
+              console.log('Error', err);
+          } else {
+              console.log('Message Sent!');
+          }
+      })
       if (restaurant) {
         await restaurant.remove()
       }

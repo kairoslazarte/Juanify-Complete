@@ -47,6 +47,8 @@ const FoodDeliveryScreen = ({ match }) => {
   const restaurantList = useSelector((state) => state.restaurantList)
   const { loading, error, restaurants, page, pages } = restaurantList
 
+  console.log(restaurants)
+
   const restaurantRecentlyOrdered = useSelector((state) => state.restaurantRecentlyOrdered)
   const { loading: loadingRecent, error: errorRecent, restaurants: recentlyOrdered } = restaurantRecentlyOrdered
 
@@ -105,7 +107,7 @@ const FoodDeliveryScreen = ({ match }) => {
           ) : (
             <>
               <section className="restaurants">
-                <h1 className='pt-5'>All <span className='text-blue-700'>available</span> restaurants</h1>
+                <h1>All <span className='text-blue-700'>available</span> restaurants</h1>
                 <div className="restaurants__container">
                   {restaurants.map((restaurant) => (
                     <RestaurantCard restaurant={restaurant} key={restaurant._id} />

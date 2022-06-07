@@ -23,20 +23,13 @@ const RegisterScreen = ({ location, history }) => {
   const userRegister = useSelector((state) => state.userRegister)
   const { loading, error, userInfo } = userRegister
 
-  const redirect = location.search ? location.search.split('=')[1] : '/'
-
-  useEffect(() => {
-    if (userInfo) {
-      history.push(redirect)
-    }
-  }, [history, userInfo, redirect])
-
   const submitHandler = (e) => {
     e.preventDefault()
     if (password !== confirmPassword) {
       setMessage('Passwords do not match')
     } else {
       dispatch(register(firstName, middleName, lastName, email, phone, password))
+      setMessage("Please check your email. We've sent you an email to confirm/verify your account. Thank you!")
     }
   }
 
@@ -49,8 +42,10 @@ const RegisterScreen = ({ location, history }) => {
             src = {JuanifyIcon}
             alt="Workflow"
           />
-          <h2 className="register-screen_h2">Sign up with Juanify!</h2>
-          {message && <Message variant='danger'>{message}</Message>}
+          <h2 className="register-screen_h2 pb-3">Sign up with Juanify!</h2>
+          {!error && (
+           message && <Message variant={message == "Please check your email. We've sent you an email to confirm/verify your account. Thank you!" ? 'success' : 'danger'}>{message}</Message> 
+          )}
           {error && <Message variant='danger'>{error}</Message>}
           {loading && <Loader />}
         </div>
@@ -80,7 +75,7 @@ const RegisterScreen = ({ location, history }) => {
               </Form.Group>
 
               <Form.Group controlId='lastName'>
-                <Form.Label>Name</Form.Label>
+                <Form.Label>Last name</Form.Label>
                 <Form.Control
                   type='name'
                   placeholder='Enter last name'
@@ -91,13 +86,17 @@ const RegisterScreen = ({ location, history }) => {
               </Form.Group>
 
               <Form.Group controlId='phone'>
-                <Form.Label>Phone number</Form.Label>
+                <Form.Label>Contact/Mobile number</Form.Label>
                 <Form.Control
                   type='number'
-                  placeholder='Enter phone'
+                  placeholder='Enter contact/mobile'
                   value={phone}
                   required
-                  onChange={(e) => setPhone(e.target.value)}
+                  onChange={(event) => {
+                      if(event.target.value.length==12) return false;   
+                      setPhone(event?.target.value);
+                    }
+                  }
                 ></Form.Control>
               </Form.Group>
 

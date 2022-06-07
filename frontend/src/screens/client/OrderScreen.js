@@ -35,8 +35,6 @@ const OrderScreen = ({ match, history }) => {
   const userLogin = useSelector((state) => state.userLogin)
   const { userInfo } = userLogin
 
-  console.log(order)
-
   if (!loading) {
     //   Calculate prices
     const addDecimals = (num) => {
@@ -79,7 +77,6 @@ const OrderScreen = ({ match, history }) => {
   }, [dispatch, orderId, successPay, successDeliver, order])
 
   const successPaymentHandler = (paymentResult) => {
-    console.log(paymentResult)
     dispatch(payOrder(orderId, paymentResult))
   }
 

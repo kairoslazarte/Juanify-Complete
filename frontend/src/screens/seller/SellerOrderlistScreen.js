@@ -5,31 +5,34 @@ import { useDispatch, useSelector } from 'react-redux'
 import Message from '../../components/Message'
 import Loader from '../../components/Loader'
 import { listOrders } from '../../actions/orderActions'
+import Paginate from '../../components/Paginate'
 
-const SellerOrderlistScreen = ({history}) => {
+const SellerOrderlistScreen = ({history, match}) => {
+    const pageNumber = match.params.pageNumber || 1
+
     const [filter, setFilter] = useState('All')
+
     const dispatch = useDispatch()
 
     const orderList = useSelector((state) => state.orderList)
-    const { loading, error, orders } = orderList
+    const { loading, error, orders, page, pages } = orderList
   
     const userLogin = useSelector((state) => state.userLogin)
     const { userInfo } = userLogin
     
     useEffect(() => {
-        dispatch(listOrders())
+        dispatch(listOrders(pageNumber))
     }, [dispatch, history, userInfo])
   
     return (
       <div className='container pt-10'>
-        <h1>Orders</h1>
+        <h1 className='pb-2'>Orders</h1>
         {loading ? (
           <Loader />
         ) : error ? (
           <Message variant='danger'>{error}</Message>
         ) : (
           <>
-          <h3>Filter orders by status:</h3>
            <div className='restaurant-categories'>
               <div className='restaurant-categories__container'>
                   <button className={filter == 'All' ? 'restaurant-category__active' : 'restaurant-category'} onClick={() => setFilter('All')}>All</button>
@@ -174,6 +177,12 @@ const SellerOrderlistScreen = ({history}) => {
               ))}
             </tbody>
           </Table>
+
+          <Paginate
+            pages={pages}
+            page={page}
+            atSellerOrders={true}
+          />
           </>
         )}
       </div>

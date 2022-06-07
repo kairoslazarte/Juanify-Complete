@@ -92,8 +92,6 @@ if (userInfoFromStorage) {
   }
 }
 
-console.log(confirmed_acc)
-
 const middleware = [thunk]
 
 const store = createStore(
