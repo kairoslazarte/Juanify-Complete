@@ -103,7 +103,7 @@ const registerUser = asyncHandler(async (req, res) => {
       },
     );
 
-    const url = `http://localhost:5000/api/users/confirmation/${emailToken}`;
+    const url = `https://juanify.herokuapp.com/api/users/confirmation/${emailToken}`;
 
     let mailOptions = {
       from: 'Juanify <qfkrlazarte@tip.edu.ph>',
@@ -138,7 +138,7 @@ const confirmUserEmail = asyncHandler(async (req, res) => {
 
     await user.save()
 
-    return res.redirect('http://localhost:3000/login');
+    return res.redirect('https://juanify.herokuapp.com/login');
   } else {
     res.status(404)
     throw new Error('User not found')
