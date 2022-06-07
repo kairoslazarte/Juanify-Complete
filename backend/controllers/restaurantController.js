@@ -177,7 +177,7 @@ const createRestaurantReview = asyncHandler(async (req, res) => {
     }
 
     const review = {
-      name: req.user.name,
+      name: req.user.first_name + ' ' + req.user.last_name,
       rating: Number(rating),
       comment,
       user: req.user._id,

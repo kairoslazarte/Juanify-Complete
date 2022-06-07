@@ -47,8 +47,6 @@ const FoodDeliveryScreen = ({ match }) => {
   const restaurantList = useSelector((state) => state.restaurantList)
   const { loading, error, restaurants, page, pages } = restaurantList
 
-  console.log(restaurants)
-
   const restaurantRecentlyOrdered = useSelector((state) => state.restaurantRecentlyOrdered)
   const { loading: loadingRecent, error: errorRecent, restaurants: recentlyOrdered } = restaurantRecentlyOrdered
 
