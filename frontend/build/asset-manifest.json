@@ -1,0 +1,33 @@
+{
+  "files": {
+    "main.css": "/static/css/main.d9ba1d8e.chunk.css",
+    "main.js": "/static/js/main.3ff6cd94.chunk.js",
+    "main.js.map": "/static/js/main.3ff6cd94.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.2882db31.js",
+    "runtime-main.js.map": "/static/js/runtime-main.2882db31.js.map",
+    "static/css/2.e1b25a95.chunk.css": "/static/css/2.e1b25a95.chunk.css",
+    "static/js/2.7e810c76.chunk.js": "/static/js/2.7e810c76.chunk.js",
+    "static/js/2.7e810c76.chunk.js.map": "/static/js/2.7e810c76.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/2.e1b25a95.chunk.css.map": "/static/css/2.e1b25a95.chunk.css.map",
+    "static/css/main.d9ba1d8e.chunk.css.map": "/static/css/main.d9ba1d8e.chunk.css.map",
+    "static/js/2.7e810c76.chunk.js.LICENSE.txt": "/static/js/2.7e810c76.chunk.js.LICENSE.txt",
+    "static/media/efren.60b4b540.PNG": "/static/media/efren.60b4b540.PNG",
+    "static/media/food-delivery.f2f94844.png": "/static/media/food-delivery.f2f94844.png",
+    "static/media/hassle-free.46268b7b.png": "/static/media/hassle-free.46268b7b.png",
+    "static/media/home-jumbo.abcfa6be.png": "/static/media/home-jumbo.abcfa6be.png",
+    "static/media/joel.cce43730.PNG": "/static/media/joel.cce43730.PNG",
+    "static/media/juan-nav.c631a2c7.png": "/static/media/juan-nav.c631a2c7.png",
+    "static/media/juanify.0edb6b2c.png": "/static/media/juanify.0edb6b2c.png",
+    "static/media/styles.css": "/static/media/revicons.e8746a62.woff",
+    "static/media/roxanne.dac2b5ec.PNG": "/static/media/roxanne.dac2b5ec.PNG",
+    "static/media/senibe.70cf180b.PNG": "/static/media/senibe.70cf180b.PNG"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.2882db31.js",
+    "static/css/2.e1b25a95.chunk.css",
+    "static/js/2.7e810c76.chunk.js",
+    "static/css/main.d9ba1d8e.chunk.css",
+    "static/js/main.3ff6cd94.chunk.js"
+  ]
+}
