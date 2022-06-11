@@ -14,10 +14,7 @@ import { listMyOrders } from '../../actions/orderActions'
 
 const RestaurantScreen = ({ history, match, location }) => {
     const dispatch = useDispatch()
-    const [filterProducts, setFilterProducts] = useState('')
     const [qty, setQty] = useState(0)
-    const [rating, setRating] = useState(0)
-    const [comment, setComment] = useState('')
 
     const restaurantDetails = useSelector((state) => state.restaurantDetails)
     const { loading, error, restaurant } = restaurantDetails
@@ -28,35 +25,13 @@ const RestaurantScreen = ({ history, match, location }) => {
     const orderListMy = useSelector((state) => state.orderListMy)
     const { loading: loadingOrders, error: errorOrders, orders } = orderListMy
 
-    const restaurantReviewCreate = useSelector((state) => state.restaurantReviewCreate)
-    const {
-        success: successRestaurantReview,
-        loading: loadingRestaurantReview,
-        error: errorRestaurantReview,
-    } = restaurantReviewCreate
-
     useEffect(() => {
-        if (successRestaurantReview) {
-            setRating(0)
-            setComment('')
-        }
         if (!restaurant._id || restaurant._id !== match.params.id) {
           dispatch(listRestaurantDetails(match.params.id))
           dispatch(listMyOrders())
           dispatch({ type: RESTAURANT_CREATE_REVIEW_RESET })
         }
-    }, [dispatch, match, successRestaurantReview])
-
-    const submitHandler = (e) => {
-        e.preventDefault()
-        dispatch(
-            createRestaurantReview(match.params.id, {
-            rating,
-            comment,
-            })
-        )
-        window.location.reload()
-    }
+    }, [dispatch, match])
     
     const { products } = restaurant
     
@@ -122,7 +97,7 @@ const RestaurantScreen = ({ history, match, location }) => {
                     <>
                         <div className='restaurant-heading'>
                             <div className='restaurant-heading__container'>
-                                <h1 className='restaurant-heading__head'><span className='text-red-600'>{restaurant.name}</span> - {restaurant.location && (<>{restaurant.location.city}, {restaurant.location.barangay}</>)}</h1>
+                                <h1 className='restaurant-heading__head text-center'><span className='text-red-600'>{restaurant.name}</span> - <span className='text-blue-700'>{restaurant.location && (<>{restaurant.location.city}, {restaurant.location.barangay}</>)}</span></h1>
                                 {/* <div className='restaurant-categories'>
                                     <div className='restaurant-categories__container'>
                                         {product_category.map((prod_cat) => (
@@ -152,78 +127,30 @@ const RestaurantScreen = ({ history, match, location }) => {
                                 </div>
                             ))}
                         </div>
-                        {orders && (
-                            orders.map((order) => (
-                                order.restaurant == restaurant._id && (
-                                    <div className='restaurant-reviews'>
-                                        <h2>Reviews</h2>
-                                        {restaurant.reviews && (
-                                            <>
-                                                {restaurant.reviews.length === 0 && <Message>No Reviews</Message>}
-                                                <ListGroup variant='flush'>
-                                                    {restaurant.reviews.map((review) => (
-                                                    <ListGroup.Item key={review._id}>
-                                                        <strong>{review.name}</strong>
-                                                        <Rating value={review.rating} />
-                                                        <p>{review.createdAt.substring(0, 10)}</p>
-                                                        <p>{review.comment}</p>
-                                                    </ListGroup.Item>
+                        <div className='restaurant-reviews'>
+                            <h2 className='pb-2'>Reviews</h2>
+                            {restaurant.reviews && (
+                                <>
+                                    {restaurant.reviews.length === 0 && <Message>No Reviews</Message>}
+                                    <ListGroup variant='flush'>
+                                        {restaurant.reviews.map((review) => (
+                                            <ListGroup.Item key={review._id}>
+                                                <strong>{review.name}</strong>
+                                                <ul className='flex items-center space-x-2 flex-wrap mb-1'>
+                                                    <li className='text-xs'>Order/s:</li>
+                                                    {review.orderItems.map((order) => (
+                                                        <li className='text-xs italic'>{order.name},</li>
                                                     ))}
-                                                    <ListGroup.Item>
-                                                    <h2>Write a Customer Review</h2>
-                                                    {successRestaurantReview && (
-                                                        <Message variant='success'>
-                                                        Review submitted successfully
-                                                        </Message>
-                                                    )}
-                                                    {loadingRestaurantReview && <Loader />}
-                                                    {errorRestaurantReview && (
-                                                        <Message variant='danger'>{errorRestaurantReview}</Message>
-                                                    )}
-                                                    {userInfo ? (
-                                                        <Form onSubmit={submitHandler}>
-                                                        <Form.Group controlId='rating'>
-                                                            <Form.Label>Rating</Form.Label>
-                                                            <Form.Control
-                                                            as='select'
-                                                            value={rating}
-                                                            onChange={(e) => setRating(e.target.value)}
-                                                            >
-                                                            <option value=''>Select...</option>
-                                                            <option value='1'>1 - Poor</option>
-                                                            <option value='2'>2 - Fair</option>
-                                                            <option value='3'>3 - Good</option>
-                                                            <option value='4'>4 - Very Good</option>
-                                                            <option value='5'>5 - Excellent</option>
-                                                            </Form.Control>
-                                                        </Form.Group>
-                                                        <Form.Group controlId='comment'>
-                                                            <Form.Label>Comment</Form.Label>
-                                                            <Form.Control
-                                                            as='textarea'
-                                                            row='3'
-                                                            value={comment}
-                                                            onChange={(e) => setComment(e.target.value)}
-                                                            ></Form.Control>
-                                                        </Form.Group>
-                                                        <br/>
-                                                        <button disabled={loadingRestaurantReview} type='submit' className='mt-2 bg-blue-700 font-medium transition duration-200 text-white py-3 px-4 hover:opacity-60'>
-                                                            Submit
-                                                        </button>
-                                                        </Form>
-                                                    ) : (
-                                                        <Message>
-                                                        Please <Link to='/login'>sign in</Link> to write a review{' '}
-                                                        </Message>
-                                                    )}
-                                                    </ListGroup.Item>
-                                                </ListGroup>
-                                            </>
-                                        )}
-                                    </div>
-                                )
-                            ))
-                        )}
+                                                </ul>
+                                                <Rating value={review.rating} />
+                                                <p>{review.createdAt.substring(0, 10)}</p>
+                                                <p>{review.comment}</p>
+                                            </ListGroup.Item>
+                                        ))}
+                                    </ListGroup>
+                                </>
+                            )}
+                        </div>
                     </>
                 )
                 : (

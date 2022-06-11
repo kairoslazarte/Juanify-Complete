@@ -742,7 +742,6 @@
 }
 
 .home-jumbotron {
-  min-height: 800px;
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -1746,7 +1745,11 @@
 }
 
 .restaurant {
+  border-radius: 0.75rem;
+  --tw-bg-opacity: 1;
+  background-color: rgb(243 244 246 / var(--tw-bg-opacity));
   padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
 }
 .restaurant .restaurant-heading {
   padding-bottom: 1.75rem;
@@ -1834,7 +1837,7 @@
   --tw-scale-y: 1.05;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
   --tw-border-opacity: 1;
-  border-color: rgb(29 78 216 / var(--tw-border-opacity));
+  border-color: rgb(239 68 68 / var(--tw-border-opacity));
   text-decoration-line: none;
 }
 .restaurant .restaurant-product__container .restaurant-product .restaurant-product__img {
@@ -1881,10 +1884,9 @@
 .restaurant .restaurant-product__container .restaurant-product .restaurant-product__details .restaurant-product__price {
   font-size: 0.875rem;
   line-height: 1.25rem;
-  font-weight: 800;
-  font-style: italic;
   --tw-text-opacity: 1;
-  color: rgb(29 78 216 / var(--tw-text-opacity));
+  color: rgb(185 28 28 / var(--tw-text-opacity));
+  font-weight: 800 !important;
 }
 .restaurant .restaurant-product__container .restaurant-product .restaurant-product__rating {
   padding-left: 1rem;
@@ -1900,9 +1902,9 @@
   border-radius: 0.375rem;
   border-width: 2px;
   --tw-border-opacity: 1;
-  border-color: rgb(220 38 38 / var(--tw-border-opacity));
+  border-color: rgb(29 78 216 / var(--tw-border-opacity));
   --tw-bg-opacity: 1;
-  background-color: rgb(220 38 38 / var(--tw-bg-opacity));
+  background-color: rgb(29 78 216 / var(--tw-bg-opacity));
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   padding-left: 0.75rem;
@@ -1923,7 +1925,7 @@
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
   background-color: transparent;
   --tw-text-opacity: 1;
-  color: rgb(220 38 38 / var(--tw-text-opacity));
+  color: rgb(29 78 216 / var(--tw-text-opacity));
 }
 .restaurant .restaurant-product__container .restaurant-product .restaurant-product__add-to-cart--btn:focus {
   border-width: 0px;

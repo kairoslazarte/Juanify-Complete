@@ -323,13 +323,13 @@ const SellerOrderDetailsScreen = ({ match, history, location }) => {
                                    <>
                                        <h4 className='order-details__status--label'>Close/Complete order</h4>
                                        <ListGroup.Item>
-                                           <Button
+                                           <button
                                            type='button'
-                                           className='btn btn-info btn-block'
+                                           className='bg-blue-700 text-white hover:opacity-60 transition duration-200 rounded-md w-full py-3'
                                            onClick={completeOrderHandler}
                                            >
                                            Complete Order
-                                           </Button>
+                                           </button>
                                        </ListGroup.Item>
                                    </>
                                )}

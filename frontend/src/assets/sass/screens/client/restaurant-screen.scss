@@ -1,5 +1,5 @@
 .restaurant {
-    @apply pt-10;
+    @apply pt-10 bg-gray-100 rounded-xl pb-10;
 
     .restaurant-heading {
         @apply pb-7;
@@ -27,7 +27,7 @@
         @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-6 pb-10;
 
         .restaurant-product {
-            @apply flex flex-row shadow-lg rounded-lg hover:no-underline bg-white relative cursor-pointer transition duration-200 hover:scale-105 border-2 hover:border-blue-700;
+            @apply flex flex-row shadow-lg rounded-lg hover:no-underline bg-white relative cursor-pointer transition duration-200 hover:scale-105 border-2 hover:border-red-500;
         
             .restaurant-product__img {
                 @apply w-[35%] sm:w-[70%];
@@ -46,7 +46,8 @@
                 }
 
                 .restaurant-product__price {
-                    @apply italic text-sm text-blue-700 font-extrabold;
+                    @apply text-sm text-red-700;
+                    font-weight: 800 !important;
                 }
             }
         
@@ -55,7 +56,7 @@
             }
         
             .restaurant-product__add-to-cart--btn {
-                @apply mr-2 mb-2 bg-red-600 text-white py-2 px-3 rounded-md duration-200 transition hover:text-red-600 hover:bg-transparent no-underline text-center border-2 border-red-600 focus:border-0 absolute bottom-0 right-0 hover:scale-105;
+                @apply mr-2 mb-2 bg-blue-700 text-white py-2 px-3 rounded-md duration-200 transition hover:text-blue-700 hover:bg-transparent no-underline text-center border-2 border-blue-700 focus:border-0 absolute bottom-0 right-0 hover:scale-105;
             }
         }
     }   

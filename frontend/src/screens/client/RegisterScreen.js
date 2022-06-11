@@ -52,9 +52,9 @@ const RegisterScreen = ({ location, history }) => {
 
         <div className="register-screen_form-container">
           <div className="register-screen_form-container-styles">
-          <Form onSubmit={submitHandler}>
+            <Form onSubmit={submitHandler}>
               <Form.Group controlId='firstName'>
-                <Form.Label>First name</Form.Label>
+                <Form.Label>First name <span className='text-red-500'>*</span></Form.Label>
                 <Form.Control
                   type='name'
                   placeholder='Enter first name'
@@ -75,7 +75,7 @@ const RegisterScreen = ({ location, history }) => {
               </Form.Group>
 
               <Form.Group controlId='lastName'>
-                <Form.Label>Last name</Form.Label>
+                <Form.Label>Last name <span className='text-red-500'>*</span></Form.Label>
                 <Form.Control
                   type='name'
                   placeholder='Enter last name'
@@ -86,7 +86,7 @@ const RegisterScreen = ({ location, history }) => {
               </Form.Group>
 
               <Form.Group controlId='phone'>
-                <Form.Label>Contact/Mobile number</Form.Label>
+                <Form.Label>Contact/Mobile number <span className='text-red-500'>*</span></Form.Label>
                 <Form.Control
                   type='number'
                   placeholder='Enter contact/mobile'
@@ -101,7 +101,7 @@ const RegisterScreen = ({ location, history }) => {
               </Form.Group>
 
               <Form.Group controlId='email'>
-                <Form.Label>Email Address</Form.Label>
+                <Form.Label>Email Address <span className='text-red-500'>*</span></Form.Label>
                 <Form.Control
                   type='email'
                   placeholder='Enter email'
@@ -112,7 +112,7 @@ const RegisterScreen = ({ location, history }) => {
               </Form.Group>
 
               <Form.Group controlId='password'>
-                <Form.Label>Password</Form.Label>
+                <Form.Label>Password <span className='text-red-500'>*</span></Form.Label>
                 <Form.Control
                   type='password'
                   placeholder='Enter password'
@@ -123,7 +123,7 @@ const RegisterScreen = ({ location, history }) => {
               </Form.Group>
 
               <Form.Group controlId='confirmPassword'>
-                <Form.Label>Confirm Password</Form.Label>
+                <Form.Label>Confirm Password <span className='text-red-500'>*</span></Form.Label>
                 <Form.Control
                   type='password'
                   placeholder='Confirm password'

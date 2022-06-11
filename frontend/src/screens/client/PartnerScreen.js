@@ -199,7 +199,7 @@ const PartnerScreen = ({ location, history }) => {
                                 <Form onSubmit={submitHandler}>
                                     <div className='partner-screen-form__name-email-phone'>
                                         <Form.Group controlId='firstName'>
-                                        <Form.Label>First name</Form.Label>
+                                        <Form.Label>First name <span className='text-red-500'>*</span></Form.Label>
                                         <Form.Control
                                             type='name'
                                             placeholder='Enter first name'
@@ -221,7 +221,7 @@ const PartnerScreen = ({ location, history }) => {
                                         </Form.Group>
 
                                         <Form.Group controlId='lastName'>
-                                        <Form.Label>Last name</Form.Label>
+                                        <Form.Label>Last name <span className='text-red-500'>*</span></Form.Label>
                                         <Form.Control
                                             type='name'
                                             disabled
@@ -234,7 +234,7 @@ const PartnerScreen = ({ location, history }) => {
 
                                     <div className='partner-screen-form__name-email-phone'>
                                         <Form.Group controlId='email'>
-                                            <Form.Label>Email Address</Form.Label>
+                                            <Form.Label>Email Address <span className='text-red-500'>*</span></Form.Label>
                                             <Form.Control
                                             disabled
                                             type='email'
@@ -245,7 +245,7 @@ const PartnerScreen = ({ location, history }) => {
                                         </Form.Group>
 
                                         <Form.Group controlId='phone'>
-                                        <Form.Label>Contact/mobile number</Form.Label>
+                                        <Form.Label>Contact/mobile number <span className='text-red-500'>*</span></Form.Label>
                                         <Form.Control
                                             disabled
                                             type='number'
@@ -257,7 +257,7 @@ const PartnerScreen = ({ location, history }) => {
                                     </div>
 
                                     <Form.Group controlId='restaurant'>
-                                    <Form.Label>Restaurant name</Form.Label>
+                                    <Form.Label>Restaurant name <span className='text-red-500'>*</span></Form.Label>
                                     <Form.Control
                                         type='text'
                                         placeholder='Enter restaurant name'
@@ -270,7 +270,7 @@ const PartnerScreen = ({ location, history }) => {
                                     <div className='partner-screen-form__address'>
                                     <div className='partner-screen-form__address_city-street-barangay'>
                                         <Form.Group controlId='city'>
-                                        <Form.Label>City</Form.Label>
+                                        <Form.Label>City <span className='text-red-500'>*</span></Form.Label>
                                         <Form.Control
                                             type='text'
                                             placeholder='Enter restaurant city'
@@ -281,7 +281,7 @@ const PartnerScreen = ({ location, history }) => {
                                         </Form.Group>
 
                                         <Form.Group controlId='street'>
-                                        <Form.Label>Street</Form.Label>
+                                        <Form.Label>Street <span className='text-red-500'>*</span></Form.Label>
                                         <Form.Control
                                             type='text'
                                             placeholder='Enter restaurant street'
@@ -292,7 +292,7 @@ const PartnerScreen = ({ location, history }) => {
                                         </Form.Group>
 
                                         <Form.Group controlId='barangay'>
-                                        <Form.Label>Barangay</Form.Label>
+                                        <Form.Label>Barangay <span className='text-red-500'>*</span></Form.Label>
                                         <Form.Control
                                             type='text'
                                             placeholder='Enter restaurant barangay'
@@ -303,7 +303,7 @@ const PartnerScreen = ({ location, history }) => {
                                         </Form.Group>
 
                                         <Form.Group controlId='zipCode'>
-                                        <Form.Label>ZIP/Postal code</Form.Label>
+                                        <Form.Label>ZIP/Postal code <span className='text-red-500'>*</span></Form.Label>
                                         <Form.Control
                                             type='text'
                                             placeholder='Enter restaurant zip/postal code'
@@ -316,7 +316,7 @@ const PartnerScreen = ({ location, history }) => {
                                     
                                     <div className='partner-screen-form__address_lat-lon'>
                                         <Form.Group controlId='lon'>
-                                        <Form.Label>Longtitude (optional)</Form.Label>
+                                        <Form.Label>Longtitude</Form.Label>
                                         <Form.Control
                                             type='text'
                                             placeholder='Enter restaurant longtitude'
@@ -326,7 +326,7 @@ const PartnerScreen = ({ location, history }) => {
                                         </Form.Group>
 
                                         <Form.Group controlId='lat'>
-                                        <Form.Label>Latitude (optional)</Form.Label>
+                                        <Form.Label>Latitude</Form.Label>
                                         <Form.Control
                                             type='text'
                                             placeholder='Enter restaurant latitude'

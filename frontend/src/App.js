@@ -23,6 +23,7 @@ import OrderScreen from './screens/client/OrderScreen'
 import FoodDeliveryScreen from './screens/client/FoodDeliveryScreen'
 import PartnerScreen from './screens/client/PartnerScreen'
 import AboutScreen from './screens/client/AboutScreen'
+import FAQScreen from './screens/client/FAQScreen'
 
 // SELLER
 import SellerProfileScreen from './screens/seller/SellerProfileScreen'
@@ -117,6 +118,7 @@ const App = () => {
                <Route path='/input-location' component={LocationScreen} />
                <Route path='/order/:id' component={OrderScreen} />
                <Route path='/shipping' component={ShippingScreen} />
+              <Route path='/faq' component={FAQScreen} />
                <Route path='/payment' component={PaymentScreen} />
                <Route path='/placeorder' component={PlaceOrderScreen} />
                <Route path='/login' component={LoginScreen} />
@@ -189,6 +191,7 @@ const App = () => {
         <Header />
           <main className='main-layout'>
               <Route path='/input-location' component={LocationScreen} />
+              <Route path='/faq' component={FAQScreen} />
               <Route path='/order/:id' component={OrderScreen} />
               <Route path='/shipping' component={ShippingScreen} />
               <Route path='/payment' component={PaymentScreen} />

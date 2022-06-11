@@ -87,11 +87,14 @@ const HomeScreen = () => {
   return (
     <>
       <Meta />
-      <div className='lg:block hidden'>
-        <div id="home-jumbotron" className="home-jumbotron" style={{backgroundImage: `url(${JuanifyJumbotron})`}}></div>
-      </div>
-      <div className='lg:hidden block'>
-        <ProductCarousel />
+      <div>
+        <div id="home-jumbotron" className="home-jumbotron bg-black py-40 lg:py-80" style={{backgroundImage: `url('./images/home-jumbotron.png')`}}>
+          <div className='flex flex-col space-y-6 mx-auto my-auto h-full'>
+              <p className='text-white font-bold text-center text-4xl sm:text-5xl lg:text-8xl'>Welcome to Juanify!</p>
+              <p className='text-white font-bold text-center text-2xl sm:text-3xl lg:text-5xl pb-3'>Your favorite local food!</p>
+              <a href='/food' className='border-2 border-white rounded-2xl px-6 py-3 text-red-500 bg-white font-bold text-xl sm:text-2xl lg:text-4xl mx-auto hover:opacity-70 transition duration-200 hover:no-underline hover:text-red-500'>Order now!</a>
+          </div>
+        </div>
       </div>
       <Container>
         {loading ? (
@@ -147,7 +150,7 @@ const HomeScreen = () => {
           </div>
         </div>
 
-        <div className='bg-red-500 w-full lg:w-[83%] ml-auto py-10 px-10 transition duration-200 hover:scale-105'>
+        <div className='bg-red-500 w-full lg:w-[83%] ml-auto py-10 px-10 transition duration-200 hover:scale-105 my-4'>
           <div className='flex flex-col lg:flex-row justify-between items-center lg:space-y-0 space-y-4 lg:space-x-8'>
               <div>
                 <img src={JuanifyIcon} className="w-40 md:w-60 lg:w-[245px]" />
@@ -178,7 +181,7 @@ const HomeScreen = () => {
         <div>
           <div className="mx-auto py-12 px-4 max-w-7xl sm:px-6 lg:px-8 lg:py-24">
             <div className="space-y-12">
-              <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">Meet our Team</h2>
+              <p className="text-3xl font-extrabold tracking-tight sm:text-5xl text-blue-700 uppercase text-center underline">Meet our Team</p>
 
               <ul
                 role="list"

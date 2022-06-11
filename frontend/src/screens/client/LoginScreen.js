@@ -52,6 +52,7 @@ const LoginScreen = ({ location, history }) => {
                   type='email'
                   placeholder='Enter email'
                   value={email}
+                  required
                   onChange={(e) => setEmail(e.target.value)}
                 ></Form.Control>
               </Form.Group>
@@ -62,23 +63,10 @@ const LoginScreen = ({ location, history }) => {
                   type='password'
                   placeholder='Enter password'
                   value={password}
+                  required
                   onChange={(e) => setPassword(e.target.value)}
                 ></Form.Control>
               </Form.Group>
-
-              {/* <div className="login-screen_flex-items">
-                <div className="login-screen_flex-center">
-                  <input
-                    id="remember-me"
-                    name="remember-me"
-                    type="checkbox"
-                    className="login-screen_checkbox"
-                  />
-                  <label htmlFor="remember-me" className="login-screen_label-remember">
-                    Remember me
-                  </label>
-                </div>
-              </div> */}
 
               <div className='pt-4'>
                 <button

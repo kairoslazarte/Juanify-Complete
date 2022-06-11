@@ -136,7 +136,6 @@ const createRestaurant = asyncHandler(async (req, res) => {
     res.status(201).json(createdRestaurant)
 })
 
-  
 // @desc    Get top rated restaurants
 // @route   GET /api/restaurants/top
 // @access  Public
@@ -157,29 +156,22 @@ const getRecentlyOrdered = asyncHandler(async (req, res) => {
   res.json(restaurants)
 })
 
-
 // @desc    Create new review
 // @route   POST /api/products/:id/reviews
 // @access  Private
 const createRestaurantReview = asyncHandler(async (req, res) => {
-  const { rating, comment } = req.body
+  const { rating, comment, restaurantID, orderItems } = req.body
 
-  const restaurant = await Restaurant.findById(req.params.id)
+  const order = await Order.findById(req.params.id)
+  const restaurant = await Restaurant.findById(restaurantID)
 
   if (restaurant) {
-    const alreadyReviewed = restaurant.reviews.find(
-      (r) => r.user.toString() === req.user._id.toString()
-    )
-
-    if (alreadyReviewed) {
-      res.status(400)
-      throw new Error('Restaurant already reviewed')
-    }
 
     const review = {
       name: req.user.first_name + ' ' + req.user.last_name,
       rating: Number(rating),
       comment,
+      orderItems: orderItems,
       user: req.user._id,
     }
 
@@ -191,6 +183,9 @@ const createRestaurantReview = asyncHandler(async (req, res) => {
       restaurant.reviews.reduce((acc, item) => item.rating + acc, 0) /
       restaurant.reviews.length
 
+    order.isReviewed = true
+    
+    await order.save()
     await restaurant.save()
     res.status(201).json({ message: 'Review added' })
   } else {

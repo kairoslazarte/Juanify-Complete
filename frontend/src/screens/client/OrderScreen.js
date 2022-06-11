@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { PayPalButton } from 'react-paypal-button-v2'
 import { Link } from 'react-router-dom'
-import { Row, Col, ListGroup, Image, Card, Button } from 'react-bootstrap'
+import { Row, Col, ListGroup, Image, Card, Form } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../../components/Message'
 import Loader from '../../components/Loader'
@@ -11,6 +11,7 @@ import {
   payOrder,
   deliverOrder,
 } from '../../actions/orderActions'
+import { createRestaurantReview } from '../../actions/restaurantActions'
 import {
   ORDER_PAY_RESET,
   ORDER_DELIVER_RESET,
@@ -19,6 +20,8 @@ import {
 const OrderScreen = ({ match, history }) => {
   const orderId = match.params.id
 
+  const [rating, setRating] = useState(0)
+  const [comment, setComment] = useState('')
   const [sdkReady, setSdkReady] = useState(false)
 
   const dispatch = useDispatch()
@@ -35,6 +38,13 @@ const OrderScreen = ({ match, history }) => {
   const userLogin = useSelector((state) => state.userLogin)
   const { userInfo } = userLogin
 
+  const restaurantReviewCreate = useSelector((state) => state.restaurantReviewCreate)
+    const {
+        success: successRestaurantReview,
+        loading: loadingRestaurantReview,
+        error: errorRestaurantReview,
+    } = restaurantReviewCreate
+
   if (!loading) {
     //   Calculate prices
     const addDecimals = (num) => {
@@ -49,6 +59,11 @@ const OrderScreen = ({ match, history }) => {
   useEffect(() => {
     if (!userInfo) {
       history.push('/login')
+    }
+
+    if (successRestaurantReview) {
+        setRating(0)
+        setComment('')
     }
 
     const addPayPalScript = async () => {
@@ -74,7 +89,7 @@ const OrderScreen = ({ match, history }) => {
         setSdkReady(true)
       }
     }
-  }, [dispatch, orderId, successPay, successDeliver, order])
+  }, [dispatch, orderId, successPay, successDeliver, order, successRestaurantReview])
 
   const successPaymentHandler = (paymentResult) => {
     dispatch(payOrder(orderId, paymentResult))
@@ -86,6 +101,19 @@ const OrderScreen = ({ match, history }) => {
           window.location.reload()
       }
   }, 500);
+
+  const submitHandler = (e) => {
+      e.preventDefault()
+      dispatch(
+          createRestaurantReview(match.params.id, {
+          rating,
+          comment,
+          restaurantID: order.restaurant,
+          orderItems: order.orderItems
+          })
+      )
+      window.location.reload()
+  }
 
   return loading ? (
     <Loader />
@@ -156,9 +184,7 @@ const OrderScreen = ({ match, history }) => {
                           />
                         </Col>
                         <Col>
-                          <Link to={`/product/${item.product}`}>
-                            {item.name}
-                          </Link>
+                          {item.name}
                         </Col>
                         <Col md={4}>
                           {item.qty} x {item.price}php = {item.qty * item.price}php
@@ -189,12 +215,6 @@ const OrderScreen = ({ match, history }) => {
                   <Col>{order.shippingPrice}php</Col>
                 </Row>
               </ListGroup.Item>
-              {/* <ListGroup.Item>
-                <Row>
-                  <Col>Tax</Col>
-                  <Col>{order.taxPrice}php</Col>
-                </Row>
-              </ListGroup.Item> */}
               <ListGroup.Item>
                 <Row>
                   <Col>Total</Col>
@@ -214,6 +234,57 @@ const OrderScreen = ({ match, history }) => {
                     />
                   )}
                 </ListGroup.Item>
+              )}
+              {!order.isReviewed &&
+              order.isComplete && (
+                 <ListGroup.Item className='py-4'>
+                 <h4>Write a Customer Review</h4>
+                 {successRestaurantReview && (
+                     <Message variant='success'>
+                         Review submitted successfully
+                     </Message>
+                 )}
+                 {loadingRestaurantReview && <Loader />}
+                 {errorRestaurantReview && (
+                     <Message variant='danger'>{errorRestaurantReview}</Message>
+                 )}
+                 {userInfo ? (
+                     <Form onSubmit={submitHandler}>
+                     <Form.Group controlId='rating'>
+                         <Form.Label>Rating</Form.Label>
+                         <Form.Control
+                         as='select'
+                         value={rating}
+                         onChange={(e) => setRating(e.target.value)}
+                         >
+                         <option value=''>Select...</option>
+                         <option value='1'>1 - Poor</option>
+                         <option value='2'>2 - Fair</option>
+                         <option value='3'>3 - Good</option>
+                         <option value='4'>4 - Very Good</option>
+                         <option value='5'>5 - Excellent</option>
+                         </Form.Control>
+                     </Form.Group>
+                     <Form.Group controlId='comment'>
+                         <Form.Label>Comment</Form.Label>
+                         <Form.Control
+                         as='textarea'
+                         row='3'
+                         value={comment}
+                         onChange={(e) => setComment(e.target.value)}
+                         ></Form.Control>
+                     </Form.Group>
+                     <br/>
+                     <button disabled={loadingRestaurantReview} type='submit' className='bg-blue-700 font-medium transition duration-200 text-white py-3 px-4 hover:opacity-60'>
+                         Submit
+                     </button>
+                     </Form>
+                 ) : (
+                     <Message>
+                        Please <Link to='/login'>sign in</Link> to write a review{' '}
+                     </Message>
+                 )}
+                 </ListGroup.Item>
               )}
             </ListGroup>
           </Card>

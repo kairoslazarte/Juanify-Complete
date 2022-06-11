@@ -1,20 +1,9 @@
 import React from 'react'
-import { Container, Row, Col } from 'react-bootstrap'
 
-// const Footer = () => {
-//   return (
-//     <footer className="footer">
-//       <Container>
-//         <Row>
-//           <Col className='text-center py-3'>Copyright &copy; Juanify</Col>
-//         </Row>
-//       </Container>
-//     </footer>
-//   )
-// }
 const navigation = {
   main: [
     { name: 'About Juanify', href: '/#about-us' },
+    { name: "FAQs", href: '/faq' },
     { name: 'Partner with us', href: '/partner-with-us' },
     { name: 'Browse restaurants', href: '/food' }
   ],

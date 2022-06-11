@@ -29,7 +29,7 @@ const ShippingScreen = ({ history }) => {
         <h1>Shipping</h1>
         <Form onSubmit={submitHandler}>
           <Form.Group controlId='address'>
-            <Form.Label>Street</Form.Label>
+            <Form.Label>Street <span className='text-red-500'>*</span></Form.Label>
             <Form.Control
               type='text'
               placeholder='Enter street'
@@ -40,7 +40,7 @@ const ShippingScreen = ({ history }) => {
           </Form.Group>
 
           <Form.Group controlId='city'>
-            <Form.Label>City</Form.Label>
+            <Form.Label>City <span className='text-red-500'>*</span></Form.Label>
             <Form.Control
               type='text'
               placeholder='Enter city'
@@ -52,7 +52,7 @@ const ShippingScreen = ({ history }) => {
           </Form.Group>
 
           <Form.Group controlId='postalCode'>
-            <Form.Label>Postal Code</Form.Label>
+            <Form.Label>Postal Code <span className='text-red-500'>*</span></Form.Label>
             <Form.Control
               type='text'
               placeholder='Enter postal code'
@@ -64,7 +64,7 @@ const ShippingScreen = ({ history }) => {
           </Form.Group>
 
           <Form.Group controlId='country'>
-            <Form.Label>Country</Form.Label>
+            <Form.Label>Country <span className='text-red-500'>*</span></Form.Label>
             <Form.Control
               type='text'
               placeholder='Enter country'

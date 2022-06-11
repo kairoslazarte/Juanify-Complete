@@ -57,77 +57,52 @@ const FoodDeliveryScreen = ({ match }) => {
   }, [dispatch, keyword, pageNumber])
 
   return (
-    <Container id='food-delivery-screen'>
+    <>
       <Meta />
-      <div className='py-10'>
-        <ProductCarousel />
+      <div className='pb-3'>
+        <div className="bg-cover bg-no-repeat bg-gray-600 py-40" style={{backgroundImage: `url('./images/restaurant-screen.png')`}}>
+          <div className='sm:px-20 my-auto h-full'>
+              <p className='text-white font-bold text-left text-4xl sm:text-5xl lg:text-8xl'>Restaurants</p>
+          </div>
+        </div>
       </div>
-      {!keyword ? ( 
-        <>
-          {topRated_loading ? (
-            <Loader />
-          ) : topRated_error ? (
-            <Message variant='danger'>{error}</Message>
-          ) : (
-            <>
-              <section id="home-restaurants" className="home-restaurants pt-4">
-                <h1>Most <span className='text-red-500'>popular</span>/<span className='text-blue-700'>top-rated</span> restaurants</h1>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 lg:gap-4 xl:gap-6 pt-8">
-                  {topRated_restaurants.map((top_restaurant) => (
-                    <RestaurantCard restaurant={top_restaurant} key={top_restaurant._id} />
-                  ))}
-                </div>
-              </section>
-            </>
-          )}
-          {userInfo && (
-            loadingRecent ? (
+      <Container id='food-delivery-screen'>
+        {!keyword ? ( 
+          <>
+            {topRated_loading ? (
               <Loader />
-            ) : errorRecent ? (
-              <Message variant='danger'>{errorRecent}</Message>
+            ) : topRated_error ? (
+              <Message variant='danger'>{error}</Message>
             ) : (
-              recentlyOrdered.length > 0 && (
-                <section id="home-restaurants" className="home-restaurants py-0">
-                  <h1 className='pb-8'>RECENTLY ORDERED FROM</h1>
-                  <Carousel responsive={responsive}>
-                    {recentlyOrdered.map((recent_restau) => (
-                        <RestaurantCard restaurant={recent_restau} key={recent_restau._id} />
+              <>
+                <section id="home-restaurants" className="home-restaurants pt-4">
+                  <h1>Most <span className='text-red-500'>popular</span>/<span className='text-blue-700'>top-rated</span> restaurants</h1>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 lg:gap-4 xl:gap-6 pt-8">
+                    {topRated_restaurants.map((top_restaurant) => (
+                      <RestaurantCard restaurant={top_restaurant} key={top_restaurant._id} />
                     ))}
-                  </Carousel>
+                  </div>
                 </section>
+              </>
+            )}
+            {userInfo && (
+              loadingRecent ? (
+                <Loader />
+              ) : errorRecent ? (
+                <Message variant='danger'>{errorRecent}</Message>
+              ) : (
+                recentlyOrdered.length > 0 && (
+                  <section id="home-restaurants" className="home-restaurants py-0">
+                    <h1 className='pb-8'>RECENTLY ORDERED FROM</h1>
+                    <Carousel responsive={responsive}>
+                      {recentlyOrdered.map((recent_restau) => (
+                          <RestaurantCard restaurant={recent_restau} key={recent_restau._id} />
+                      ))}
+                    </Carousel>
+                  </section>
+                )
               )
-            )
-          )}
-          {loading ? (
-            <Loader />
-          ) : error ? (
-            <Message variant='danger'>{error}</Message>
-          ) : (
-            <>
-              <section className="restaurants">
-                <h1>All <span className='text-blue-700'>available</span> restaurants</h1>
-                <div className="restaurants__container">
-                  {restaurants.map((restaurant) => (
-                    <RestaurantCard restaurant={restaurant} key={restaurant._id} />
-                  ))}
-                </div>
-              </section>
-              <div className='restaurants__pagination'>
-                <Paginate
-                  pages={pages}
-                  page={page}
-                  keyword={keyword ? keyword : ''}
-                />
-              </div>
-            </>
-          )}
-        </>
-      ) : (
-        <>
-          <Link to='/' className='btn btn-light'>
-            Go Back
-          </Link>
-
+            )}
             {loading ? (
               <Loader />
             ) : error ? (
@@ -135,30 +110,61 @@ const FoodDeliveryScreen = ({ match }) => {
             ) : (
               <>
                 <section className="restaurants">
-                  <h1>Search result/s for <span className='text-red-500'>{keyword}</span></h1>
-                  {restaurants.length == 0 ? (
-                    <p className='pt-2 text-lg'>Sorry, we can't seem to find anything you're looking for. Can you try again?</p>
-                  ) : (
-                    <div className="restaurants__container">
-                      {restaurants.map((restaurant) => (
-                        <RestaurantCard restaurant={restaurant} key={restaurant._id} />
-                      ))}
-                    </div>
-                  )}
+                  <h1>All <span className='text-blue-700'>available</span> restaurants</h1>
+                  <div className="restaurants__container">
+                    {restaurants.map((restaurant) => (
+                      <RestaurantCard restaurant={restaurant} key={restaurant._id} />
+                    ))}
+                  </div>
                 </section>
                 <div className='restaurants__pagination'>
                   <Paginate
                     pages={pages}
                     page={page}
-                    id="food-delivery-screen__pagination"
                     keyword={keyword ? keyword : ''}
                   />
                 </div>
               </>
             )}
-        </>
-      )}
-    </Container>
+          </>
+        ) : (
+          <>
+            <Link to='/' className='btn btn-light'>
+              Go Back
+            </Link>
+
+              {loading ? (
+                <Loader />
+              ) : error ? (
+                <Message variant='danger'>{error}</Message>
+              ) : (
+                <>
+                  <section className="restaurants">
+                    <h1>Search result/s for <span className='text-red-500'>{keyword}</span></h1>
+                    {restaurants.length == 0 ? (
+                      <p className='pt-2 text-lg'>Sorry, we can't seem to find anything you're looking for. Can you try again?</p>
+                    ) : (
+                      <div className="restaurants__container">
+                        {restaurants.map((restaurant) => (
+                          <RestaurantCard restaurant={restaurant} key={restaurant._id} />
+                        ))}
+                      </div>
+                    )}
+                  </section>
+                  <div className='restaurants__pagination'>
+                    <Paginate
+                      pages={pages}
+                      page={page}
+                      id="food-delivery-screen__pagination"
+                      keyword={keyword ? keyword : ''}
+                    />
+                  </div>
+                </>
+              )}
+          </>
+        )}
+      </Container>
+    </>
   )
 }
 
