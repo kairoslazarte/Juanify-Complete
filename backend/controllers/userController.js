@@ -103,7 +103,7 @@ const registerUser = asyncHandler(async (req, res) => {
       },
     );
 
-    const url = `https://juanify.herokuapp.com/api/users/confirmation/${emailToken}`;
+    const url = `https://juanify-complete.onrender.com/api/users/confirmation/${emailToken}`;
 
     let mailOptions = {
       from: 'Juanify <qfkrlazarte@tip.edu.ph>',
