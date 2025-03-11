@@ -138,7 +138,7 @@ const confirmUserEmail = asyncHandler(async (req, res) => {
 
     await user.save()
 
-    return res.redirect('https://juanify.herokuapp.com/login');
+    return res.redirect('https://juanify-complete.onrender.com/login');
   } else {
     res.status(404)
     throw new Error('User not found')
